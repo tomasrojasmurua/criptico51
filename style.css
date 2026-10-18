@@ -7,6 +7,7 @@
   --acento: #b4472f;
   --def: #fde7a7;
   --ind: #cfe3f7;
+  --rel: #cdeccf;
   --bien: #2f7d4f;
   --mal: #b4472f;
   --tecla: #e9e6df;
@@ -23,6 +24,7 @@
     --acento: #e2765d;
     --def: #6b5416;
     --ind: #23466b;
+    --rel: #1f5631;
     --bien: #5fbf86;
     --mal: #e2765d;
     --tecla: #2e2b28;
@@ -79,6 +81,7 @@ main { flex: 1; width: 100%; max-width: 640px; margin: 0 auto; padding: 24px 16p
 .pista mark { border-radius: 4px; padding: 0 3px; color: inherit; }
 .pista mark.def { background: var(--def); }
 .pista mark.ind { background: var(--ind); }
+.pista mark.rel { background: var(--rel); }
 .pista .largo { color: var(--suave); white-space: nowrap; }
 
 .casillas { display: flex; justify-content: center; gap: 6px; margin-bottom: 8px; }
@@ -160,7 +163,8 @@ h2 { font-size: 1.3rem; margin: 28px 0 10px; }
 
 /* Aprender */
 .texto p { margin: 0 0 12px; }
-.texto mark.def { background: var(--def); color: inherit; padding: 0 3px; border-radius: 3px; }
+.texto mark.def, .texto mark.rel { background: var(--def); color: inherit; padding: 0 3px; border-radius: 3px; }
+.texto mark.rel { background: var(--rel); }
 .tipos dt { font-weight: 600; margin-top: 16px; }
 .tipos dd { margin: 4px 0 0; color: var(--suave); }
 .ejemplo {

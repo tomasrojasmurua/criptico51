@@ -8,7 +8,32 @@
   // ---------- Utilidades ----------
   const $ = (sel) => document.querySelector(sel);
   const numeroDeHoy = () => Math.floor((Date.now() - inicio) / DIA_MS) + 1;
-  const pistaDe = (n) => PISTAS[(n - 1) % PISTAS.length];
+
+  // Cada partida tiene una clave: el número del día ("9") o «e» y el número de la extra ("e12").
+  // Los primeros DIAS_ANTIGUOS días usaron las primeras pistas de PISTAS; desde ahí, las pistas
+  // del día salen del banco cifrado DIARIAS (diarias.js), que solo se descifra al llegar su día.
+  // Las Extras son el resto de PISTAS y se pueden jugar en cualquier momento.
+  const DIAS_ANTIGUOS = 8;
+  const totalExtras = () => PISTAS.length - DIAS_ANTIGUOS;
+  const esExtra = (id) => String(id)[0] === "e";
+  const numeroDe = (id) => parseInt(String(id).replace("e", ""), 10);
+  const descifradas = {};
+  function diaria(n) {
+    const i = n - DIAS_ANTIGUOS - 1;
+    if (typeof DIARIAS === "undefined" || i >= DIARIAS.length) return PISTAS[(n - 1) % PISTAS.length];
+    if (!descifradas[i]) {
+      const bytes = Uint8Array.from(atob(DIARIAS[i]), (c) => c.charCodeAt(0));
+      const llave = "criptico51";
+      bytes.forEach((b, k) => { bytes[k] = b ^ llave.charCodeAt((k + i) % llave.length); });
+      descifradas[i] = JSON.parse(new TextDecoder().decode(bytes));
+    }
+    return descifradas[i];
+  }
+  const pistaDe = (id) => {
+    const k = numeroDe(id);
+    if (esExtra(id)) return PISTAS[DIAS_ANTIGUOS + k - 1];
+    return k <= DIAS_ANTIGUOS ? PISTAS[k - 1] : diaria(Math.min(k, numeroDeHoy()));
+  };
   // Letras de la respuesta sin espacios, y su enumeración: "SIN EMBARGO" → (3,7)
   const letrasDe = (p) => p.respuesta.replace(/ /g, "");
   const enumeracion = (p) => p.respuesta.split(" ").map((w) => w.length).join(",");
@@ -28,6 +53,16 @@
   let datos;
   try { datos = JSON.parse(localStorage.getItem(CLAVE)) || {}; } catch { datos = {}; }
   datos.partidas = datos.partidas || {};
+  // Antes, las pistas posteriores al día 8 se jugaban como extras con el número de su posición.
+  if (!datos.extrasSeparadas) {
+    Object.keys(datos.partidas).forEach((k) => {
+      if (/^\d+$/.test(k) && +k > DIAS_ANTIGUOS) {
+        datos.partidas["e" + (k - DIAS_ANTIGUOS)] = datos.partidas[k];
+        delete datos.partidas[k];
+      }
+    });
+    datos.extrasSeparadas = true;
+  }
   const guardar = () => {
     try { localStorage.setItem(CLAVE, JSON.stringify(datos)); } catch { /* sin almacenamiento */ }
   };
@@ -59,22 +94,36 @@
       { titulo: "Definición", texto: "resaltada en amarillo en la pista", marca: "def" }
     ];
     if (p.indicador) lista.push({ titulo: "Indicador", texto: `«${p.indicador}», resaltado en azul`, marca: "ind" });
+    if (p.relleno && p.relleno.length) lista.push({ titulo: "Relleno", texto: "lo que hay que manipular, resaltado en verde", marca: "rel" });
     lista.push({ titulo: "Primera letra", texto: letrasDe(p)[0], primera: true });
     lista.push({ titulo: "Solución", texto: p.respuesta, revelar: true });
     return lista;
   }
 
-  // Envuelve los fragmentos de definición e indicador en <mark>.
+  // Envuelve los fragmentos de definición, indicador y relleno en <mark>.
+  // Cada fragmento va en la primera aparición como palabra completa que no esté ya ocupada
+  // (así «a» no cae dentro de «océano»). Se recorren siempre los tres, para que las
+  // posiciones no cambien según qué ayudas se hayan pedido.
   function pistaHTML(p, marcas) {
     const texto = p.pista;
     const tipo = Array(texto.length).fill(null);
+    const letra = (c) => c !== undefined && /\p{L}/u.test(c);
+    const libre = (i, frag) => {
+      for (let k = i; k < i + frag.length; k++) if (tipo[k] !== null) return false;
+      return !letra(texto[i - 1]) && !letra(texto[i + frag.length]);
+    };
     const marcar = (frag, clase) => {
-      const i = texto.indexOf(frag);
-      if (i < 0 || !frag) return;
+      if (!frag) return;
+      let i = texto.indexOf(frag);
+      while (i >= 0 && !libre(i, frag)) i = texto.indexOf(frag, i + 1);
+      if (i < 0) i = texto.indexOf(frag);
+      if (i < 0) return;
       for (let k = i; k < i + frag.length; k++) tipo[k] = clase;
     };
-    if (marcas.has("def")) p.definicion.forEach((d) => marcar(d, "def"));
-    if (marcas.has("ind")) marcar(p.indicador, "ind");
+    p.definicion.forEach((d) => marcar(d, "def"));
+    marcar(p.indicador, "ind");
+    (p.relleno || []).forEach((r) => marcar(r, "rel"));
+    for (let k = 0; k < texto.length; k++) if (tipo[k] && !marcas.has(tipo[k])) tipo[k] = null;
 
     let html = "", actual = null;
     for (let k = 0; k < texto.length; k++) {
@@ -95,8 +144,8 @@
   // ---------- Juego ----------
   let n, p, partida, cursor = 0;
 
-  function cargar(num) {
-    n = num;
+  function cargar(id) {
+    n = String(id);
     p = pistaDe(n);
     partida = partidaDe(n);
     cursor = Math.max(0, partida.letras.findIndex((l) => !l));
@@ -129,14 +178,15 @@
 
   function pintar() {
     const hoy = numeroDeHoy();
-    $("#numero").textContent = n === hoy ? `Nº ${n} · Hoy` : n > hoy ? `Nº ${n} · Extra` : `Nº ${n} · ${formatoFecha(fechaDe(n))}`;
+    const k = numeroDe(n);
+    $("#numero").textContent = esExtra(n) ? `Extra ${k}` : k === hoy ? `Nº ${k} · Hoy` : `Nº ${k} · ${formatoFecha(fechaDe(k))}`;
     const racha = calcularRachas().actual;
     $("#racha-mini").textContent = `Racha: ${racha}`;
 
     const lista = ayudasDe(p);
     const usadas = lista.slice(0, partida.ayudas);
     const marcas = new Set(usadas.filter((a) => a.marca).map((a) => a.marca));
-    if (terminado()) { marcas.add("def"); if (p.indicador) marcas.add("ind"); }
+    if (terminado()) ["def", "ind", "rel"].forEach((m) => marcas.add(m));
     $("#pista").innerHTML = pistaHTML(p, marcas);
 
     const f = fijas();
@@ -229,7 +279,7 @@
     partida.intentos++;
     if (intento === letrasDe(p)) {
       partida.estado = "resuelto";
-      partida.enFecha = n === numeroDeHoy();
+      partida.enFecha = n === String(numeroDeHoy());
       msg.textContent = "¡Correcto!";
       msg.className = "mensaje bien";
     } else {
@@ -314,8 +364,11 @@
       linea = `🏳️ Revelado${tiempo}`;
     }
     const racha = calcularRachas().actual;
-    const lineaRacha = n === numeroDeHoy() && racha > 0 ? `\n🔥 Racha de ${racha} ${racha === 1 ? "día" : "días"}` : "";
-    const texto = `Críptico 51 · Nº ${n}\n${linea}${lineaRacha}\n${location.origin + location.pathname}#n/${n}`;
+    const lineaRacha = n === String(numeroDeHoy()) && racha > 0 ? `\n🔥 Racha de ${racha} ${racha === 1 ? "día" : "días"}` : "";
+    const k = numeroDe(n);
+    const titulo = esExtra(n) ? `Extra ${k}` : `Nº ${k}`;
+    const enlace = esExtra(n) ? `#extra/${k}` : `#n/${k}`;
+    const texto = `Críptico 51 · ${titulo}\n${linea}${lineaRacha}\n${location.origin + location.pathname}${enlace}`;
     try {
       if (navigator.share) await navigator.share({ text: texto });
       else { await navigator.clipboard.writeText(texto); avisar("Copiado al portapapeles"); }
@@ -380,7 +433,7 @@
 
     const cubos = [0, 0, 0, 0, 0];
     Object.entries(datos.partidas).forEach(([k, x]) => {
-      if (x.estado === "resuelto") cubos[Math.min(ayudasTotales(x, +k), 4)]++;
+      if (x.estado === "resuelto") cubos[Math.min(ayudasTotales(x, k), 4)]++;
     });
     const max = Math.max(1, ...cubos);
     const etiquetas = ["Sin ayudas", "1 ayuda", "2 ayudas", "3 ayudas", "4 o más"];
@@ -392,17 +445,20 @@
   // ---------- Archivo ----------
   function pintarArchivo() {
     const hoy = numeroDeHoy();
-    const items = [];
-    const total = Math.max(hoy, PISTAS.length);
-    for (let k = 1; k <= total; k++) {
-      const x = datos.partidas[k];
-      const estado = !x ? "Sin jugar"
-        : x.estado === "resuelto" ? "✅ Resuelto"
-        : x.estado === "revelado" ? "🏳️ Revelado" : "En curso";
-      const cuando = k === hoy ? `${formatoFecha(fechaDe(k))} (hoy)` : k < hoy ? formatoFecha(fechaDe(k)) : "Extra";
-      items.push(`<li><a href="#n/${k}"><span><strong>Nº ${k}</strong> <span class="fecha">· ${cuando}</span></span><span class="estado">${estado}</span></a></li>`);
+    const estadoDe = (id) => {
+      const x = datos.partidas[id];
+      return !x ? "Sin jugar" : x.estado === "resuelto" ? "✅ Resuelto" : x.estado === "revelado" ? "🏳️ Revelado" : "En curso";
+    };
+    const fila = (enlace, titulo, detalle, id) =>
+      `<li><a href="${enlace}"><span><strong>${titulo}</strong> <span class="fecha">· ${detalle}</span></span><span class="estado">${estadoDe(id)}</span></a></li>`;
+    const dias = [];
+    for (let k = hoy; k >= 1; k--) {
+      dias.push(fila(`#n/${k}`, `Nº ${k}`, k === hoy ? `${formatoFecha(fechaDe(k))} (hoy)` : formatoFecha(fechaDe(k)), k));
     }
-    $("#lista-archivo").innerHTML = items.join("");
+    const extras = [];
+    for (let k = 1; k <= totalExtras(); k++) extras.push(fila(`#extra/${k}`, `Extra ${k}`, `dificultad ${pistaDe("e" + k).dificultad || 3}`, "e" + k));
+    $("#lista-archivo").innerHTML = dias.join("");
+    $("#lista-extras").innerHTML = extras.join("");
   }
 
   // ---------- Navegación ----------
@@ -410,11 +466,12 @@
     const h = location.hash.slice(1) || "hoy";
     const hoy = numeroDeHoy();
     let vista = h;
-    const m = h.match(/^n\/(\d+)$/);
+    const m = h.match(/^(n|extra)\/(\d+)$/);
     if (m) {
-      const k = parseInt(m[1], 10);
+      const k = parseInt(m[2], 10);
       vista = "juego";
-      cargar(k >= 1 && k <= Math.max(hoy, PISTAS.length) ? k : hoy);
+      if (m[1] === "extra" && k >= 1 && k <= totalExtras()) cargar("e" + k);
+      else cargar(m[1] === "n" && k >= 1 && k <= hoy ? k : hoy);
     } else if (h === "multijugador" || h.startsWith("sala/")) {
       vista = "multijugador";
     } else if (h === "hoy" || !["archivo", "aprender", "estadisticas"].includes(h)) {
@@ -422,7 +479,7 @@
       cargar(hoy);
     }
     document.querySelectorAll(".vista").forEach((s) => (s.hidden = s.id !== `vista-${vista}`));
-    const activa = vista === "juego" ? (m && +m[1] !== hoy ? "archivo" : "hoy") : vista;
+    const activa = vista === "juego" ? (n !== String(hoy) ? "archivo" : "hoy") : vista;
     document.querySelectorAll(".menu a").forEach((a) => a.classList.toggle("activo", a.dataset.vista === activa));
     if (vista === "archivo") pintarArchivo();
     if (vista === "estadisticas") pintarEstadisticas();

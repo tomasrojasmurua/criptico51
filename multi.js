@@ -521,7 +521,7 @@ const Multi = (() => {
     mostrarPanel("mp-pausa");
     const p = pistaActual();
     $("#mp-pausa-ronda").textContent = `Ronda ${sala.ronda} de ${sala.total}`;
-    $("#mp-sol-pista").innerHTML = C().pistaHTML(p, new Set(["def", "ind"]));
+    $("#mp-sol-pista").innerHTML = C().pistaHTML(p, new Set(["def", "ind", "rel"]));
     $("#mp-sol").textContent = p.respuesta;
     $("#mp-sol-expl").textContent = p.explicacion;
     $("#mp-tabla").innerHTML = tablaHTML(true);
