@@ -90,7 +90,7 @@ main { flex: 1; width: 100%; max-width: 640px; margin: 0 auto; padding: 24px 16p
   transition: border-color .15s, transform .15s;
 }
 .casilla.cursor { border-color: var(--texto); }
-.casilla.fija { color: var(--suave); }
+.casilla.fija { color: var(--bien); border-color: var(--bien); cursor: default; }
 .casillas.bien .casilla { border-color: var(--bien); background: var(--bien); color: #fff; }
 .casillas.mal { animation: temblor .35s; }
 @keyframes temblor {
@@ -103,6 +103,8 @@ main { flex: 1; width: 100%; max-width: 640px; margin: 0 auto; padding: 24px 16p
 .mensaje.bien { color: var(--bien); }
 
 .acciones { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 8px 0 16px; }
+.acciones.extra { margin-top: -8px; }
+.acciones.extra .btn { padding: 8px 14px; font-size: .85rem; }
 .btn {
   font: 500 .95rem Inter, sans-serif; padding: 10px 18px; border-radius: 999px; cursor: pointer;
   border: 1px solid var(--borde); background: var(--superficie); color: var(--texto);

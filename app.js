@@ -36,8 +36,21 @@
     if (!datos.partidas[n]) {
       datos.partidas[n] = { letras: Array(largo).fill(""), ayudas: 0, estado: "jugando", intentos: 0 };
     }
-    return datos.partidas[n];
+    const x = datos.partidas[n];
+    x.fijas = x.fijas || [];
+    x.reveladas = x.reveladas || 0;
+    x.chequeos = x.chequeos || 0;
+    x.segundos = x.segundos || 0;
+    return x;
   };
+
+  // Total de ayudas usadas: pasos del botón Pista (sin contar la solución),
+  // letras reveladas y comprobaciones de letras.
+  const ayudasTotales = (x, num) => {
+    const pasos = ayudasDe(pistaDe(num)).length - 1;
+    return Math.min(x.ayudas, pasos) + (x.reveladas || 0) + (x.chequeos || 0);
+  };
+  const formatoTiempo = (seg) => `${Math.floor(seg / 60)}:${String(seg % 60).padStart(2, "0")}`;
 
   // ---------- Ayudas progresivas ----------
   function ayudasDe(p) {
@@ -126,12 +139,12 @@
     if (terminado()) { marcas.add("def"); if (p.indicador) marcas.add("ind"); }
     $("#pista").innerHTML = pistaHTML(p, marcas);
 
-    const primeraFija = usadas.some((a) => a.primera);
+    const f = fijas();
     const casillas = [...$("#casillas").children];
     casillas.forEach((c, i) => {
       c.textContent = partida.letras[i] || "";
       c.classList.toggle("cursor", i === cursor && !terminado());
-      c.classList.toggle("fija", i === 0 && primeraFija && !terminado());
+      c.classList.toggle("fija", f.has(i) && !terminado());
       c.disabled = terminado();
     });
     $("#casillas").classList.toggle("bien", partida.estado === "resuelto");
@@ -143,15 +156,16 @@
     const siguiente = lista[partida.ayudas];
     const btnPista = $("#btn-pista");
     btnPista.textContent = siguiente && siguiente.revelar ? "Revelar" : "Pista";
-    ["#btn-comprobar", "#btn-pista", "#btn-borrar"].forEach((s) => ($(s).disabled = terminado()));
+    ["#btn-comprobar", "#btn-pista", "#btn-borrar", "#btn-letra", "#btn-chequear"].forEach((s) => ($(s).disabled = terminado()));
     $("#teclado").hidden = terminado();
 
     const final = $("#final");
     final.hidden = !terminado();
     if (terminado()) {
-      const pistasSinRevelar = Math.min(partida.ayudas, lista.length - 1);
+      const total = ayudasTotales(partida, n);
+      const tiempo = partida.segundos ? ` en ${formatoTiempo(partida.segundos)}` : "";
       $("#final-texto").textContent = partida.estado === "resuelto"
-        ? (pistasSinRevelar === 0 ? "¡Resuelto sin ayudas! 🎉" : `¡Resuelto con ${pistasSinRevelar} ${pistasSinRevelar === 1 ? "ayuda" : "ayudas"}!`)
+        ? (total === 0 ? `¡Resuelto sin ayudas${tiempo}! 🎉` : `¡Resuelto con ${total} ${total === 1 ? "ayuda" : "ayudas"}${tiempo}!`)
         : `La respuesta era ${p.respuesta}.`;
       $("#final-explicacion").textContent = p.explicacion;
     }
@@ -159,21 +173,34 @@
 
   function escribir(letra) {
     if (terminado()) return;
-    if (cursor === 0 && primeraEsFija()) cursor = 1;
+    cursor = libre(cursor, 1);
+    if (fijas().has(cursor)) cursor = libre(cursor, -1);
+    if (fijas().has(cursor)) return;
     partida.letras[cursor] = letra;
-    if (cursor < letrasDe(p).length - 1) cursor++;
+    if (cursor < letrasDe(p).length - 1) cursor = libre(cursor + 1, 1);
     guardar(); pintar();
   }
 
-  function primeraEsFija() {
-    return ayudasDe(p).slice(0, partida.ayudas).some((a) => a.primera);
+  // Casillas que ya no se pueden cambiar: la primera letra pedida como ayuda
+  // y las letras reveladas o comprobadas.
+  function fijas() {
+    const f = new Set(partida.fijas);
+    if (ayudasDe(p).slice(0, partida.ayudas).some((a) => a.primera)) f.add(0);
+    return f;
+  }
+
+  // Siguiente casilla libre desde i en la dirección d (o i si no hay ninguna).
+  function libre(i, d) {
+    const f = fijas(), largo = letrasDe(p).length;
+    for (let k = i; k >= 0 && k < largo; k += d) if (!f.has(k)) return k;
+    return i;
   }
 
   function retroceder() {
     if (terminado()) return;
-    const minimo = primeraEsFija() ? 1 : 0;
-    if (!partida.letras[cursor] && cursor > minimo) cursor--;
-    if (cursor >= minimo) partida.letras[cursor] = "";
+    const f = fijas();
+    if ((f.has(cursor) || !partida.letras[cursor]) && cursor > 0) cursor = libre(cursor - 1, -1);
+    if (!f.has(cursor)) partida.letras[cursor] = "";
     guardar(); pintar();
   }
 
@@ -184,9 +211,9 @@
 
   function borrarTodo() {
     if (terminado()) return;
-    const fija = primeraEsFija();
-    partida.letras = partida.letras.map((l, i) => (fija && i === 0 ? l : ""));
-    cursor = fija ? 1 : 0;
+    const f = fijas();
+    partida.letras = partida.letras.map((l, i) => (f.has(i) ? l : ""));
+    cursor = libre(0, 1);
     guardar(); pintar();
   }
 
@@ -223,7 +250,7 @@
     partida.ayudas++;
     if (a.primera) {
       partida.letras[0] = letrasDe(p)[0];
-      if (cursor === 0) cursor = 1;
+      if (cursor === 0) cursor = libre(0, 1);
     }
     if (a.revelar) {
       partida.letras = letrasDe(p).split("");
@@ -233,13 +260,62 @@
     guardar(); pintar();
   }
 
+  // Revela la letra de la casilla seleccionada (o la siguiente libre).
+  function revelarLetra() {
+    if (terminado()) return;
+    const f = fijas();
+    let i = libre(cursor, 1);
+    if (f.has(i)) i = libre(cursor, -1);
+    if (f.has(i)) return;
+    partida.letras[i] = letrasDe(p)[i];
+    partida.fijas.push(i);
+    partida.reveladas++;
+    $("#mensaje").textContent = "";
+    if (fijas().size === letrasDe(p).length) partida.estado = "revelado";
+    else cursor = libre(i, 1) !== i ? libre(i, 1) : libre(i, -1);
+    guardar(); pintar();
+  }
+
+  // Fija las letras escritas que son correctas y borra las demás.
+  function comprobarLetras() {
+    if (terminado()) return;
+    const sol = letrasDe(p), f = fijas();
+    if (partida.letras.join("") === sol) { comprobar(); return; }
+    const escritas = partida.letras.map((l, i) => i).filter((i) => partida.letras[i] && !f.has(i));
+    const msg = $("#mensaje");
+    if (!escritas.length) {
+      msg.textContent = "Escribe alguna letra primero.";
+      msg.className = "mensaje mal";
+      return;
+    }
+    partida.chequeos++;
+    let bien = 0;
+    escritas.forEach((i) => {
+      if (partida.letras[i] === sol[i]) { partida.fijas.push(i); bien++; }
+      else partida.letras[i] = "";
+    });
+    const mal = escritas.length - bien;
+    msg.textContent = mal === 0 ? `Todas bien (${bien}).`
+      : bien === 0 ? `Ninguna de las ${mal} estaba bien; las he borrado.`
+      : `${bien} bien y ${mal} mal; he borrado las que no.`;
+    msg.className = mal === 0 ? "mensaje bien" : "mensaje mal";
+    cursor = libre(0, 1);
+    guardar(); pintar();
+  }
+
   async function compartir() {
-    const lista = ayudasDe(p);
-    const ayudas = Math.min(partida.ayudas, lista.length - 1);
-    const linea = partida.estado === "resuelto"
-      ? `✅ ${ayudas === 0 ? "sin ayudas" : "💡".repeat(ayudas)}`
-      : "🏳️ revelado";
-    const texto = `Críptico 51 · Nº ${n}\n${linea}\n${location.origin + location.pathname}`;
+    const ayudas = ayudasTotales(partida, n);
+    const tiempo = partida.segundos ? ` en ${formatoTiempo(partida.segundos)}` : "";
+    let linea;
+    if (partida.estado === "resuelto") {
+      const intentos = partida.intentos <= 1 ? "a la primera" : `${partida.intentos} intentos`;
+      linea = `✅ Resuelto${tiempo} · ${intentos} · ${ayudas === 0 ? "sin ayudas" : "💡".repeat(Math.min(ayudas, 10))}`;
+    } else {
+      linea = `🏳️ Revelado${tiempo}`;
+    }
+    const racha = calcularRachas().actual;
+    const lineaRacha = n === numeroDeHoy() && racha > 0 ? `\n🔥 Racha de ${racha} ${racha === 1 ? "día" : "días"}` : "";
+    const texto = `Críptico 51 · Nº ${n}\n${linea}${lineaRacha}\n${location.origin + location.pathname}#n/${n}`;
     try {
       if (navigator.share) await navigator.share({ text: texto });
       else { await navigator.clipboard.writeText(texto); avisar("Copiado al portapapeles"); }
@@ -303,9 +379,11 @@
     $("#est-mejor").textContent = mejor;
 
     const cubos = [0, 0, 0, 0, 0];
-    resueltas.forEach((x) => cubos[Math.min(x.ayudas, 4)]++);
+    Object.entries(datos.partidas).forEach(([k, x]) => {
+      if (x.estado === "resuelto") cubos[Math.min(ayudasTotales(x, +k), 4)]++;
+    });
     const max = Math.max(1, ...cubos);
-    const etiquetas = ["Sin ayudas", "1 ayuda", "2 ayudas", "3 ayudas", "4 ayudas"];
+    const etiquetas = ["Sin ayudas", "1 ayuda", "2 ayudas", "3 ayudas", "4 o más"];
     $("#est-barras").innerHTML = cubos.map((c, i) =>
       `<div class="barra"><span>${etiquetas[i]}</span><span class="relleno" style="width:${Math.max(8, (c / max) * 100)}%">${c}</span></div>`
     ).join("");
@@ -360,6 +438,11 @@
     const mm = String(Math.floor((s % 3600) / 60)).padStart(2, "0");
     const ss = String(s % 60).padStart(2, "0");
     $("#cuenta-atras").textContent = `${hh}:${mm}:${ss}`;
+    // Tiempo de juego: solo cuenta con la pista a la vista y sin terminar.
+    if (partida && !terminado() && !$("#vista-juego").hidden && document.visibilityState === "visible") {
+      partida.segundos++;
+      if (partida.segundos % 5 === 0) guardar();
+    }
     if (s <= 0) setTimeout(enrutar, 1500);
   }
 
@@ -367,6 +450,8 @@
   $("#btn-comprobar").onclick = comprobar;
   $("#btn-pista").onclick = pedirAyuda;
   $("#btn-borrar").onclick = borrarTodo;
+  $("#btn-letra").onclick = revelarLetra;
+  $("#btn-chequear").onclick = comprobarLetras;
   $("#btn-compartir").onclick = compartir;
   construirTeclado();
   window.addEventListener("hashchange", enrutar);
