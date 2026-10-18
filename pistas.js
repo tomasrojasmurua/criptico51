@@ -2234,5 +2234,115 @@ const PISTAS = [
     "indicador": "los pies de",
     "explicacion": "Los pies de la NOCHE son HE, el corazón de ERA es R y los que alientan al Barcelona son los CULÉS. HE + R + CULES = HERCULES, un semidiós.",
     "dificultad": 5
+  },
+  {
+    "pista": "Lecho del que se duerme y se lo lleva la corriente, cuando suelta el trago pirata",
+    "respuesta": "CAMA",
+    "definicion": [
+      "Lecho"
+    ],
+    "tipo": "Sustracción",
+    "indicador": "suelta",
+    "explicacion": "El que se duerme y se lo lleva la corriente es el CAMARÓN. Si suelta el trago pirata, el RON, queda CAMA, el lecho.",
+    "dificultad": 3
+  },
+  {
+    "pista": "Lo que se pierde por ir a Melipilla, desarmado, da flores moradas",
+    "respuesta": "LILAS",
+    "definicion": [
+      "flores moradas"
+    ],
+    "tipo": "Anagrama",
+    "indicador": "desarmado",
+    "explicacion": "Quien se fue a Melipilla perdió su SILLA. Desarmada, con sus letras reordenadas, da LILAS, flores moradas.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Ser que sobra al restar mi entrega de lo que no se mira en un obsequio con crines",
+    "respuesta": "ENTE",
+    "definicion": [
+      "Ser"
+    ],
+    "tipo": "Sustracción",
+    "indicador": "al restar",
+    "explicacion": "A caballo regalado no se le mira el DIENTE. Al restar mi entrega, DI, queda ENTE, un ser.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Más vale uno en mano que cien volando; queda heno si suelta el oro descabezado",
+    "respuesta": "PAJA",
+    "definicion": [
+      "heno"
+    ],
+    "tipo": "Sustracción",
+    "indicador": "suelta",
+    "explicacion": "El que vale más en mano que cien volando es el PÁJARO. Si suelta el oro descabezado, RO, queda PAJA, heno.",
+    "dificultad": 3
+  },
+  {
+    "pista": "Sin embargo, el que ladra y no muerde pierde a su rey",
+    "respuesta": "PERO",
+    "definicion": [
+      "Sin embargo"
+    ],
+    "tipo": "Sustracción",
+    "indicador": "pierde",
+    "explicacion": "El que ladra y no muerde es el PERRO. Si pierde a su rey, la R, queda PERO, sin embargo.",
+    "dificultad": 3
+  },
+  {
+    "pista": "Lo crías y te saca los ojos; con cinco menos, es puro pellejo",
+    "respuesta": "CUERO",
+    "definicion": [
+      "pellejo"
+    ],
+    "tipo": "Sustracción",
+    "indicador": "con cinco menos",
+    "explicacion": "Lo que se cría y te saca los ojos es el CUERVO. Con cinco menos, la V, queda CUERO, pellejo.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Los que no ven, con una rosa en la frente, terminan colorados",
+    "respuesta": "ROJOS",
+    "definicion": [
+      "colorados"
+    ],
+    "tipo": "Charada",
+    "indicador": "en la frente",
+    "explicacion": "Los que no ven son los OJOS. Con la R de rosa en la frente, R + OJOS = ROJOS, colorados.",
+    "dificultad": 3
+  },
+  {
+    "pista": "Vale más que nunca, aunque sin el té se quema",
+    "respuesta": "ARDE",
+    "definicion": [
+      "se quema"
+    ],
+    "tipo": "Sustracción",
+    "indicador": "sin",
+    "explicacion": "Lo que vale más que nunca es TARDE. Sin el té, la T, queda ARDE, se quema.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Lo que suena porque trae piedras, remontado, sirve para escuchar",
+    "respuesta": "OIR",
+    "definicion": [
+      "sirve para escuchar"
+    ],
+    "tipo": "Reverso",
+    "indicador": "remontado",
+    "explicacion": "Lo que suena porque trae piedras es el RÍO. Remontado, leído al revés, da OÍR, que sirve para escuchar.",
+    "dificultad": 4
+  },
+  {
+    "pista": "El que se juntó con las ganas de comer, ya con anillo, es todo un varón",
+    "respuesta": "HOMBRE",
+    "definicion": [
+      "todo un varón"
+    ],
+    "tipo": "Misceláneas",
+    "indicador": "ya con anillo",
+    "explicacion": "Con las ganas de comer se juntó el HAMBRE. Con un anillo, la O, en lugar de la A, queda HOMBRE, todo un varón.",
+    "dificultad": 4
   }
 ];
