@@ -18,24 +18,24 @@ const PISTAS = [
     "explicacion": "Papá a medias es PA y la colina, una LOMA. PA + LOMA = PALOMA, la mensajera de la paz."
   },
   {
-    "pista": "Lo que va sobre el techo del coche, de oído, da leche",
+    "pista": "La que pasta lleva, de boca en boca, las valijas en el techo",
     "respuesta": "VACA",
     "definicion": [
-      "da leche"
+      "La que pasta"
     ],
     "tipo": "Onomatopeya",
-    "indicador": "de oído",
-    "explicacion": "Sobre el techo del coche va la BACA, que de oído suena igual que VACA, la que da leche."
+    "indicador": "de boca en boca",
+    "explicacion": "Las valijas en el techo van en la BACA, que de boca en boca suena igual que VACA, la que pasta."
   },
   {
-    "pista": "Letras con él, en desorden, brilla de noche",
+    "pista": "Letras y él, tras el baile, son la que brilla en la alfombra roja",
     "respuesta": "ESTRELLA",
     "definicion": [
-      "brilla de noche"
+      "la que brilla en la alfombra roja"
     ],
     "tipo": "Anagrama",
-    "indicador": "en desorden",
-    "explicacion": "LETRAS + ÉL en desorden forman ESTRELLA, que brilla de noche."
+    "indicador": "tras el baile",
+    "explicacion": "LETRAS + ÉL, tras el baile de sus letras, forman ESTRELLA, la que brilla en la alfombra roja."
   },
   {
     "pista": "Repollo que un caracol deja al perder la cara",
@@ -59,24 +59,24 @@ const PISTAS = [
     "explicacion": "La LLAMA arde en la chimenea, y la LLAMA de los Andes escupe."
   },
   {
-    "pista": "Aborrecimiento devuelto, ya escuchado",
+    "pista": "Aborrecimiento en retroceso, ya escuchado",
     "respuesta": "OIDO",
     "definicion": [
       "escuchado"
     ],
     "tipo": "Reverso",
-    "indicador": "devuelto",
-    "explicacion": "El aborrecimiento es ODIO; devuelto, al revés, da OÍDO, escuchado."
+    "indicador": "en retroceso",
+    "explicacion": "El aborrecimiento es ODIO; en retroceso, al revés, da OÍDO, escuchado."
   },
   {
-    "pista": "La cabeza de un bufón sobre una carcajada, apenas viento",
+    "pista": "Apenas viento cuando el bufón encabeza la carcajada",
     "respuesta": "BRISA",
     "definicion": [
-      "apenas viento"
+      "Apenas viento"
     ],
     "tipo": "Selector + charada",
-    "indicador": "La cabeza de",
-    "explicacion": "La cabeza de «bufón» es B y una carcajada es RISA. B + RISA = BRISA, apenas viento."
+    "indicador": "encabeza",
+    "explicacion": "El bufón encabeza con su B la carcajada, RISA. B + RISA = BRISA, apenas viento."
   },
   {
     "pista": "Rendido, el casado deja entrar al norte",
@@ -99,14 +99,14 @@ const PISTAS = [
     "explicacion": "RESINA derramada, con sus letras reordenadas, da SIRENA, la que canta en las rocas."
   },
   {
-    "pista": "Ruta del viejo de pelo blanco con mi nota dentro",
+    "pista": "El cano abraza mi nota y marca la ruta",
     "respuesta": "CAMINO",
     "definicion": [
-      "Ruta"
+      "la ruta"
     ],
     "tipo": "Contenedor",
-    "indicador": "dentro",
-    "explicacion": "El de pelo blanco es CANO; con la nota MI dentro queda CA·MI·NO, una ruta."
+    "indicador": "abraza",
+    "explicacion": "El de pelo blanco es CANO; abraza la nota MI y queda CA·MI·NO, la ruta."
   },
   {
     "pista": "Se levanta para brindar en lo alto del árbol",
@@ -150,14 +150,14 @@ const PISTAS = [
     "explicacion": "La nota SOL y los años vividos, la EDAD. SOL + EDAD = SOLEDAD, falta de compañía."
   },
   {
-    "pista": "Bestia de vuelta, chapa delgada",
+    "pista": "La bestia, en retirada, deja una chapa delgada",
     "respuesta": "LAMINA",
     "definicion": [
-      "chapa delgada"
+      "una chapa delgada"
     ],
     "tipo": "Reverso",
-    "indicador": "de vuelta",
-    "explicacion": "La bestia es un ANIMAL; de vuelta, al revés, da LÁMINA, una chapa delgada."
+    "indicador": "en retirada",
+    "explicacion": "La bestia es un ANIMAL; en retirada, al revés, da LÁMINA, una chapa delgada."
   },
   {
     "pista": "Bebida pirata de un crustáceo que se quedó sin cama",
@@ -170,14 +170,14 @@ const PISTAS = [
     "explicacion": "El crustáceo es el CAMARÓN; sin CAMA queda RON, la bebida pirata."
   },
   {
-    "pista": "Circula por el tronco y, de oído, todo lo sabe",
+    "pista": "Circula por el tronco la que, según dicen, todo lo sabe",
     "respuesta": "SAVIA",
     "definicion": [
       "Circula por el tronco"
     ],
     "tipo": "Onomatopeya",
-    "indicador": "de oído",
-    "explicacion": "La SAVIA circula por el tronco y de oído suena igual que SABIA, la que todo lo sabe."
+    "indicador": "según dicen",
+    "explicacion": "La SAVIA circula por el tronco y, dicha en voz alta, suena igual que SABIA, la que todo lo sabe."
   },
   {
     "pista": "Aun así quedó libre de incautación",
@@ -200,14 +200,14 @@ const PISTAS = [
     "explicacion": "DÍA guarda la V, cinco en romanos, y queda DI·V·A, la estrella del espectáculo."
   },
   {
-    "pista": "Satélite que asoma al frente de las urbes nocturnas antiguas",
+    "pista": "Las urbes nocturnas antiguas, en primera fila, ven el satélite",
     "respuesta": "LUNA",
     "definicion": [
-      "Satélite"
+      "el satélite"
     ],
     "tipo": "Selector",
-    "indicador": "al frente de",
-    "explicacion": "Al frente de Las Urbes Nocturnas Antiguas están sus iniciales, LUNA, el satélite."
+    "indicador": "en primera fila",
+    "explicacion": "En primera fila de Las Urbes Nocturnas Antiguas van sus iniciales, LUNA, el satélite."
   },
   {
     "pista": "Tiene el pelo de lana y te toma el pulso",
@@ -221,14 +221,14 @@ const PISTAS = [
     "explicacion": "La MUÑECA de trapo tiene el pelo de lana, y en la MUÑECA te toman el pulso."
   },
   {
-    "pista": "Cines con lío alborotado piden mutismo",
+    "pista": "Cines y lío, en plena trifulca, piden mutismo",
     "respuesta": "SILENCIO",
     "definicion": [
       "mutismo"
     ],
     "tipo": "Anagrama",
-    "indicador": "alborotado",
-    "explicacion": "Las letras de CINES + LÍO, alborotadas, forman SILENCIO, mutismo."
+    "indicador": "en plena trifulca",
+    "explicacion": "Las letras de CINES + LÍO, en plena trifulca, forman SILENCIO, mutismo."
   },
   {
     "pista": "Bebe la infusión el rojo de la ensalada",
@@ -271,14 +271,14 @@ const PISTAS = [
     "explicacion": "El océano es el MAR y las infusiones, TÉS. MAR + TES = MARTES, el día en que ni te cases ni te embarques."
   },
   {
-    "pista": "Asesina del mar, oculta por cada ola",
+    "pista": "Asesina del mar, agazapada por cada ola",
     "respuesta": "ORCA",
     "definicion": [
       "Asesina del mar"
     ],
     "tipo": "Palabra escondida",
-    "indicador": "oculta",
-    "explicacion": "Oculta en pOR CAda está ORCA, la asesina del mar."
+    "indicador": "agazapada",
+    "explicacion": "Agazapada en pOR CAda está ORCA, la asesina del mar."
   },
   {
     "pista": "Viene en remolino lo que cae blanco del cielo",
@@ -291,24 +291,24 @@ const PISTAS = [
     "explicacion": "Las letras de VIENE, en remolino, forman NIEVE."
   },
   {
-    "pista": "La primera de amor en la ciudad eterna deja una fragancia",
+    "pista": "Amor encabeza la ciudad eterna y deja una fragancia",
     "respuesta": "AROMA",
     "definicion": [
       "una fragancia"
     ],
     "tipo": "Selector + charada",
-    "indicador": "La primera de",
-    "explicacion": "La primera de «amor» es A y la ciudad eterna, ROMA. A + ROMA = AROMA, una fragancia."
+    "indicador": "encabeza",
+    "explicacion": "AMOR encabeza con su A; la ciudad eterna es ROMA. A + ROMA = AROMA, una fragancia."
   },
   {
-    "pista": "La pera guarda cincuenta en la joya del mar",
+    "pista": "La pera abraza a cincuenta y nace la joya del mar",
     "respuesta": "PERLA",
     "definicion": [
       "la joya del mar"
     ],
     "tipo": "Contenedor",
-    "indicador": "guarda",
-    "explicacion": "PERA guarda la L (cincuenta en números romanos): PER·L·A = PERLA, la joya del mar."
+    "indicador": "abraza",
+    "explicacion": "PERA abraza la L, cincuenta en romanos, y queda PER·L·A, la joya del mar."
   },
   {
     "pista": "Propio del coro y nacido en el arrecife",
@@ -322,14 +322,14 @@ const PISTAS = [
     "explicacion": "CORAL es lo propio del coro y también lo que forma los arrecifes."
   },
   {
-    "pista": "Segundo puesto, cabeza de pez en la conserva",
+    "pista": "Segundo puesto para el pez que encabeza la conserva",
     "respuesta": "PLATA",
     "definicion": [
       "Segundo puesto"
     ],
     "tipo": "Selector + charada",
-    "indicador": "cabeza de",
-    "explicacion": "La cabeza de «pez» es P y la conserva viene en LATA. P + LATA = PLATA, el segundo puesto."
+    "indicador": "encabeza",
+    "explicacion": "PEZ encabeza con su P la conserva, que viene en LATA. P + LATA = PLATA, el segundo puesto."
   },
   {
     "pista": "Vigila al muerto y aprovecha el viento",
@@ -354,14 +354,14 @@ const PISTAS = [
     "explicacion": "El RAYO cae de la tormenta y los RAYOS se cuentan en la rueda de la bicicleta."
   },
   {
-    "pista": "Un francés antiguo guarda cincuenta y despierta al pueblo",
+    "pista": "Un francés antiguo abraza cincuenta y despierta al pueblo",
     "respuesta": "GALLO",
     "definicion": [
       "despierta al pueblo"
     ],
     "tipo": "Contenedor",
-    "indicador": "guarda",
-    "explicacion": "Un francés antiguo es un GALO; guarda la L, cincuenta en romanos, y queda GA·L·LO, el que despierta al pueblo."
+    "indicador": "abraza",
+    "explicacion": "Un francés antiguo es un GALO; abraza la L, cincuenta en romanos, y queda GA·L·LO, el que despierta al pueblo."
   },
   {
     "pista": "Animal del desierto que trafica en la esquina",
@@ -375,24 +375,24 @@ const PISTAS = [
     "explicacion": "Un CAMELLO es un animal del desierto y, en lenguaje coloquial, quien vende droga en la calle."
   },
   {
-    "pista": "Un grito descompuesto es cereal dorado",
+    "pista": "Un grito destemplado da el cereal dorado",
     "respuesta": "TRIGO",
     "definicion": [
-      "cereal dorado"
+      "el cereal dorado"
     ],
     "tipo": "Anagrama",
-    "indicador": "descompuesto",
-    "explicacion": "Las letras de GRITO, descompuestas, forman TRIGO, un cereal dorado."
+    "indicador": "destemplado",
+    "explicacion": "Las letras de GRITO, destempladas, forman TRIGO, el cereal dorado."
   },
   {
-    "pista": "Una foto ñoña esconde la estación de las hojas caídas",
+    "pista": "La estación de las hojas caídas posa en una foto ñoña",
     "respuesta": "OTOÑO",
     "definicion": [
-      "la estación de las hojas caídas"
+      "La estación de las hojas caídas"
     ],
     "tipo": "Palabra escondida",
-    "indicador": "esconde",
-    "explicacion": "Dentro de «f-OTO ÑO-ña» se esconde OTOÑO."
+    "indicador": "posa en",
+    "explicacion": "Posando en fOTO ÑOña está OTOÑO, la estación de las hojas caídas."
   },
   {
     "pista": "Sube y baja y además aturde",
@@ -436,14 +436,14 @@ const PISTAS = [
     "explicacion": "Las letras de PASO, puestas «en falso», forman SAPO, un anfibio."
   },
   {
-    "pista": "Algo se agita en el agua tranquila",
+    "pista": "Algo, tras la tormenta, es agua tranquila",
     "respuesta": "LAGO",
     "definicion": [
-      "el agua tranquila"
+      "agua tranquila"
     ],
     "tipo": "Anagrama",
-    "indicador": "se agita",
-    "explicacion": "Las letras de ALGO, agitadas, forman LAGO, agua tranquila."
+    "indicador": "tras la tormenta",
+    "explicacion": "Las letras de ALGO, tras la tormenta, forman LAGO, agua tranquila."
   },
   {
     "pista": "Lo mío con él endulza el té",
@@ -467,14 +467,14 @@ const PISTAS = [
     "explicacion": "Un PUENTE cruza el río, y un «puente» festivo alarga el fin de semana."
   },
   {
-    "pista": "En la calma se esconde el espíritu",
+    "pista": "El espíritu descansa en la calma",
     "respuesta": "ALMA",
     "definicion": [
-      "el espíritu"
+      "El espíritu"
     ],
     "tipo": "Palabra escondida",
-    "indicador": "se esconde",
-    "explicacion": "Dentro de «c-ALMA» se esconde ALMA, el espíritu."
+    "indicador": "descansa en",
+    "explicacion": "En cALMA descansa ALMA, el espíritu."
   },
   {
     "pista": "La orilla se niega en la estación del calor",
@@ -508,23 +508,23 @@ const PISTAS = [
     "explicacion": "La MANZANA es la fruta prohibida y también el bloque de casas de una cuadra."
   },
   {
-    "pista": "El telón cae revuelto y pausado",
+    "pista": "Cae el telón, torcido y pausado",
     "respuesta": "LENTO",
     "definicion": [
       "pausado"
     ],
     "tipo": "Anagrama",
-    "indicador": "revuelto",
-    "explicacion": "Las letras de TELÓN, revueltas, forman LENTO, pausado."
+    "indicador": "torcido",
+    "explicacion": "Las letras de TELÓN, torcidas, forman LENTO, pausado."
   },
   {
-    "pista": "Sal y usted abreviado brindan por el bienestar",
+    "pista": "Sal y usted, en corto, brindan por el bienestar",
     "respuesta": "SALUD",
     "definicion": [
       "el bienestar"
     ],
     "tipo": "Misceláneas",
-    "indicador": "abreviado",
+    "indicador": "en corto",
     "explicacion": "SAL + UD (usted abreviado) = SALUD, el bienestar."
   },
   {
@@ -548,34 +548,34 @@ const PISTAS = [
     "explicacion": "Las letras de PERDÍA, sin rumbo, se reordenan en PIEDRA, una roca."
   },
   {
-    "pista": "Religiosa que sale de un jamón alterado",
+    "pista": "Religiosa salida de un jamón mal cortado",
     "respuesta": "MONJA",
     "definicion": [
       "Religiosa"
     ],
     "tipo": "Anagrama",
-    "indicador": "alterado",
-    "explicacion": "Alterando las letras de JAMÓN sale MONJA, una religiosa."
+    "indicador": "mal cortado",
+    "explicacion": "Las letras de JAMÓN, mal cortadas, forman MONJA, una religiosa."
   },
   {
-    "pista": "Se trastoca el credo y gruñe el animal de la pocilga",
+    "pista": "El que gruñe en la pocilga tiene un credo herético",
     "respuesta": "CERDO",
     "definicion": [
-      "el animal de la pocilga"
+      "El que gruñe en la pocilga"
     ],
     "tipo": "Anagrama",
-    "indicador": "Se trastoca",
-    "explicacion": "CREDO trastocado da CERDO, el animal de la pocilga."
+    "indicador": "herético",
+    "explicacion": "Las letras de CREDO, en versión herética, forman CERDO, el que gruñe en la pocilga."
   },
   {
-    "pista": "Tras un careo agitado queda el metal templado",
+    "pista": "Tras un careo acalorado queda el metal templado",
     "respuesta": "ACERO",
     "definicion": [
       "el metal templado"
     ],
     "tipo": "Anagrama",
-    "indicador": "agitado",
-    "explicacion": "Las letras de CAREO, agitadas, forman ACERO, el metal templado."
+    "indicador": "acalorado",
+    "explicacion": "Las letras de CAREO, acaloradas, forman ACERO, el metal templado."
   },
   {
     "pista": "Un coral se derrite en el bochorno",
@@ -588,24 +588,24 @@ const PISTAS = [
     "explicacion": "CORAL derretido, con sus letras reordenadas, da CALOR, el bochorno."
   },
   {
-    "pista": "Noel revuelto ruge en la sabana",
+    "pista": "Noel, perdido, es el que ruge en la sabana",
     "respuesta": "LEON",
     "definicion": [
-      "ruge en la sabana"
+      "el que ruge en la sabana"
     ],
     "tipo": "Anagrama",
-    "indicador": "revuelto",
-    "explicacion": "NOEL revuelto da LEÓN, el que ruge en la sabana."
+    "indicador": "perdido",
+    "explicacion": "Las letras de NOEL, perdidas, forman LEÓN, el que ruge en la sabana."
   },
   {
-    "pista": "Mira, desordenado, el eco del verso",
+    "pista": "Mira, distraída, el eco del verso",
     "respuesta": "RIMA",
     "definicion": [
       "el eco del verso"
     ],
     "tipo": "Anagrama",
-    "indicador": "desordenado",
-    "explicacion": "MIRA desordenado da RIMA, el eco que repite el sonido al final del verso."
+    "indicador": "distraída",
+    "explicacion": "Las letras de MIRA, distraídas, forman RIMA, el eco del verso."
   },
   {
     "pista": "Unas bromas torcidas dejan una silueta oscura",
@@ -618,104 +618,104 @@ const PISTAS = [
     "explicacion": "Las letras de BROMAS, torcidas, forman SOMBRA, una silueta oscura."
   },
   {
-    "pista": "Termina de otra manera lo que no es verdad",
+    "pista": "Termina mal lo que no es verdad",
     "respuesta": "MENTIRA",
     "definicion": [
       "lo que no es verdad"
     ],
     "tipo": "Anagrama",
-    "indicador": "de otra manera",
-    "explicacion": "TERMINA escrito de otra manera da MENTIRA, lo que no es verdad."
+    "indicador": "mal",
+    "explicacion": "TERMINA, mal ordenado, da MENTIRA, lo que no es verdad."
   },
   {
-    "pista": "El mero se revuelve en la pala del bote",
+    "pista": "El mero, enredado, es la pala del bote",
     "respuesta": "REMO",
     "definicion": [
       "la pala del bote"
     ],
     "tipo": "Anagrama",
-    "indicador": "se revuelve",
-    "explicacion": "El MERO, un pez, se revuelve y queda REMO, la pala del bote."
+    "indicador": "enredado",
+    "explicacion": "El MERO, un pez, enredado en sus letras da REMO, la pala del bote."
   },
   {
-    "pista": "Revuelve nacer y sale lo que se asa",
+    "pista": "Nacer, a la parrilla, da lo que se asa",
     "respuesta": "CARNE",
     "definicion": [
       "lo que se asa"
     ],
     "tipo": "Anagrama",
-    "indicador": "Revuelve",
-    "explicacion": "Revolviendo las letras de NACER sale CARNE, lo que se asa."
+    "indicador": "a la parrilla",
+    "explicacion": "Las letras de NACER, a la parrilla, forman CARNE, lo que se asa."
   },
   {
-    "pista": "Pardo, alborotado, es un campo verde",
+    "pista": "Pardo, despeinado, es un campo verde",
     "respuesta": "PRADO",
     "definicion": [
       "un campo verde"
     ],
     "tipo": "Anagrama",
-    "indicador": "alborotado",
-    "explicacion": "PARDO alborotado da PRADO, un campo verde."
+    "indicador": "despeinado",
+    "explicacion": "Las letras de PARDO, despeinadas, forman PRADO, un campo verde."
   },
   {
-    "pista": "Un matón descompuesto es la capa del rey",
+    "pista": "Un matón confundido, capa del rey",
     "respuesta": "MANTO",
     "definicion": [
-      "la capa del rey"
+      "capa del rey"
     ],
     "tipo": "Anagrama",
-    "indicador": "descompuesto",
-    "explicacion": "Las letras de MATÓN, descompuestas, forman MANTO, la capa del rey."
+    "indicador": "confundido",
+    "explicacion": "Las letras de MATÓN, confundidas, forman MANTO, la capa del rey."
   },
   {
-    "pista": "Una mora deshecha se vuelve ramillete",
+    "pista": "Una mora aplastada se vuelve ramillete",
     "respuesta": "RAMO",
     "definicion": [
       "ramillete"
     ],
     "tipo": "Anagrama",
-    "indicador": "deshecha",
-    "explicacion": "MORA deshecha da RAMO, un ramillete."
+    "indicador": "aplastada",
+    "explicacion": "Las letras de MORA, aplastadas, forman RAMO, un ramillete."
   },
   {
-    "pista": "Ave del estanque que opta por cambiar",
+    "pista": "Opta por bailar el ave del estanque",
     "respuesta": "PATO",
     "definicion": [
-      "Ave del estanque"
+      "el ave del estanque"
     ],
     "tipo": "Anagrama",
-    "indicador": "por cambiar",
-    "explicacion": "OPTA, al cambiar sus letras, da PATO, el ave del estanque."
+    "indicador": "por bailar",
+    "explicacion": "Las letras de OPTA, al bailar, forman PATO, el ave del estanque."
   },
   {
-    "pista": "Amor o sangre esconden una flor",
+    "pista": "Amor o sangre abrazan una flor",
     "respuesta": "ROSA",
     "definicion": [
       "una flor"
     ],
     "tipo": "Palabra escondida",
-    "indicador": "esconden",
-    "explicacion": "Entre amoR O SAngre se esconde ROSA, una flor."
+    "indicador": "abrazan",
+    "explicacion": "AmoR O SAngre abrazan a ROSA, una flor."
   },
   {
-    "pista": "En el alma rota se oculta el océano",
+    "pista": "El océano cabe en el alma rota",
     "respuesta": "MAR",
     "definicion": [
-      "el océano"
+      "El océano"
     ],
     "tipo": "Palabra escondida",
-    "indicador": "se oculta",
-    "explicacion": "En alMA Rota se oculta MAR, el océano."
+    "indicador": "cabe en",
+    "explicacion": "En alMA Rota cabe MAR, el océano."
   },
   {
-    "pista": "Dentro de los olivos brilla el astro rey",
+    "pista": "El astro rey se cuela entre los olivos",
     "respuesta": "SOL",
     "definicion": [
-      "el astro rey"
+      "El astro rey"
     ],
     "tipo": "Palabra escondida",
-    "indicador": "Dentro de",
-    "explicacion": "Dentro de loS OLivos está SOL, el astro rey."
+    "indicador": "se cuela entre",
+    "explicacion": "Entre loS OLivos se cuela SOL, el astro rey."
   },
   {
     "pista": "Anís, lavanda y en medio una tierra rodeada de mar",
@@ -728,14 +728,14 @@ const PISTAS = [
     "explicacion": "Entre anÍS LAvanda queda en medio ISLA, una tierra rodeada de mar."
   },
   {
-    "pista": "En un jardín idolatrado se esconde el hogar del pájaro",
+    "pista": "El hogar del pájaro anida en un jardín idolatrado",
     "respuesta": "NIDO",
     "definicion": [
-      "el hogar del pájaro"
+      "El hogar del pájaro"
     ],
     "tipo": "Palabra escondida",
-    "indicador": "se esconde",
-    "explicacion": "En jardíN IDOlatrado se esconde NIDO, el hogar del pájaro."
+    "indicador": "anida en",
+    "explicacion": "En jardíN IDOlatrado anida NIDO, el hogar del pájaro."
   },
   {
     "pista": "El faro cansado guarda una piedra",
@@ -748,144 +748,144 @@ const PISTAS = [
     "explicacion": "faRO CAnsado guarda ROCA, una piedra."
   },
   {
-    "pista": "La tarde cobriza oculta un sonido que vuelve",
+    "pista": "Un sonido que vuelve se pierde en la tarde cobriza",
     "respuesta": "ECO",
     "definicion": [
-      "un sonido que vuelve"
+      "Un sonido que vuelve"
     ],
     "tipo": "Palabra escondida",
-    "indicador": "oculta",
-    "explicacion": "En tardE COBriza se oculta ECO, el sonido que vuelve."
+    "indicador": "se pierde en",
+    "explicacion": "En tardE COBriza se pierde ECO, el sonido que vuelve."
   },
   {
-    "pista": "El mar parece esconder un instrumento de cuerdas",
+    "pista": "En el mar, parece, duerme un instrumento de cuerdas",
     "respuesta": "ARPA",
     "definicion": [
       "un instrumento de cuerdas"
     ],
     "tipo": "Palabra escondida",
-    "indicador": "esconder",
-    "explicacion": "En mAR PArece se esconde ARPA, un instrumento de cuerdas."
+    "indicador": "duerme",
+    "explicacion": "En mAR, PArece duerme ARPA, un instrumento de cuerdas."
   },
   {
-    "pista": "El globo lleva oculta la fiera que aúlla",
+    "pista": "La fiera que aúlla viaja en globo",
     "respuesta": "LOBO",
     "definicion": [
-      "la fiera que aúlla"
+      "La fiera que aúlla"
     ],
     "tipo": "Palabra escondida",
-    "indicador": "lleva oculta",
-    "explicacion": "GLOBO lleva oculta la palabra LOBO, la fiera que aúlla."
+    "indicador": "viaja en",
+    "explicacion": "En gLOBO viaja LOBO, la fiera que aúlla."
   },
   {
-    "pista": "La dicha danzante lleva dentro un ser mágico",
+    "pista": "Un ser mágico baila en la dicha danzante",
     "respuesta": "HADA",
     "definicion": [
-      "un ser mágico"
+      "Un ser mágico"
     ],
     "tipo": "Palabra escondida",
-    "indicador": "lleva dentro",
-    "explicacion": "dicHA DAnzante lleva dentro HADA, un ser mágico."
+    "indicador": "baila en",
+    "explicacion": "En dicHA DAnzante baila HADA, un ser mágico."
   },
   {
-    "pista": "Un paso solemne encierra a la bestia del bosque",
+    "pista": "La bestia del bosque, atrapada en un paso solemne",
     "respuesta": "OSO",
     "definicion": [
-      "la bestia del bosque"
+      "La bestia del bosque"
     ],
     "tipo": "Palabra escondida",
-    "indicador": "encierra",
-    "explicacion": "pasO SOlemne encierra OSO, la bestia del bosque."
+    "indicador": "atrapada en",
+    "explicacion": "Atrapada en pasO SOlemne está OSO, la bestia del bosque."
   },
   {
-    "pista": "Por el bosque sombrío corre escondida una corriente",
+    "pista": "Una corriente atraviesa el bosque sombrío",
     "respuesta": "RIO",
     "definicion": [
-      "una corriente"
+      "Una corriente"
     ],
     "tipo": "Palabra escondida",
-    "indicador": "escondida",
-    "explicacion": "En sombRÍO va escondida la palabra RÍO, una corriente de agua."
+    "indicador": "atraviesa",
+    "explicacion": "sombRÍO lleva atravesada la palabra RÍO, una corriente."
   },
   {
-    "pista": "En el hotel antiguo se guarda un tejido",
+    "pista": "Un tejido se aloja en el hotel antiguo",
     "respuesta": "TELA",
     "definicion": [
-      "un tejido"
+      "Un tejido"
     ],
     "tipo": "Palabra escondida",
-    "indicador": "se guarda",
-    "explicacion": "En hoTEL Antiguo se guarda TELA, un tejido."
+    "indicador": "se aloja en",
+    "explicacion": "En hoTEL Antiguo se aloja TELA, un tejido."
   },
   {
-    "pista": "La mamá paciente esconde el dibujo del mundo",
+    "pista": "El dibujo del mundo, en brazos de mamá paciente",
     "respuesta": "MAPA",
     "definicion": [
-      "el dibujo del mundo"
+      "El dibujo del mundo"
     ],
     "tipo": "Palabra escondida",
-    "indicador": "esconde",
-    "explicacion": "En maMÁ PAciente se esconde MAPA, el dibujo del mundo."
+    "indicador": "en brazos de",
+    "explicacion": "En brazos de maMÁ PAciente está MAPA, el dibujo del mundo."
   },
   {
-    "pista": "Dentro de la campana suena el alimento de cada día",
+    "pista": "El alimento de cada día repica en la campana",
     "respuesta": "PAN",
     "definicion": [
-      "el alimento de cada día"
+      "El alimento de cada día"
     ],
     "tipo": "Palabra escondida",
-    "indicador": "Dentro de",
-    "explicacion": "Dentro de camPANa está PAN, el alimento de cada día."
+    "indicador": "repica en",
+    "explicacion": "En camPANa repica PAN, el alimento de cada día."
   },
   {
-    "pista": "El amor regresa a la ciudad eterna",
+    "pista": "El amor, de espaldas, mira la ciudad eterna",
     "respuesta": "ROMA",
     "definicion": [
       "la ciudad eterna"
     ],
     "tipo": "Reverso",
-    "indicador": "regresa",
-    "explicacion": "AMOR leído al revés da ROMA, la ciudad eterna."
+    "indicador": "de espaldas",
+    "explicacion": "AMOR de espaldas, al revés, da ROMA, la ciudad eterna."
   },
   {
-    "pista": "Ocas que vuelven, bolsa de arpillera",
+    "pista": "Ocas reculando hacia la bolsa de arpillera",
     "respuesta": "SACO",
     "definicion": [
-      "bolsa de arpillera"
+      "la bolsa de arpillera"
     ],
     "tipo": "Reverso",
-    "indicador": "que vuelven",
-    "explicacion": "OCAS al revés da SACO, una bolsa de arpillera."
+    "indicador": "reculando",
+    "explicacion": "OCAS reculando, al revés, da SACO, la bolsa de arpillera."
   },
   {
-    "pista": "La rama da la vuelta para querer",
+    "pista": "La rama, puesta del revés, aprende a querer",
     "respuesta": "AMAR",
     "definicion": [
       "querer"
     ],
     "tipo": "Reverso",
-    "indicador": "da la vuelta",
-    "explicacion": "RAMA al revés da AMAR, querer."
+    "indicador": "del revés",
+    "explicacion": "RAMA del revés da AMAR, querer."
   },
   {
-    "pista": "Amarrar, de vuelta, la que corre por la cloaca",
+    "pista": "Amarrar a contramano a la que corre por la cloaca",
     "respuesta": "RATA",
     "definicion": [
       "la que corre por la cloaca"
     ],
     "tipo": "Reverso",
-    "indicador": "de vuelta",
-    "explicacion": "Amarrar es ATAR; de vuelta, al revés, da RATA, la que corre por la cloaca."
+    "indicador": "a contramano",
+    "explicacion": "Amarrar es ATAR; a contramano, al revés, da RATA, la que corre por la cloaca."
   },
   {
-    "pista": "El raso se da la vuelta para atreverse",
+    "pista": "El raso, dado vuelta, se atreve",
     "respuesta": "OSAR",
     "definicion": [
-      "atreverse"
+      "se atreve"
     ],
     "tipo": "Reverso",
-    "indicador": "se da la vuelta",
-    "explicacion": "RASO al revés da OSAR, atreverse."
+    "indicador": "dado vuelta",
+    "explicacion": "RASO dado vuelta, al revés, da OSAR, atreverse."
   },
   {
     "pista": "Adán retrocede hasta el vacío",
@@ -958,14 +958,14 @@ const PISTAS = [
     "explicacion": "El PÍO del pájaro abraza la N del norte y queda PI·N·O, el árbol de la resina."
   },
   {
-    "pista": "Pita con el norte dentro y llena de color la pared",
+    "pista": "Pita con el norte en el pecho y llena de color la pared",
     "respuesta": "PINTA",
     "definicion": [
       "llena de color la pared"
     ],
     "tipo": "Contenedor",
-    "indicador": "dentro",
-    "explicacion": "PITA (de pitar) con la N del norte dentro da PI·N·TA, lo que hace quien llena de color la pared."
+    "indicador": "en el pecho",
+    "explicacion": "PITA (de pitar) con la N del norte en el pecho da PI·N·TA, lo que hace quien llena de color la pared."
   },
   {
     "pista": "Lo tosco se traga al uno y resuena el estrépito",
@@ -978,24 +978,24 @@ const PISTAS = [
     "explicacion": "Lo tosco es RUDO; se traga la I, el uno romano, y queda RU·I·DO, el estrépito."
   },
   {
-    "pista": "Puso cincuenta dentro y late en la muñeca",
+    "pista": "Puso cincuenta en el medio y late en la muñeca",
     "respuesta": "PULSO",
     "definicion": [
       "late en la muñeca"
     ],
     "tipo": "Contenedor",
-    "indicador": "dentro",
-    "explicacion": "PUSO con la L (cincuenta en romanos) dentro da PU·L·SO, lo que late en la muñeca."
+    "indicador": "en el medio",
+    "explicacion": "PUSO con la L (cincuenta en romanos) en el medio da PU·L·SO, lo que late en la muñeca."
   },
   {
-    "pista": "Cavo con cincuenta dentro y me quedo sin pelo",
+    "pista": "Cavo hasta enterrar cincuenta y me quedo sin pelo",
     "respuesta": "CALVO",
     "definicion": [
       "sin pelo"
     ],
     "tipo": "Contenedor",
-    "indicador": "dentro",
-    "explicacion": "CAVO con la L (cincuenta en romanos) dentro da CA·L·VO, sin pelo."
+    "indicador": "hasta enterrar",
+    "explicacion": "CAVO entierra la L (cincuenta en romanos) y queda CA·L·VO, sin pelo."
   },
   {
     "pista": "Astro y lo que rueda en el cubilete, hombre de uniforme",
@@ -1238,14 +1238,14 @@ const PISTAS = [
     "explicacion": "El océano es el MAR y la infusión, un TÉ. MAR + TE = MARTE, el planeta rojo."
   },
   {
-    "pista": "El inicio de la tarde y el oro forman la bestia de la plaza",
+    "pista": "La tarde arranca con oro y embiste la bestia de la plaza",
     "respuesta": "TORO",
     "definicion": [
       "la bestia de la plaza"
     ],
     "tipo": "Selector + charada",
-    "indicador": "El inicio de",
-    "explicacion": "El inicio de «tarde» es T; con ORO queda TORO, la bestia de la plaza."
+    "indicador": "arranca",
+    "explicacion": "La tarde arranca con T; sumada al ORO da TORO, la bestia de la plaza."
   },
   {
     "pista": "Afirmación y negación juntas dictan el destino",
@@ -1665,34 +1665,34 @@ const PISTAS = [
     "explicacion": "Una CERCA es una valla y «cerca» es lo que no queda lejos."
   },
   {
-    "pista": "El corazón de los toros late como metal precioso",
+    "pista": "Late en el pecho de los toros un metal precioso",
     "respuesta": "ORO",
     "definicion": [
-      "metal precioso"
+      "un metal precioso"
     ],
     "tipo": "Selector",
-    "indicador": "El corazón de",
-    "explicacion": "En el corazón de TOROS, sin sus extremos, queda ORO, un metal precioso."
+    "indicador": "en el pecho de",
+    "explicacion": "En el pecho de TOROS, sin sus extremos, late ORO, un metal precioso."
   },
   {
-    "pista": "Las casas sin bordes dejan la oreja de la taza",
+    "pista": "Las casas, sin fronteras, dejan la oreja de la taza",
     "respuesta": "ASA",
     "definicion": [
       "la oreja de la taza"
     ],
     "tipo": "Selector",
-    "indicador": "sin bordes",
-    "explicacion": "CASAS sin sus bordes (la primera y la última letra) deja ASA, la oreja de la taza."
+    "indicador": "sin fronteras",
+    "explicacion": "CASAS sin sus fronteras (la primera y la última letra) deja ASA, la oreja de la taza."
   },
   {
-    "pista": "El centro de los barcos es el arma del arquero",
+    "pista": "Los barcos sin proa ni popa son el arma del arquero",
     "respuesta": "ARCO",
     "definicion": [
       "el arma del arquero"
     ],
     "tipo": "Selector",
-    "indicador": "El centro de",
-    "explicacion": "El centro de BARCOS, sin la primera y la última letra, es ARCO, el arma del arquero."
+    "indicador": "sin proa ni popa",
+    "explicacion": "BARCOS sin proa ni popa (la primera y la última letra) deja ARCO, el arma del arquero."
   },
   {
     "pista": "En el corazón de las peras late una época",
@@ -1705,14 +1705,14 @@ const PISTAS = [
     "explicacion": "El corazón de PERAS, sin sus extremos, es ERA, una época."
   },
   {
-    "pista": "Lo central de los ramos es el dueño de la casa",
+    "pista": "El dueño de la casa, en medio de los ramos",
     "respuesta": "AMO",
     "definicion": [
-      "el dueño de la casa"
+      "El dueño de la casa"
     ],
     "tipo": "Selector",
-    "indicador": "Lo central de",
-    "explicacion": "Lo central de RAMOS, sin sus extremos, es AMO, el dueño de la casa."
+    "indicador": "en medio de",
+    "explicacion": "En medio de RAMOS, sin sus extremos, queda AMO, el dueño de la casa."
   },
   {
     "pista": "Al camaleón se le escapa el león y queda donde duermes",
@@ -1745,84 +1745,84 @@ const PISTAS = [
     "explicacion": "CA es el símbolo del calcio. CAMISA sin CA deja MISA, la ceremonia del domingo."
   },
   {
-    "pista": "La prisa olvida su comienzo y estalla en carcajada",
+    "pista": "La prisa, decapitada, estalla en carcajada",
     "respuesta": "RISA",
     "definicion": [
       "carcajada"
     ],
     "tipo": "Sustracción",
-    "indicador": "olvida su comienzo",
-    "explicacion": "PRISA sin su primera letra deja RISA, una carcajada."
+    "indicador": "decapitada",
+    "explicacion": "PRISA decapitada, sin su primera letra, deja RISA, una carcajada."
   },
   {
-    "pista": "La demora pierde su primer par y madura la fruta del zarzal",
+    "pista": "La demora, sin preámbulo, madura en la fruta del zarzal",
     "respuesta": "MORA",
     "definicion": [
       "la fruta del zarzal"
     ],
     "tipo": "Sustracción",
-    "indicador": "pierde su primer par",
-    "explicacion": "DEMORA sin sus dos primeras letras deja MORA, la fruta del zarzal."
+    "indicador": "sin preámbulo",
+    "explicacion": "DEMORA sin su preámbulo, las dos primeras letras DE, deja MORA, la fruta del zarzal."
   },
   {
-    "pista": "Se oye como un saludo la que rompe en la playa",
+    "pista": "La que rompe en la playa saluda por teléfono",
     "respuesta": "OLA",
     "definicion": [
-      "la que rompe en la playa"
+      "La que rompe en la playa"
     ],
     "tipo": "Onomatopeya",
-    "indicador": "Se oye como",
-    "explicacion": "OLA suena igual que HOLA, un saludo."
+    "indicador": "por teléfono",
+    "explicacion": "OLA, la que rompe en la playa, dicha por teléfono suena igual que HOLA, un saludo."
   },
   {
-    "pista": "La cacería suena como el hogar",
+    "pista": "La cacería, de palabra, es el hogar",
     "respuesta": "CAZA",
     "definicion": [
       "La cacería"
     ],
     "tipo": "Onomatopeya",
-    "indicador": "suena como",
-    "explicacion": "CAZA, la cacería, suena igual que CASA, el hogar, cuando se sesea."
+    "indicador": "de palabra",
+    "explicacion": "CAZA, la cacería, dicha de palabra suena igual que CASA, el hogar, cuando se sesea."
   },
   {
-    "pista": "Caño que, dicen, poseyó",
+    "pista": "Caño que, según el locutor, poseyó",
     "respuesta": "TUBO",
     "definicion": [
       "Caño"
     ],
     "tipo": "Onomatopeya",
-    "indicador": "dicen",
-    "explicacion": "TUBO, un caño, suena igual que TUVO, poseyó."
+    "indicador": "según el locutor",
+    "explicacion": "TUBO, un caño, dicho en voz alta suena igual que TUVO, poseyó."
   },
   {
-    "pista": "Se escucha hermoso el pelo fino del brazo",
+    "pista": "Pelo fino del brazo, hermoso en la radio",
     "respuesta": "VELLO",
     "definicion": [
-      "el pelo fino del brazo"
+      "Pelo fino del brazo"
     ],
     "tipo": "Onomatopeya",
-    "indicador": "Se escucha",
-    "explicacion": "VELLO, el pelo fino del brazo, suena igual que BELLO, hermoso."
+    "indicador": "en la radio",
+    "explicacion": "VELLO, el pelo fino del brazo, en la radio suena igual que BELLO, hermoso."
   },
   {
-    "pista": "Recipiente del agua que se oye como un órgano del costado",
+    "pista": "Recipiente del agua que, a viva voz, es un órgano del costado",
     "respuesta": "VASO",
     "definicion": [
       "Recipiente del agua"
     ],
     "tipo": "Onomatopeya",
-    "indicador": "se oye como",
-    "explicacion": "VASO, el recipiente del agua, suena igual que BAZO, un órgano del costado, cuando se sesea."
+    "indicador": "a viva voz",
+    "explicacion": "VASO, el recipiente del agua, a viva voz suena igual que BAZO, un órgano del costado, cuando se sesea."
   },
   {
-    "pista": "Se oye hacia el continente más extenso",
+    "pista": "Dicho en voz alta, hacia el continente más extenso",
     "respuesta": "ASIA",
     "definicion": [
       "el continente más extenso"
     ],
     "tipo": "Onomatopeya",
-    "indicador": "Se oye",
-    "explicacion": "ASIA, el continente más extenso, suena igual que HACIA."
+    "indicador": "Dicho en voz alta",
+    "explicacion": "ASIA, el continente más extenso, dicho en voz alta suena igual que HACIA."
   },
   {
     "pista": "Animal con cuernos que al oído es un esclavo",
@@ -1835,23 +1835,23 @@ const PISTAS = [
     "explicacion": "CIERVO, animal con cuernos, suena igual que SIERVO, un esclavo, cuando se sesea."
   },
   {
-    "pista": "Isla pequeña que suena a dureza del pie",
+    "pista": "Isla pequeña con la dureza del pie, según cuentan",
     "respuesta": "CAYO",
     "definicion": [
       "Isla pequeña"
     ],
     "tipo": "Onomatopeya",
-    "indicador": "suena a",
-    "explicacion": "CAYO, una isla pequeña, suena igual que CALLO, la dureza del pie."
+    "indicador": "según cuentan",
+    "explicacion": "CAYO, una isla pequeña, dicho en voz alta suena igual que CALLO, la dureza del pie."
   },
   {
-    "pista": "Suena profunda la curva que recorre el agua",
+    "pista": "La curva que recorre el agua, de oídas, es profunda",
     "respuesta": "ONDA",
     "definicion": [
-      "la curva que recorre el agua"
+      "La curva que recorre el agua"
     ],
     "tipo": "Onomatopeya",
-    "indicador": "Suena",
-    "explicacion": "ONDA, la curva que recorre el agua, suena igual que HONDA, profunda."
+    "indicador": "de oídas",
+    "explicacion": "ONDA, la curva que recorre el agua, de oídas suena igual que HONDA, profunda."
   }
 ];
