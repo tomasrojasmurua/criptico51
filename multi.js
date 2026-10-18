@@ -66,21 +66,45 @@ const Multi = (() => {
   }
 
   // ---------- Elección de pistas ----------
-  function elegirPistas(n) {
+  const NIVELES = {
+    facil: { nombre: "fácil", rango: [1, 2] },
+    media: { nombre: "media", rango: [3, 3] },
+    dificil: { nombre: "difícil", rango: [4, 5] },
+    progresiva: { nombre: "de fácil a difícil", rango: [1, 5] },
+  };
+
+  function elegirPistas(n, nivel) {
     const hoy = (Math.floor((Date.now() - Date.parse(FECHA_INICIO + "T00:00:00Z")) / 86400000)) % PISTAS.length;
     const usadas = new Set(leer(CLAVE_USADAS, []));
     const mezclar = (a) => {
       for (let i = a.length - 1; i > 0; i--) { const k = Math.floor(Math.random() * (i + 1)); [a[i], a[k]] = [a[k], a[i]]; }
       return a;
     };
+    const dif = (i) => PISTAS[i].dificultad || 3;
+    const [min, max] = (NIVELES[nivel] || NIVELES.media).rango;
+    const lejania = (i) => Math.max(0, min - dif(i), dif(i) - max);
     const todas = PISTAS.map((_, i) => i).filter((i) => i !== hoy);
-    let elegidas = mezclar(todas.filter((i) => !usadas.has(i))).slice(0, n);
-    if (elegidas.length < n) {
-      // Se acabaron las pistas nuevas: se vuelve a empezar el ciclo.
-      usadas.clear();
-      const resto = mezclar(todas.filter((i) => !elegidas.includes(i)));
-      elegidas = elegidas.concat(resto.slice(0, n - elegidas.length));
+    // Primero las que no han salido; si no alcanzan, se vuelve a empezar el ciclo.
+    const nuevas = mezclar(todas.filter((i) => !usadas.has(i)));
+    const viejas = mezclar(todas.filter((i) => usadas.has(i)));
+    let elegidas;
+    if (nivel === "progresiva") {
+      // La ronda k busca una pista de nivel cercano a uno que sube del 2 al 5.
+      const pozo = nuevas.length >= n ? nuevas : nuevas.concat(viejas);
+      elegidas = [];
+      for (let k = 0; k < n; k++) {
+        const meta = 2 + Math.round(3 * k / Math.max(1, n - 1));
+        let mejor = 0;
+        pozo.forEach((i, j) => { if (Math.abs(dif(i) - meta) < Math.abs(dif(pozo[mejor]) - meta)) mejor = j; });
+        elegidas.push(pozo.splice(mejor, 1)[0]);
+      }
+    } else {
+      // Las del nivel pedido primero; si faltan, las de niveles vecinos.
+      const porNivel = (a) => a.sort((x, y) => lejania(x) - lejania(y));
+      const enNivel = nuevas.filter((i) => !lejania(i));
+      elegidas = (enNivel.length >= n ? enNivel : porNivel(nuevas.concat(viejas))).slice(0, n);
     }
+    if (elegidas.some((i) => usadas.has(i))) usadas.clear();
     elegidas.forEach((i) => usadas.add(i));
     escribirClave(CLAVE_USADAS, [...usadas]);
     return elegidas;
@@ -100,7 +124,7 @@ const Multi = (() => {
     p.on("open", (id) => {
       peer = p; anfitrion = true; yo = id;
       sala = {
-        codigo, fase: "espera", config: { rondas: 10, segundos: 300 },
+        codigo, fase: "espera", config: { rondas: 10, segundos: 300, dificultad: "progresiva" },
         ronda: 0, total: 0, idx: -1, restante: 0,
         jugadores: [{ id: yo, nombre, puntos: 0, conectado: true, resuelto: false, ganados: 0, tiempo: 0, anfitrion: true }]
       };
@@ -186,11 +210,12 @@ const Multi = (() => {
     clearTimeout(temporizador);
     sala.config.rondas = +$("#mp-rondas").value;
     sala.config.segundos = +$("#mp-segundos").value;
+    sala.config.dificultad = $("#mp-dificultad").value;
     sala.jugadores = sala.jugadores.filter((j) => j.conectado);
     sala.jugadores.forEach((j) => { j.puntos = 0; j.ganados = 0; });
     sala.total = sala.config.rondas;
     sala.ronda = 0;
-    orden = elegirPistas(sala.total);
+    orden = elegirPistas(sala.total, sala.config.dificultad);
     siguienteRonda();
   }
 
@@ -441,10 +466,11 @@ const Multi = (() => {
     ).join("");
     $("#mp-config").hidden = !anfitrion;
     $("#mp-espera").hidden = anfitrion;
-    $("#mp-espera").textContent = `Esperando a que el anfitrión comience · ${sala.config.rondas} rondas de ${sala.config.segundos / 60} minutos`;
+    $("#mp-espera").textContent = `Esperando a que el anfitrión comience · ${sala.config.rondas} rondas de ${sala.config.segundos / 60} minutos, dificultad ${(NIVELES[sala.config.dificultad] || NIVELES.media).nombre}`;
     if (anfitrion) {
       $("#mp-rondas").value = sala.config.rondas;
       $("#mp-segundos").value = sala.config.segundos;
+      $("#mp-dificultad").value = sala.config.dificultad;
     }
   }
 
@@ -590,10 +616,11 @@ const Multi = (() => {
     $("#mp-codigo").addEventListener("keydown", (e) => { if (e.key === "Enter") unirse(); });
     $("#mp-codigo").addEventListener("input", (e) => (e.target.value = e.target.value.toUpperCase().replace(/[^A-Z]/g, "")));
     $("#mp-comenzar").onclick = comenzar;
-    ["#mp-rondas", "#mp-segundos"].forEach((s) => $(s).addEventListener("change", () => {
+    ["#mp-rondas", "#mp-segundos", "#mp-dificultad"].forEach((s) => $(s).addEventListener("change", () => {
       if (!anfitrion || !sala || sala.fase !== "espera") return;
       sala.config.rondas = +$("#mp-rondas").value;
       sala.config.segundos = +$("#mp-segundos").value;
+      sala.config.dificultad = $("#mp-dificultad").value;
       repartir();
     }));
     $("#mp-invitar").onclick = invitar;

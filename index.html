@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=6">
+  <link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
   <header class="cabecera">
@@ -159,6 +159,9 @@
           <label>Tiempo por ronda
             <select id="mp-segundos"><option value="180">3 minutos</option><option value="300" selected>5 minutos</option><option value="420">7 minutos</option><option value="600">10 minutos</option></select>
           </label>
+          <label>Dificultad
+            <select id="mp-dificultad"><option value="progresiva" selected>De fácil a difícil</option><option value="facil">Fácil</option><option value="media">Media</option><option value="dificil">Difícil</option></select>
+          </label>
           <button id="mp-comenzar" class="btn principal">Comenzar</button>
         </div>
         <p id="mp-espera" class="intro centro"></p>
@@ -220,8 +223,8 @@
 
   <footer class="pie">Críptico 51 · Inspirado en <a href="https://minicriptico.com/" rel="noopener">Mini Críptico</a></footer>
 
-  <script src="pistas.js?v=7"></script>
-  <script src="multi.js?v=6"></script>
+  <script src="pistas.js?v=9"></script>
+  <script src="multi.js?v=7"></script>
   <script src="app.js?v=6"></script>
 </body>
 </html>
