@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=5">
+  <link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
   <header class="cabecera">
@@ -42,6 +42,10 @@
         <button id="btn-comprobar" class="btn principal">Comprobar</button>
         <button id="btn-pista" class="btn">Pista</button>
         <button id="btn-borrar" class="btn secundario">Borrar</button>
+      </div>
+      <div class="acciones extra">
+        <button id="btn-letra" class="btn secundario">Revelar letra</button>
+        <button id="btn-chequear" class="btn secundario">Comprobar letras</button>
       </div>
 
       <ol id="ayudas" class="ayudas"></ol>
@@ -115,7 +119,7 @@
       <p>Si la respuesta tiene varias palabras, el paréntesis lo indica: (3,7) son dos palabras de 3 y 7 letras. Las tildes no hace falta escribirlas.</p>
 
       <h2>Ayudas</h2>
-      <p>El botón <strong>Pista</strong> te da ayudas progresivas: el tipo de pista, la definición resaltada, el indicador, la primera letra y, por último, la solución. Lo importante es aprender.</p>
+      <p>El botón <strong>Pista</strong> te da ayudas progresivas: el tipo de pista, la definición resaltada, el indicador, la primera letra y, por último, la solución. También puedes <strong>revelar una letra</strong> en la casilla que elijas, o <strong>comprobar letras</strong>: las correctas quedan fijas en verde y las demás se borran. Lo importante es aprender.</p>
     </section>
 
     <!-- Multijugador -->
@@ -218,6 +222,6 @@
 
   <script src="pistas.js?v=5"></script>
   <script src="multi.js?v=6"></script>
-  <script src="app.js?v=5"></script>
+  <script src="app.js?v=6"></script>
 </body>
 </html>
