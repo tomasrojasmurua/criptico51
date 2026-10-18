@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
   <header class="cabecera">
@@ -19,6 +19,7 @@
       <a href="#hoy" data-vista="hoy">Hoy</a>
       <a href="#archivo" data-vista="archivo">Archivo</a>
       <a href="#aprender" data-vista="aprender">Aprender</a>
+      <a href="#multijugador" data-vista="multijugador">Multijugador</a>
       <a href="#estadisticas" data-vista="estadisticas">Estadísticas</a>
     </nav>
   </header>
@@ -117,6 +118,87 @@
       <p>El botón <strong>Pista</strong> te da ayudas progresivas: el tipo de pista, la definición resaltada, el indicador, la primera letra y, por último, la solución. Lo importante es aprender.</p>
     </section>
 
+    <!-- Multijugador -->
+    <section id="vista-multijugador" class="vista" hidden>
+      <div id="mp-inicio">
+        <h1>Multijugador</h1>
+        <p class="intro">Crea una sala y comparte el código con hasta 7 amigos. Todos ven la misma pista a la vez y la resuelven por su cuenta: cuanto antes aciertes, más puntos ganas. Al terminar las rondas, gana quien tenga más puntos.</p>
+        <label class="campo">Tu nombre
+          <input id="mp-nombre" maxlength="16" autocomplete="nickname" placeholder="Cómo te verán los demás">
+        </label>
+        <div class="mp-opciones">
+          <div class="tarjeta">
+            <h2>Crear una sala</h2>
+            <p>Tú eliges cuántas rondas se juegan.</p>
+            <button id="mp-crear" class="btn principal">Crear sala</button>
+          </div>
+          <div class="tarjeta">
+            <h2>Unirse a una sala</h2>
+            <input id="mp-codigo" class="codigo" maxlength="4" placeholder="ABCD" autocomplete="off" autocapitalize="characters" aria-label="Código de la sala">
+            <button id="mp-unirse" class="btn">Unirse</button>
+          </div>
+        </div>
+        <p id="mp-aviso" class="mensaje" role="status" aria-live="polite"></p>
+        <h2>Puntos</h2>
+        <p class="nota">Acertar al instante vale 1000 puntos, y al final del tiempo, 200. Cada pista que pidas resta un 20 %. Equivocarse no resta, pero el reloj sigue corriendo.</p>
+      </div>
+
+      <div id="mp-sala" hidden>
+        <div class="meta"><span>Código de la sala</span><span id="mp-cuantos"></span></div>
+        <p id="mp-codigo-grande" class="codigo-sala"></p>
+        <div class="acciones"><button id="mp-invitar" class="btn">Invitar con un enlace</button></div>
+        <ul id="mp-jugadores" class="mp-jugadores"></ul>
+        <div id="mp-config" class="mp-config">
+          <label>Rondas
+            <select id="mp-rondas"><option>5</option><option>8</option><option selected>10</option><option>15</option><option>20</option></select>
+          </label>
+          <label>Tiempo por ronda
+            <select id="mp-segundos"><option value="60">1 minuto</option><option value="90" selected>1 min 30 s</option><option value="120">2 minutos</option><option value="180">3 minutos</option></select>
+          </label>
+          <button id="mp-comenzar" class="btn principal">Comenzar</button>
+        </div>
+        <p id="mp-espera" class="intro centro"></p>
+        <div class="acciones"><button class="btn secundario mp-salir">Salir de la sala</button></div>
+      </div>
+
+      <div id="mp-juego" hidden>
+        <div class="meta"><span id="mp-ronda"></span><span id="mp-tiempo" class="reloj"></span></div>
+        <div class="barra-tiempo"><span id="mp-barra"></span></div>
+        <p id="mp-pista" class="pista"></p>
+        <div id="mp-casillas" class="casillas" role="group" aria-label="Respuesta"></div>
+        <p id="mp-mensaje" class="mensaje" role="status" aria-live="polite"></p>
+        <div class="acciones">
+          <button id="mp-comprobar" class="btn principal">Comprobar</button>
+          <button id="mp-pista-btn" class="btn">Pista (−20 %)</button>
+          <button id="mp-borrar" class="btn secundario">Borrar</button>
+        </div>
+        <ol id="mp-ayudas" class="ayudas"></ol>
+        <div id="mp-teclado" class="teclado" aria-label="Teclado"></div>
+        <ul id="mp-marcador" class="mp-marcador" aria-label="Jugadores"></ul>
+      </div>
+
+      <div id="mp-pausa" hidden>
+        <div class="meta"><span id="mp-pausa-ronda"></span><span>Solución</span></div>
+        <p id="mp-sol-pista" class="pista"></p>
+        <div class="final">
+          <p id="mp-sol" class="solucion"></p>
+          <p id="mp-sol-expl" class="explicacion"></p>
+        </div>
+        <ol id="mp-tabla" class="mp-tabla"></ol>
+        <p id="mp-siguiente" class="cuenta"></p>
+      </div>
+
+      <div id="mp-final" hidden>
+        <h1 id="mp-ganador" class="centro"></h1>
+        <ol id="mp-tabla-final" class="mp-tabla"></ol>
+        <p id="mp-final-espera" class="intro centro">El anfitrión puede empezar otra partida.</p>
+        <div class="acciones">
+          <button id="mp-otra" class="btn principal">Jugar otra vez</button>
+          <button class="btn secundario mp-salir">Salir de la sala</button>
+        </div>
+      </div>
+    </section>
+
     <!-- Estadísticas -->
     <section id="vista-estadisticas" class="vista" hidden>
       <h1>Estadísticas</h1>
@@ -134,7 +216,8 @@
 
   <footer class="pie">Críptico 51 · Inspirado en <a href="https://minicriptico.com/" rel="noopener">Mini Críptico</a></footer>
 
-  <script src="pistas.js?v=4"></script>
-  <script src="app.js?v=4"></script>
+  <script src="pistas.js?v=5"></script>
+  <script src="multi.js?v=5"></script>
+  <script src="app.js?v=5"></script>
 </body>
 </html>
