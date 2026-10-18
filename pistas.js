@@ -848,14 +848,14 @@ const PISTAS = [
     "explicacion": "AMOR de espaldas, al revés, da ROMA, la ciudad eterna."
   },
   {
-    "pista": "Ocas de vuelta, bolsa de arpillera",
+    "pista": "Prenda elegante agazapada en camisa cosida",
     "respuesta": "SACO",
     "definicion": [
-      "bolsa de arpillera"
+      "Prenda elegante"
     ],
-    "tipo": "Reverso",
-    "indicador": "de vuelta",
-    "explicacion": "OCAS de vuelta, al revés, da SACO, una bolsa de arpillera."
+    "tipo": "Palabra escondida",
+    "indicador": "agazapada en",
+    "explicacion": "Agazapada en camiSA COsida está SACO, una prenda elegante."
   },
   {
     "pista": "La rama, puesta del revés, aprende a querer",
