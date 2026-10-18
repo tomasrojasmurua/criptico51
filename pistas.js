@@ -467,14 +467,14 @@ const PISTAS = [
     "explicacion": "Un PUENTE cruza el río, y un «puente» festivo alarga el fin de semana."
   },
   {
-    "pista": "El espíritu descansa en la calma",
+    "pista": "En la calma se esconde el espíritu",
     "respuesta": "ALMA",
     "definicion": [
-      "El espíritu"
+      "el espíritu"
     ],
     "tipo": "Palabra escondida",
-    "indicador": "descansa en",
-    "explicacion": "En cALMA descansa ALMA, el espíritu."
+    "indicador": "se esconde",
+    "explicacion": "En cALMA se esconde ALMA, el espíritu."
   },
   {
     "pista": "La orilla se niega en la estación del calor",
@@ -508,14 +508,14 @@ const PISTAS = [
     "explicacion": "La MANZANA es la fruta prohibida y también el bloque de casas de una cuadra."
   },
   {
-    "pista": "Cae el telón, torcido y pausado",
+    "pista": "El telón cae revuelto y pausado",
     "respuesta": "LENTO",
     "definicion": [
       "pausado"
     ],
     "tipo": "Anagrama",
-    "indicador": "torcido",
-    "explicacion": "Las letras de TELÓN, torcidas, forman LENTO, pausado."
+    "indicador": "revuelto",
+    "explicacion": "TELÓN revuelto da LENTO, pausado."
   },
   {
     "pista": "Sal y usted, en corto, brindan por el bienestar",
@@ -638,14 +638,14 @@ const PISTAS = [
     "explicacion": "El MERO, un pez, enredado en sus letras da REMO, la pala del bote."
   },
   {
-    "pista": "Nacer, a la parrilla, da lo que se asa",
+    "pista": "Nacer, revuelto, da lo que se asa",
     "respuesta": "CARNE",
     "definicion": [
       "lo que se asa"
     ],
     "tipo": "Anagrama",
-    "indicador": "a la parrilla",
-    "explicacion": "Las letras de NACER, a la parrilla, forman CARNE, lo que se asa."
+    "indicador": "revuelto",
+    "explicacion": "NACER revuelto da CARNE, lo que se asa."
   },
   {
     "pista": "Pardo, despeinado, es un campo verde",
@@ -768,14 +768,14 @@ const PISTAS = [
     "explicacion": "En mAR, PArece duerme ARPA, un instrumento de cuerdas."
   },
   {
-    "pista": "La fiera que aúlla viaja en globo",
+    "pista": "El globo esconde la fiera que aúlla",
     "respuesta": "LOBO",
     "definicion": [
-      "La fiera que aúlla"
+      "la fiera que aúlla"
     ],
     "tipo": "Palabra escondida",
-    "indicador": "viaja en",
-    "explicacion": "En gLOBO viaja LOBO, la fiera que aúlla."
+    "indicador": "esconde",
+    "explicacion": "GLOBO esconde la palabra LOBO, la fiera que aúlla."
   },
   {
     "pista": "Un ser mágico baila en la dicha danzante",
@@ -848,14 +848,14 @@ const PISTAS = [
     "explicacion": "AMOR de espaldas, al revés, da ROMA, la ciudad eterna."
   },
   {
-    "pista": "Ocas reculando hacia la bolsa de arpillera",
+    "pista": "Ocas de vuelta, bolsa de arpillera",
     "respuesta": "SACO",
     "definicion": [
-      "la bolsa de arpillera"
+      "bolsa de arpillera"
     ],
     "tipo": "Reverso",
-    "indicador": "reculando",
-    "explicacion": "OCAS reculando, al revés, da SACO, la bolsa de arpillera."
+    "indicador": "de vuelta",
+    "explicacion": "OCAS de vuelta, al revés, da SACO, una bolsa de arpillera."
   },
   {
     "pista": "La rama, puesta del revés, aprende a querer",
@@ -868,14 +868,14 @@ const PISTAS = [
     "explicacion": "RAMA del revés da AMAR, querer."
   },
   {
-    "pista": "Amarrar a contramano a la que corre por la cloaca",
+    "pista": "Atar de vuelta al roedor",
     "respuesta": "RATA",
     "definicion": [
-      "la que corre por la cloaca"
+      "roedor"
     ],
     "tipo": "Reverso",
-    "indicador": "a contramano",
-    "explicacion": "Amarrar es ATAR; a contramano, al revés, da RATA, la que corre por la cloaca."
+    "indicador": "de vuelta",
+    "explicacion": "ATAR de vuelta, al revés, da RATA, un roedor."
   },
   {
     "pista": "El raso, dado vuelta, se atreve",
@@ -1795,14 +1795,14 @@ const PISTAS = [
     "explicacion": "TUBO, un caño, dicho en voz alta suena igual que TUVO, poseyó."
   },
   {
-    "pista": "Pelo fino del brazo, hermoso en la radio",
+    "pista": "Se escucha hermoso el pelo fino del brazo",
     "respuesta": "VELLO",
     "definicion": [
-      "Pelo fino del brazo"
+      "el pelo fino del brazo"
     ],
     "tipo": "Onomatopeya",
-    "indicador": "en la radio",
-    "explicacion": "VELLO, el pelo fino del brazo, en la radio suena igual que BELLO, hermoso."
+    "indicador": "Se escucha",
+    "explicacion": "VELLO, el pelo fino del brazo, se escucha igual que BELLO, hermoso."
   },
   {
     "pista": "Recipiente del agua que, a viva voz, es un órgano del costado",
@@ -1835,14 +1835,14 @@ const PISTAS = [
     "explicacion": "CIERVO, animal con cuernos, suena igual que SIERVO, un esclavo, cuando se sesea."
   },
   {
-    "pista": "Isla pequeña con la dureza del pie, según cuentan",
+    "pista": "Isla pequeña que suena a dureza del pie",
     "respuesta": "CAYO",
     "definicion": [
       "Isla pequeña"
     ],
     "tipo": "Onomatopeya",
-    "indicador": "según cuentan",
-    "explicacion": "CAYO, una isla pequeña, dicho en voz alta suena igual que CALLO, la dureza del pie."
+    "indicador": "suena a",
+    "explicacion": "CAYO, una isla pequeña, suena igual que CALLO, la dureza del pie."
   },
   {
     "pista": "La curva que recorre el agua, de oídas, es profunda",
