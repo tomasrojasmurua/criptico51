@@ -100,7 +100,7 @@ const Multi = (() => {
     p.on("open", (id) => {
       peer = p; anfitrion = true; yo = id;
       sala = {
-        codigo, fase: "espera", config: { rondas: 10, segundos: 90 },
+        codigo, fase: "espera", config: { rondas: 10, segundos: 300 },
         ronda: 0, total: 0, idx: -1, restante: 0,
         jugadores: [{ id: yo, nombre, puntos: 0, conectado: true, resuelto: false, ganados: 0, tiempo: 0, anfitrion: true }]
       };
@@ -441,7 +441,7 @@ const Multi = (() => {
     ).join("");
     $("#mp-config").hidden = !anfitrion;
     $("#mp-espera").hidden = anfitrion;
-    $("#mp-espera").textContent = `Esperando a que el anfitrión comience · ${sala.config.rondas} rondas de ${sala.config.segundos} segundos`;
+    $("#mp-espera").textContent = `Esperando a que el anfitrión comience · ${sala.config.rondas} rondas de ${sala.config.segundos / 60} minutos`;
     if (anfitrion) {
       $("#mp-rondas").value = sala.config.rondas;
       $("#mp-segundos").value = sala.config.segundos;
