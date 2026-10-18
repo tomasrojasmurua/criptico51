@@ -59,22 +59,36 @@
       { titulo: "Definición", texto: "resaltada en amarillo en la pista", marca: "def" }
     ];
     if (p.indicador) lista.push({ titulo: "Indicador", texto: `«${p.indicador}», resaltado en azul`, marca: "ind" });
+    if (p.relleno && p.relleno.length) lista.push({ titulo: "Relleno", texto: "lo que hay que manipular, resaltado en verde", marca: "rel" });
     lista.push({ titulo: "Primera letra", texto: letrasDe(p)[0], primera: true });
     lista.push({ titulo: "Solución", texto: p.respuesta, revelar: true });
     return lista;
   }
 
-  // Envuelve los fragmentos de definición e indicador en <mark>.
+  // Envuelve los fragmentos de definición, indicador y relleno en <mark>.
+  // Cada fragmento va en la primera aparición como palabra completa que no esté ya ocupada
+  // (así «a» no cae dentro de «océano»). Se recorren siempre los tres, para que las
+  // posiciones no cambien según qué ayudas se hayan pedido.
   function pistaHTML(p, marcas) {
     const texto = p.pista;
     const tipo = Array(texto.length).fill(null);
+    const letra = (c) => c !== undefined && /\p{L}/u.test(c);
+    const libre = (i, frag) => {
+      for (let k = i; k < i + frag.length; k++) if (tipo[k] !== null) return false;
+      return !letra(texto[i - 1]) && !letra(texto[i + frag.length]);
+    };
     const marcar = (frag, clase) => {
-      const i = texto.indexOf(frag);
-      if (i < 0 || !frag) return;
+      if (!frag) return;
+      let i = texto.indexOf(frag);
+      while (i >= 0 && !libre(i, frag)) i = texto.indexOf(frag, i + 1);
+      if (i < 0) i = texto.indexOf(frag);
+      if (i < 0) return;
       for (let k = i; k < i + frag.length; k++) tipo[k] = clase;
     };
-    if (marcas.has("def")) p.definicion.forEach((d) => marcar(d, "def"));
-    if (marcas.has("ind")) marcar(p.indicador, "ind");
+    p.definicion.forEach((d) => marcar(d, "def"));
+    marcar(p.indicador, "ind");
+    (p.relleno || []).forEach((r) => marcar(r, "rel"));
+    for (let k = 0; k < texto.length; k++) if (tipo[k] && !marcas.has(tipo[k])) tipo[k] = null;
 
     let html = "", actual = null;
     for (let k = 0; k < texto.length; k++) {
@@ -136,7 +150,7 @@
     const lista = ayudasDe(p);
     const usadas = lista.slice(0, partida.ayudas);
     const marcas = new Set(usadas.filter((a) => a.marca).map((a) => a.marca));
-    if (terminado()) { marcas.add("def"); if (p.indicador) marcas.add("ind"); }
+    if (terminado()) ["def", "ind", "rel"].forEach((m) => marcas.add(m));
     $("#pista").innerHTML = pistaHTML(p, marcas);
 
     const f = fijas();
