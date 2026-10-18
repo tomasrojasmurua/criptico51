@@ -2223,5 +2223,16 @@ const PISTAS = [
     "indicador": "sin cola",
     "explicacion": "El PAN sin cola es PA y el cabello liso es LACIO. PA + LACIO = PALACIO, donde vive el rey.",
     "dificultad": 5
+  },
+  {
+    "pista": "Un semidiós corta los pies de la noche y, con corazón de era, alienta hacia Barcelona",
+    "respuesta": "HERCULES",
+    "definicion": [
+      "Un semidiós"
+    ],
+    "tipo": "Selector + charada",
+    "indicador": "los pies de",
+    "explicacion": "Los pies de la NOCHE son HE, el corazón de ERA es R y los que alientan al Barcelona son los CULÉS. HE + R + CULES = HERCULES, un semidiós.",
+    "dificultad": 5
   }
 ];
