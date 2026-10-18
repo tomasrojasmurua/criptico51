@@ -2,13 +2,16 @@
   "use strict";
 
   const DIA_MS = 86400000;
-  const CLAVE = "criptico51";
+  const CLAVE = "criptico51-v2";
   const inicio = Date.parse(FECHA_INICIO + "T00:00:00Z");
 
   // ---------- Utilidades ----------
   const $ = (sel) => document.querySelector(sel);
   const numeroDeHoy = () => Math.floor((Date.now() - inicio) / DIA_MS) + 1;
   const pistaDe = (n) => PISTAS[(n - 1) % PISTAS.length];
+  // Letras de la respuesta sin espacios, y su enumeración: "SIN EMBARGO" → (3,7)
+  const letrasDe = (p) => p.respuesta.replace(/ /g, "");
+  const enumeracion = (p) => p.respuesta.split(" ").map((w) => w.length).join(",");
   const fechaDe = (n) => new Date(inicio + (n - 1) * DIA_MS);
   const formatoFecha = (d) =>
     d.toLocaleDateString("es", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
@@ -29,7 +32,7 @@
     try { localStorage.setItem(CLAVE, JSON.stringify(datos)); } catch { /* sin almacenamiento */ }
   };
   const partidaDe = (n) => {
-    const largo = pistaDe(n).respuesta.length;
+    const largo = letrasDe(pistaDe(n)).length;
     if (!datos.partidas[n]) {
       datos.partidas[n] = { letras: Array(largo).fill(""), ayudas: 0, estado: "jugando", intentos: 0 };
     }
@@ -43,7 +46,7 @@
       { titulo: "Definición", texto: "resaltada en amarillo en la pista", marca: "def" }
     ];
     if (p.indicador) lista.push({ titulo: "Indicador", texto: `«${p.indicador}», resaltado en azul`, marca: "ind" });
-    lista.push({ titulo: "Primera letra", texto: p.respuesta[0], primera: true });
+    lista.push({ titulo: "Primera letra", texto: letrasDe(p)[0], primera: true });
     lista.push({ titulo: "Solución", texto: p.respuesta, revelar: true });
     return lista;
   }
@@ -70,7 +73,7 @@
       html += escapar(texto[k]);
     }
     if (actual) html += "</mark>";
-    return `${html} <span class="largo">(${p.respuesta.length})</span>`;
+    return `${html} <span class="largo">(${enumeracion(p)})</span>`;
   }
 
   // ---------- Juego ----------
@@ -81,7 +84,7 @@
     p = pistaDe(n);
     partida = partidaDe(n);
     cursor = Math.max(0, partida.letras.findIndex((l) => !l));
-    if (partida.letras.every(Boolean)) cursor = p.respuesta.length - 1;
+    if (partida.letras.every(Boolean)) cursor = letrasDe(p).length - 1;
     $("#mensaje").textContent = "";
     $("#mensaje").className = "mensaje";
     construirCasillas();
@@ -92,9 +95,13 @@
     const cont = $("#casillas");
     cont.innerHTML = "";
     cont.className = "casillas";
-    for (let i = 0; i < p.respuesta.length; i++) {
+    cont.style.setProperty("--n", letrasDe(p).length);
+    const finales = new Set();
+    p.respuesta.split(" ").reduce((acc, w) => { finales.add(acc + w.length - 1); return acc + w.length; }, 0);
+    for (let i = 0; i < letrasDe(p).length; i++) {
       const b = document.createElement("button");
-      b.className = "casilla";
+      if (finales.has(i) && i < letrasDe(p).length - 1) b.classList.add("fin-palabra");
+      b.classList.add("casilla");
       b.type = "button";
       b.setAttribute("aria-label", `Letra ${i + 1}`);
       b.addEventListener("click", () => { cursor = i; pintar(); });
@@ -151,7 +158,7 @@
     if (terminado()) return;
     if (cursor === 0 && primeraEsFija()) cursor = 1;
     partida.letras[cursor] = letra;
-    if (cursor < p.respuesta.length - 1) cursor++;
+    if (cursor < letrasDe(p).length - 1) cursor++;
     guardar(); pintar();
   }
 
@@ -168,7 +175,7 @@
   }
 
   function mover(d) {
-    cursor = Math.min(p.respuesta.length - 1, Math.max(0, cursor + d));
+    cursor = Math.min(letrasDe(p).length - 1, Math.max(0, cursor + d));
     pintar();
   }
 
@@ -184,13 +191,13 @@
     if (terminado()) return;
     const msg = $("#mensaje");
     const intento = partida.letras.join("");
-    if (intento.length < p.respuesta.length) {
+    if (intento.length < letrasDe(p).length) {
       msg.textContent = "Faltan letras.";
       msg.className = "mensaje mal";
       return;
     }
     partida.intentos++;
-    if (intento === p.respuesta) {
+    if (intento === letrasDe(p)) {
       partida.estado = "resuelto";
       partida.enFecha = n === numeroDeHoy();
       msg.textContent = "¡Correcto!";
@@ -212,11 +219,11 @@
     if (a.revelar && !confirm("¿Seguro que quieres ver la solución?")) return;
     partida.ayudas++;
     if (a.primera) {
-      partida.letras[0] = p.respuesta[0];
+      partida.letras[0] = letrasDe(p)[0];
       if (cursor === 0) cursor = 1;
     }
     if (a.revelar) {
-      partida.letras = p.respuesta.split("");
+      partida.letras = letrasDe(p).split("");
       partida.estado = "revelado";
     }
     $("#mensaje").textContent = "";
