@@ -2355,5 +2355,49 @@ const PISTAS = [
     "indicador": "",
     "explicacion": "A cada palabra le falta su cuarta letra: Fal(t)a, dón(d)e, pod(e)r, dor(m)ir. Sin cuarto, literalmente. Y la frase pregunta dónde poder dormir, que es no tener cuarto: SIN CUARTO.",
     "dificultad": 3
+  },
+  {
+    "pista": "Jamá_ termin_",
+    "respuesta": "SIN FIN",
+    "definicion": [
+      "Jamá_ termin_"
+    ],
+    "tipo": "Letras omitidas",
+    "indicador": "",
+    "explicacion": "A cada palabra le falta su última letra: Jamá(s) termin(a). Sin fin, literalmente. Y la frase dice que nunca termina: SIN FIN.",
+    "dificultad": 3
+  },
+  {
+    "pista": "Cr_el, fi_ro y mal_ado",
+    "respuesta": "SIN CORAZON",
+    "definicion": [
+      "Cr_el, fi_ro y mal_ado"
+    ],
+    "tipo": "Letras omitidas",
+    "indicador": "",
+    "explicacion": "A cada palabra le falta la letra del medio: Cr(u)el, fi(e)ro, mal(v)ado. Sin corazón, literalmente. Y la frase describe a alguien cruel, fiero y malvado: SIN CORAZÓN.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Po_re, indi_ente y arru_nado",
+    "respuesta": "SIN MEDIOS",
+    "definicion": [
+      "Po_re, indi_ente y arru_nado"
+    ],
+    "tipo": "Letras omitidas",
+    "indicador": "",
+    "explicacion": "A cada palabra le falta la letra del medio: Po(b)re, indi(g)ente, arru(i)nado. Sin medios, literalmente. Y la frase describe a quien no tiene dinero: SIN MEDIOS.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Ningun_ fil_, ningun_ esper_",
+    "respuesta": "SIN COLA",
+    "definicion": [
+      "Ningun_ fil_, ningun_ esper_"
+    ],
+    "tipo": "Letras omitidas",
+    "indicador": "",
+    "explicacion": "A cada palabra le falta su cola, la última letra: Ningun(a) fil(a), ningun(a) esper(a). Sin cola, literalmente. Y la frase dice que no hay fila: SIN COLA.",
+    "dificultad": 3
   }
 ];
