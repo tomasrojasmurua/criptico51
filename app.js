@@ -113,7 +113,7 @@
 
   function pintar() {
     const hoy = numeroDeHoy();
-    $("#numero").textContent = n === hoy ? `Nº ${n} · Hoy` : `Nº ${n} · ${formatoFecha(fechaDe(n))}`;
+    $("#numero").textContent = n === hoy ? `Nº ${n} · Hoy` : n > hoy ? `Nº ${n} · Extra` : `Nº ${n} · ${formatoFecha(fechaDe(n))}`;
     const racha = calcularRachas().actual;
     $("#racha-mini").textContent = `Racha: ${racha}`;
 
@@ -312,12 +312,14 @@
   function pintarArchivo() {
     const hoy = numeroDeHoy();
     const items = [];
-    for (let k = hoy; k >= 1; k--) {
+    const total = Math.max(hoy, PISTAS.length);
+    for (let k = 1; k <= total; k++) {
       const x = datos.partidas[k];
       const estado = !x ? "Sin jugar"
         : x.estado === "resuelto" ? "✅ Resuelto"
         : x.estado === "revelado" ? "🏳️ Revelado" : "En curso";
-      items.push(`<li><a href="#n/${k}"><span><strong>Nº ${k}</strong> <span class="fecha">· ${formatoFecha(fechaDe(k))}${k === hoy ? " (hoy)" : ""}</span></span><span class="estado">${estado}</span></a></li>`);
+      const cuando = k === hoy ? `${formatoFecha(fechaDe(k))} (hoy)` : k < hoy ? formatoFecha(fechaDe(k)) : "Extra";
+      items.push(`<li><a href="#n/${k}"><span><strong>Nº ${k}</strong> <span class="fecha">· ${cuando}</span></span><span class="estado">${estado}</span></a></li>`);
     }
     $("#lista-archivo").innerHTML = items.join("");
   }
@@ -331,7 +333,7 @@
     if (m) {
       const k = parseInt(m[1], 10);
       vista = "juego";
-      cargar(k >= 1 && k <= hoy ? k : hoy);
+      cargar(k >= 1 && k <= Math.max(hoy, PISTAS.length) ? k : hoy);
     } else if (h === "hoy" || !["archivo", "aprender", "estadisticas"].includes(h)) {
       vista = "juego";
       cargar(hoy);
