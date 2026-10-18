@@ -207,7 +207,7 @@ const PISTAS = [
     "tipo": "Charada",
     "indicador": "",
     "explicacion": "«Libre de» es SIN y una incautación es un EMBARGO: SIN EMBARGO, es decir, aun así.",
-    "dificultad": 2
+    "dificultad": 3
   },
   {
     "pista": "Un día que guarda cinco, estrella del espectáculo",
@@ -1267,7 +1267,7 @@ const PISTAS = [
     "tipo": "Charada",
     "indicador": "",
     "explicacion": "Brinca es SALTA y las sierras son MONTES. SALTA + MONTES = SALTAMONTES, el insecto verde del prado.",
-    "dificultad": 3
+    "dificultad": 2
   },
   {
     "pista": "Araña los firmamentos la torre de la ciudad",
@@ -1278,7 +1278,7 @@ const PISTAS = [
     "tipo": "Charada",
     "indicador": "",
     "explicacion": "Araña es RASCA y los firmamentos son los CIELOS. RASCA + CIELOS = RASCACIELOS, la torre de la ciudad.",
-    "dificultad": 3
+    "dificultad": 2
   },
   {
     "pista": "Cruza el clima y queda un entretenimiento",
@@ -1289,7 +1289,7 @@ const PISTAS = [
     "tipo": "Charada",
     "indicador": "",
     "explicacion": "Cruza es PASA y el clima es el TIEMPO. PASA + TIEMPO = PASATIEMPO, un entretenimiento.",
-    "dificultad": 4
+    "dificultad": 3
   },
   {
     "pista": "El océano a la aldea trae un prodigio",
@@ -2057,7 +2057,7 @@ const PISTAS = [
     "tipo": "Charada",
     "indicador": "",
     "explicacion": "La uña peligrosa es la GARRA y el pie del animal, la PATA. GARRA + PATA = GARRAPATA, un parásito.",
-    "dificultad": 2
+    "dificultad": 3
   },
   {
     "pista": "Infusión al sur del metal precioso, lo que entierra el pirata",
