@@ -5,12 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Críptico 51</title>
   <meta name="description" content="Una pista críptica nueva cada día, en español. Gratis y sin cuenta.">
-  <meta name="theme-color" content="#fafaf8">
+  <meta name="theme-color" content="#fafaf8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#171614" media="(prefers-color-scheme: dark)">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="iconos/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="Críptico 51">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23222'/%3E%3Ctext x='16' y='22' font-family='Georgia' font-size='16' font-weight='bold' fill='%23fafaf8' text-anchor='middle'%3E51%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=7">
+  <link rel="stylesheet" href="style.css?v=8">
 </head>
 <body>
   <header class="cabecera">
@@ -59,6 +66,7 @@
       <div id="teclado" class="teclado" aria-label="Teclado"></div>
 
       <p class="cuenta">Nueva pista en <strong id="cuenta-atras">--:--:--</strong></p>
+      <p class="instalar" id="instalar" hidden><button id="btn-instalar" class="btn">Instalar en este dispositivo</button></p>
       <p class="consejo">Usar pistas siempre está bien. Buscar sinónimos también: los crípticos son para aprender y divertirse.</p>
     </section>
 
@@ -120,6 +128,9 @@
 
       <h2>Ayudas</h2>
       <p>El botón <strong>Pista</strong> te da ayudas progresivas: el tipo de pista, la definición resaltada, el indicador, la primera letra y, por último, la solución. También puedes <strong>revelar una letra</strong> en la casilla que elijas, o <strong>comprobar letras</strong>: las correctas quedan fijas en verde y las demás se borran. Lo importante es aprender.</p>
+
+      <h2>Tenerlo en el celular</h2>
+      <p>Críptico 51 se puede instalar como una app y abrir sin conexión. En Android o en un computador, usa el botón <strong>Instalar</strong> que aparece bajo el juego, o el menú del navegador. En iPhone, abre la página en Safari, toca <strong>Compartir</strong> y luego <strong>Añadir a pantalla de inicio</strong>. El modo multijugador sí necesita internet.</p>
     </section>
 
     <!-- Multijugador -->
@@ -225,6 +236,6 @@
 
   <script src="pistas.js?v=9"></script>
   <script src="multi.js?v=7"></script>
-  <script src="app.js?v=6"></script>
+  <script src="app.js?v=7"></script>
 </body>
 </html>

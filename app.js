@@ -458,4 +458,23 @@
   enrutar();
   tic();
   setInterval(tic, 1000);
+
+  // ---------- App instalable y sin conexión ----------
+  if ("serviceWorker" in navigator && location.protocol !== "file:") {
+    navigator.serviceWorker.register("sw.js").catch(() => { /* sin service worker */ });
+  }
+  let invitacion = null;
+  window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault();
+    invitacion = e;
+    $("#instalar").hidden = false;
+  });
+  $("#btn-instalar").onclick = async () => {
+    if (!invitacion) return;
+    invitacion.prompt();
+    await invitacion.userChoice.catch(() => {});
+    invitacion = null;
+    $("#instalar").hidden = true;
+  };
+  window.addEventListener("appinstalled", () => { $("#instalar").hidden = true; });
 })();

@@ -139,6 +139,7 @@ main { flex: 1; width: 100%; max-width: 640px; margin: 0 auto; padding: 24px 16p
 .tecla.ancha { flex: 1.6 1 0; max-width: 72px; font-size: .8rem; }
 .tecla:active { filter: brightness(.9); }
 
+.instalar { text-align: center; margin: 12px 0 4px; }
 .cuenta, .consejo { text-align: center; color: var(--suave); font-size: .9rem; margin: 6px 0; }
 .cuenta strong { color: var(--texto); font-variant-numeric: tabular-nums; }
 
