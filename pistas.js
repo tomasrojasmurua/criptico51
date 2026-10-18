@@ -3019,5 +3019,557 @@ const PISTAS = [
     "relleno": [],
     "explicacion": "A cada palabra le falta su cola, la última letra: Ningun(a) fil(a), ningun(a) esper(a). Sin cola, literalmente. Y la frase dice que no hay fila: SIN COLA.",
     "dificultad": 3
+  },
+  {
+    "pista": "Torso del rey, desfigurado, es la cara",
+    "respuesta": "ROSTRO",
+    "definicion": [
+      "la cara"
+    ],
+    "tipo": "Anagrama",
+    "indicador": "desfigurado",
+    "relleno": [
+      "Torso",
+      "rey"
+    ],
+    "explicacion": "TORSO más la R del rey (como en el ajedrez), desfigurado, da ROSTRO, la cara.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Las dalias marchitas indican por dónde irse",
+    "respuesta": "SALIDA",
+    "definicion": [
+      "por dónde irse"
+    ],
+    "tipo": "Anagrama",
+    "indicador": "marchitas",
+    "relleno": [
+      "Las dalias"
+    ],
+    "explicacion": "Las letras de DALIAS, marchitas, se reordenan en SALIDA, por dónde irse.",
+    "dificultad": 3
+  },
+  {
+    "pista": "La prima y la osa bailan y vuela de flor en flor",
+    "respuesta": "MARIPOSA",
+    "definicion": [
+      "vuela de flor en flor"
+    ],
+    "tipo": "Anagrama",
+    "indicador": "bailan",
+    "relleno": [
+      "La prima",
+      "la osa"
+    ],
+    "explicacion": "PRIMA + OSA, bailando sus letras, forman MARIPOSA, la que vuela de flor en flor.",
+    "dificultad": 3
+  },
+  {
+    "pista": "Una bestia en Manila agitada",
+    "respuesta": "ANIMAL",
+    "definicion": [
+      "Una bestia"
+    ],
+    "tipo": "Anagrama",
+    "indicador": "agitada",
+    "relleno": [
+      "Manila"
+    ],
+    "explicacion": "MANILA, agitada, reordena sus letras en ANIMAL, una bestia.",
+    "dificultad": 3
+  },
+  {
+    "pista": "El médano, arrastrado por el viento, se paga en la caja",
+    "respuesta": "MONEDA",
+    "definicion": [
+      "se paga en la caja"
+    ],
+    "tipo": "Anagrama",
+    "indicador": "arrastrado por el viento",
+    "relleno": [
+      "El médano"
+    ],
+    "explicacion": "El MÉDANO es una duna; arrastrado por el viento, con sus letras revueltas, da MONEDA, lo que se paga en la caja.",
+    "dificultad": 4
+  },
+  {
+    "pista": "La mata acoge al este y gira alrededor del sol",
+    "respuesta": "PLANETA",
+    "definicion": [
+      "gira alrededor del sol"
+    ],
+    "tipo": "Contenedor",
+    "indicador": "acoge",
+    "relleno": [
+      "La mata",
+      "al este"
+    ],
+    "explicacion": "La mata es una PLANTA; acoge la E del este y queda PLAN·E·TA, que gira alrededor del sol.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Una cita deja pasar al norte: es lo que ata el regalo",
+    "respuesta": "CINTA",
+    "definicion": [
+      "lo que ata el regalo"
+    ],
+    "tipo": "Contenedor",
+    "indicador": "deja pasar",
+    "relleno": [
+      "Una cita",
+      "al norte"
+    ],
+    "explicacion": "CITA deja pasar la N del norte y queda CI·N·TA, lo que ata el regalo.",
+    "dificultad": 3
+  },
+  {
+    "pista": "El pellejo encierra al norte y adorna la frente del toro",
+    "respuesta": "CUERNO",
+    "definicion": [
+      "adorna la frente del toro"
+    ],
+    "tipo": "Contenedor",
+    "indicador": "encierra",
+    "relleno": [
+      "El pellejo",
+      "al norte"
+    ],
+    "explicacion": "El pellejo es el CUERO; encierra la N del norte y queda CUER·N·O, lo que adorna la frente del toro.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Gansos que dan vuelta la chaqueta",
+    "respuesta": "OCAS",
+    "definicion": [
+      "Gansos"
+    ],
+    "tipo": "Reverso",
+    "indicador": "dan vuelta",
+    "relleno": [
+      "la chaqueta"
+    ],
+    "explicacion": "La chaqueta es un SACO; dado vuelta, al revés, da OCAS, gansos.",
+    "dificultad": 4
+  },
+  {
+    "pista": "El que sostiene el mundo brinca de vuelta",
+    "respuesta": "ATLAS",
+    "definicion": [
+      "El que sostiene el mundo"
+    ],
+    "tipo": "Reverso",
+    "indicador": "de vuelta",
+    "relleno": [
+      "brinca"
+    ],
+    "explicacion": "Brinca es SALTA; de vuelta, al revés, da ATLAS, el titán que sostiene el mundo.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Advertir que el roedor da marcha atrás",
+    "respuesta": "NOTAR",
+    "definicion": [
+      "Advertir"
+    ],
+    "tipo": "Reverso",
+    "indicador": "da marcha atrás",
+    "relleno": [
+      "el roedor"
+    ],
+    "explicacion": "El roedor es el RATÓN; dando marcha atrás, al revés, da NOTAR, advertir.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Al revés, curar da con las que croan",
+    "respuesta": "RANAS",
+    "definicion": [
+      "las que croan"
+    ],
+    "tipo": "Reverso",
+    "indicador": "Al revés",
+    "relleno": [
+      "curar"
+    ],
+    "explicacion": "Curar es SANAR; al revés da RANAS, las que croan.",
+    "dificultad": 3
+  },
+  {
+    "pista": "Un humor adaptado cobija la vivienda",
+    "respuesta": "MORADA",
+    "definicion": [
+      "la vivienda"
+    ],
+    "tipo": "Palabra escondida",
+    "indicador": "cobija",
+    "relleno": [
+      "Un humor adaptado"
+    ],
+    "explicacion": "Cobijada en huMOR ADAptado está MORADA, la vivienda.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Una mena norteña oculta al pequeño de Blancanieves",
+    "respuesta": "ENANO",
+    "definicion": [
+      "al pequeño de Blancanieves"
+    ],
+    "tipo": "Palabra escondida",
+    "indicador": "oculta",
+    "relleno": [
+      "Una mena norteña"
+    ],
+    "explicacion": "Oculto en mENA NOrteña está ENANO, uno de los pequeños de Blancanieves.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Mapas telúricos esconden un dulce de cumpleaños",
+    "respuesta": "PASTEL",
+    "definicion": [
+      "un dulce de cumpleaños"
+    ],
+    "tipo": "Palabra escondida",
+    "indicador": "esconden",
+    "relleno": [
+      "Mapas telúricos"
+    ],
+    "explicacion": "Escondido en maPAS TELúricos está PASTEL, un dulce de cumpleaños.",
+    "dificultad": 3
+  },
+  {
+    "pista": "Para Renata se guarda lo que hay en la playa",
+    "respuesta": "ARENA",
+    "definicion": [
+      "lo que hay en la playa"
+    ],
+    "tipo": "Palabra escondida",
+    "indicador": "se guarda",
+    "relleno": [
+      "Para Renata"
+    ],
+    "explicacion": "Guardada en parA RENAta está ARENA, lo que hay en la playa.",
+    "dificultad": 3
+  },
+  {
+    "pista": "Océano precede a lo que se fue: el esposo",
+    "respuesta": "MARIDO",
+    "definicion": [
+      "el esposo"
+    ],
+    "tipo": "Charada",
+    "indicador": "precede a",
+    "relleno": [
+      "Océano",
+      "lo que se fue"
+    ],
+    "explicacion": "El océano es el MAR y lo que se fue, IDO. MAR delante de IDO = MARIDO, el esposo.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Bajo el firmamento, al comienzo, cada isla espera la ola",
+    "respuesta": "CIELO",
+    "definicion": [
+      "el firmamento"
+    ],
+    "tipo": "Selector",
+    "indicador": "al comienzo",
+    "relleno": [
+      "cada isla espera la ola"
+    ],
+    "explicacion": "Al comienzo de Cada Isla Espera La Ola están sus iniciales: CIELO, el firmamento.",
+    "dificultad": 3
+  },
+  {
+    "pista": "La fibra blanca pierde algo y queda el talento",
+    "respuesta": "DON",
+    "definicion": [
+      "el talento"
+    ],
+    "tipo": "Sustracción",
+    "indicador": "pierde",
+    "relleno": [
+      "La fibra blanca",
+      "algo"
+    ],
+    "explicacion": "La fibra blanca es el ALGODÓN; si pierde ALGO queda DON, el talento.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Hermoso es el pelo que soltó el calcio",
+    "respuesta": "BELLO",
+    "definicion": [
+      "Hermoso"
+    ],
+    "tipo": "Sustracción",
+    "indicador": "soltó",
+    "relleno": [
+      "el pelo",
+      "el calcio"
+    ],
+    "explicacion": "El pelo es el CABELLO y el calcio, CA. CABELLO sin CA deja BELLO, hermoso.",
+    "dificultad": 4
+  },
+  {
+    "pista": "El astro rey, seguido de un ave de la pampa, sigue sin pareja",
+    "respuesta": "SOLTERO",
+    "definicion": [
+      "sin pareja"
+    ],
+    "tipo": "Charada",
+    "indicador": "seguido de",
+    "relleno": [
+      "El astro rey",
+      "un ave de la pampa"
+    ],
+    "explicacion": "El astro rey es el SOL y el ave de la pampa, el TERO. SOL + TERO = SOLTERO, sin pareja.",
+    "dificultad": 5
+  },
+  {
+    "pista": "Un perro delante del cubo del azar cierra el portón",
+    "respuesta": "CANDADO",
+    "definicion": [
+      "cierra el portón"
+    ],
+    "tipo": "Charada",
+    "indicador": "delante del",
+    "relleno": [
+      "Un perro",
+      "cubo del azar"
+    ],
+    "explicacion": "Un perro es un CAN y el cubo del azar, un DADO. CAN delante de DADO = CANDADO, lo que cierra el portón.",
+    "dificultad": 3
+  },
+  {
+    "pista": "Un perro mira al este antes que la nota: especia del arroz con leche",
+    "respuesta": "CANELA",
+    "definicion": [
+      "especia del arroz con leche"
+    ],
+    "tipo": "Charada",
+    "indicador": "antes que",
+    "relleno": [
+      "Un perro",
+      "al este",
+      "la nota"
+    ],
+    "explicacion": "Un perro es un CAN, el este es E y la nota es LA. CAN + E + LA = CANELA, la especia del arroz con leche.",
+    "dificultad": 4
+  },
+  {
+    "pista": "La segunda nota, seguida de la infusión rioplatense, es el broche final",
+    "respuesta": "REMATE",
+    "definicion": [
+      "el broche final"
+    ],
+    "tipo": "Charada",
+    "indicador": "seguida de",
+    "relleno": [
+      "La segunda nota",
+      "la infusión rioplatense"
+    ],
+    "explicacion": "La segunda nota es RE y la infusión rioplatense, el MATE. RE + MATE = REMATE, el broche final.",
+    "dificultad": 3
+  },
+  {
+    "pista": "El lecho antes del trago pirata, crustáceo rosado",
+    "respuesta": "CAMARON",
+    "definicion": [
+      "crustáceo rosado"
+    ],
+    "tipo": "Charada",
+    "indicador": "antes del",
+    "relleno": [
+      "El lecho",
+      "trago pirata"
+    ],
+    "explicacion": "El lecho es la CAMA y el trago pirata, el RON. CAMA antes de RON = CAMARÓN, un crustáceo rosado.",
+    "dificultad": 3
+  },
+  {
+    "pista": "La cabeza de un ave más una extremidad dan un apretón cariñoso",
+    "respuesta": "ABRAZO",
+    "definicion": [
+      "un apretón cariñoso"
+    ],
+    "tipo": "Selector + charada",
+    "indicador": "La cabeza de",
+    "relleno": [
+      "un ave",
+      "una extremidad"
+    ],
+    "explicacion": "La cabeza de AVE es la A, y una extremidad es el BRAZO. A + BRAZO = ABRAZO, un apretón cariñoso.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Lo que bate el pájaro, devuelto, es donde se reciben visitas",
+    "respuesta": "SALA",
+    "definicion": [
+      "donde se reciben visitas"
+    ],
+    "tipo": "Reverso",
+    "indicador": "devuelto",
+    "relleno": [
+      "Lo que bate el pájaro"
+    ],
+    "explicacion": "Lo que bate el pájaro son las ALAS; devueltas, al revés, dan SALA, donde se reciben visitas.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Gastado por el uso, aborrecer se echa atrás",
+    "respuesta": "RAIDO",
+    "definicion": [
+      "Gastado por el uso"
+    ],
+    "tipo": "Reverso",
+    "indicador": "se echa atrás",
+    "relleno": [
+      "aborrecer"
+    ],
+    "explicacion": "Aborrecer es ODIAR; echado atrás, al revés, da RAÍDO, gastado por el uso.",
+    "dificultad": 5
+  },
+  {
+    "pista": "El ritmo del músico guarda cincuenta en el lugar sagrado",
+    "respuesta": "TEMPLO",
+    "definicion": [
+      "el lugar sagrado"
+    ],
+    "tipo": "Contenedor",
+    "indicador": "guarda",
+    "relleno": [
+      "El ritmo del músico",
+      "cincuenta"
+    ],
+    "explicacion": "El ritmo del músico es el TEMPO; guarda la L, cincuenta en romanos, y queda TEMP·L·O, el lugar sagrado.",
+    "dificultad": 4
+  },
+  {
+    "pista": "El extremo helado de la Tierra acoge medio centenar y sale del huevo",
+    "respuesta": "POLLO",
+    "definicion": [
+      "sale del huevo"
+    ],
+    "tipo": "Contenedor",
+    "indicador": "acoge",
+    "relleno": [
+      "El extremo helado de la Tierra",
+      "medio centenar"
+    ],
+    "explicacion": "El extremo helado de la Tierra es un POLO; acoge medio centenar, la L de cincuenta, y queda POL·L·O, que sale del huevo.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Con el sur adentro, una mancha de la cara tira el anzuelo",
+    "respuesta": "PESCA",
+    "definicion": [
+      "tira el anzuelo"
+    ],
+    "tipo": "Contenedor",
+    "indicador": "adentro",
+    "relleno": [
+      "el sur",
+      "una mancha de la cara"
+    ],
+    "explicacion": "Una mancha de la cara es una PECA; con la S del sur adentro queda PE·S·CA, el que tira el anzuelo.",
+    "dificultad": 4
+  },
+  {
+    "pista": "El asiento del rey acoge cien y sostiene la copa del árbol",
+    "respuesta": "TRONCO",
+    "definicion": [
+      "sostiene la copa del árbol"
+    ],
+    "tipo": "Contenedor",
+    "indicador": "acoge",
+    "relleno": [
+      "El asiento del rey",
+      "cien"
+    ],
+    "explicacion": "El asiento del rey es el TRONO; acoge la C, cien en romanos, y queda TRON·C·O, lo que sostiene la copa del árbol.",
+    "dificultad": 4
+  },
+  {
+    "pista": "La planta y el oxígeno, en la licuadora, dan la fruta amarilla",
+    "respuesta": "PLATANO",
+    "definicion": [
+      "la fruta amarilla"
+    ],
+    "tipo": "Anagrama",
+    "indicador": "en la licuadora",
+    "relleno": [
+      "La planta",
+      "el oxígeno"
+    ],
+    "explicacion": "PLANTA + O (el oxígeno), en la licuadora, reordenan sus letras en PLÁTANO, la fruta amarilla.",
+    "dificultad": 3
+  },
+  {
+    "pista": "Sergio, alocado, corre un peligro",
+    "respuesta": "RIESGO",
+    "definicion": [
+      "un peligro"
+    ],
+    "tipo": "Anagrama",
+    "indicador": "alocado",
+    "relleno": [
+      "Sergio"
+    ],
+    "explicacion": "Las letras de SERGIO, alocadas, forman RIESGO, un peligro.",
+    "dificultad": 3
+  },
+  {
+    "pista": "Marta, enredada, teje el argumento",
+    "respuesta": "TRAMA",
+    "definicion": [
+      "el argumento"
+    ],
+    "tipo": "Anagrama",
+    "indicador": "enredada",
+    "relleno": [
+      "Marta"
+    ],
+    "explicacion": "Las letras de MARTA, enredadas, forman TRAMA, el argumento.",
+    "dificultad": 3
+  },
+  {
+    "pista": "Ramón, fuera de sí, rompe la regla",
+    "respuesta": "NORMA",
+    "definicion": [
+      "la regla"
+    ],
+    "tipo": "Anagrama",
+    "indicador": "fuera de sí",
+    "relleno": [
+      "Ramón"
+    ],
+    "explicacion": "Las letras de RAMÓN, fuera de sí, forman NORMA, la regla.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Pedro, trastornado, quiere el mando",
+    "respuesta": "PODER",
+    "definicion": [
+      "el mando"
+    ],
+    "tipo": "Anagrama",
+    "indicador": "trastornado",
+    "relleno": [
+      "Pedro"
+    ],
+    "explicacion": "Las letras de PEDRO, trastornadas, forman PODER, el mando.",
+    "dificultad": 3
+  },
+  {
+    "pista": "Teresa, revolcada, termina en la alfombra de junco",
+    "respuesta": "ESTERA",
+    "definicion": [
+      "la alfombra de junco"
+    ],
+    "tipo": "Anagrama",
+    "indicador": "revolcada",
+    "relleno": [
+      "Teresa"
+    ],
+    "explicacion": "Las letras de TERESA, revolcadas, forman ESTERA, la alfombra de junco.",
+    "dificultad": 4
   }
 ];
