@@ -1,10 +1,10 @@
 // Service worker: guarda el juego para abrirlo sin conexión.
 // Archivos propios: primero la red (para recibir pistas y cambios nuevos), y si no hay, la copia guardada.
 // Fuentes de Google: primero la copia guardada. El resto (multijugador) pasa sin tocar.
-const CACHE = "criptico51-v1";
+const CACHE = "criptico51-v2";
 const ARCHIVOS = [
   "./", "./index.html", "./style.css", "./app.js", "./multi.js", "./pistas.js",
-  "./manifest.webmanifest", "./iconos/icono-192.png", "./iconos/icono-512.png", "./iconos/apple-touch-icon.png"
+  "./manifest.webmanifest", "./iconos/icono-192.png", "./iconos/icono-512.png", "./iconos/apple-touch-icon.png", "./iconos/favicon-32.png"
 ];
 
 self.addEventListener("install", (e) => {
