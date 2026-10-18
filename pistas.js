@@ -2344,5 +2344,16 @@ const PISTAS = [
     "indicador": "ya con anillo",
     "explicacion": "Con las ganas de comer se juntó el HAMBRE. Con un anillo, la O, en lugar de la A, queda HOMBRE, todo un varón.",
     "dificultad": 4
+  },
+  {
+    "pista": "¡¿Fal_a dón_e pod_r dor_ir?!",
+    "respuesta": "SIN CUARTO",
+    "definicion": [
+      "¡¿Fal_a dón_e pod_r dor_ir?!"
+    ],
+    "tipo": "Letras omitidas",
+    "indicador": "",
+    "explicacion": "A cada palabra le falta su cuarta letra: Fal(t)a, dón(d)e, pod(e)r, dor(m)ir. Sin cuarto, literalmente. Y la frase pregunta dónde poder dormir, que es no tener cuarto: SIN CUARTO.",
+    "dificultad": 3
   }
 ];
