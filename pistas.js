@@ -1,4 +1,4 @@
-// Banco de pistas. Una por día a partir de FECHA_INICIO (UTC).
+// Banco de pistas Extras (y las pistas de los días 1 a 8, que son las primeras 8). Las pistas del día desde el Nº 9 están cifradas en diarias.js.
 // - respuesta: en mayúsculas, sin tildes (Ñ permitida). Varias palabras separadas por espacio.
 // - definicion: fragmentos exactos de la pista que funcionan como definición
 // - tipo: mecanismo críptico (ver sección Aprender)
