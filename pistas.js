@@ -2225,7 +2225,7 @@ const PISTAS = [
     "dificultad": 5
   },
   {
-    "pista": "Un semidiós corta los pies de la noche y, con corazón de era, alienta hacia Barcelona",
+    "pista": "Un semidiós se queda los pies de la noche y, con corazón de era, alienta hacia Barcelona",
     "respuesta": "HERCULES",
     "definicion": [
       "Un semidiós"
