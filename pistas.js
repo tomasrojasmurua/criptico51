@@ -1853,5 +1853,15 @@ const PISTAS = [
     "tipo": "Onomatopeya",
     "indicador": "de oídas",
     "explicacion": "ONDA, la curva que recorre el agua, de oídas suena igual que HONDA, profunda."
+  },
+  {
+    "pista": "Uña peligrosa, pie parásito",
+    "respuesta": "GARRAPATA",
+    "definicion": [
+      "parásito"
+    ],
+    "tipo": "Charada",
+    "indicador": "",
+    "explicacion": "La uña peligrosa es la GARRA y el pie del animal, la PATA. GARRA + PATA = GARRAPATA, un parásito."
   }
 ];
