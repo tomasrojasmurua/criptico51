@@ -76,6 +76,9 @@
     return `${html} <span class="largo">(${enumeracion(p)})</span>`;
   }
 
+  // Lo que comparte el modo multijugador (multi.js).
+  window.Criptico = { letrasDe, enumeracion, normalizar, escapar, pistaHTML };
+
   // ---------- Juego ----------
   let n, p, partida, cursor = 0;
 
@@ -334,6 +337,8 @@
       const k = parseInt(m[1], 10);
       vista = "juego";
       cargar(k >= 1 && k <= Math.max(hoy, PISTAS.length) ? k : hoy);
+    } else if (h === "multijugador" || h.startsWith("sala/")) {
+      vista = "multijugador";
     } else if (h === "hoy" || !["archivo", "aprender", "estadisticas"].includes(h)) {
       vista = "juego";
       cargar(hoy);
@@ -343,6 +348,7 @@
     document.querySelectorAll(".menu a").forEach((a) => a.classList.toggle("activo", a.dataset.vista === activa));
     if (vista === "archivo") pintarArchivo();
     if (vista === "estadisticas") pintarEstadisticas();
+    if (vista === "multijugador") Multi.mostrar(h.startsWith("sala/") ? h.slice(5) : "");
     window.scrollTo(0, 0);
   }
 

@@ -184,3 +184,47 @@ h2 { font-size: 1.3rem; margin: 28px 0 10px; }
 
 .pie { text-align: center; color: var(--suave); font-size: .85rem; padding: 16px; border-top: 1px solid var(--borde); }
 .casilla.fin-palabra { margin-right: 14px; }
+
+/* Multijugador */
+.centro { text-align: center; }
+.campo { display: grid; gap: 6px; font-weight: 500; margin: 20px 0 16px; }
+.campo input, .tarjeta input.codigo, .mp-config select {
+  font: 500 1rem Inter, sans-serif; padding: 10px 12px; border-radius: 10px;
+  border: 1px solid var(--borde); background: var(--superficie); color: var(--texto); width: 100%;
+}
+.mp-opciones { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 520px) { .mp-opciones { grid-template-columns: 1fr; } }
+.tarjeta {
+  background: var(--superficie); border: 1px solid var(--borde); border-radius: 12px;
+  padding: 16px; display: grid; gap: 10px; align-content: start;
+}
+.tarjeta h2 { margin: 0; font-size: 1.1rem; }
+.tarjeta p { margin: 0; color: var(--suave); font-size: .92rem; }
+.tarjeta input.codigo { text-transform: uppercase; letter-spacing: .3em; text-align: center; font-weight: 700; }
+.codigo-sala {
+  font: 700 clamp(2.6rem, 12vw, 3.6rem)/1 Fraunces, Georgia, serif; letter-spacing: .18em;
+  text-align: center; margin: 20px 0 8px;
+}
+.mp-jugadores, .mp-marcador, .mp-tabla { list-style: none; padding: 0; margin: 16px 0; display: grid; gap: 6px; }
+.mp-jugadores li, .mp-marcador li, .mp-tabla li {
+  display: flex; justify-content: space-between; align-items: center; gap: 10px;
+  background: var(--superficie); border: 1px solid var(--borde); border-radius: 10px; padding: 10px 14px;
+}
+.mp-jugadores small, .mp-tabla small { color: var(--suave); font-size: .82rem; }
+.mp-config { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: end; margin: 16px 0; }
+.mp-config label { display: grid; gap: 6px; font-size: .9rem; color: var(--suave); }
+.mp-config .btn { grid-column: 1 / -1; justify-self: center; padding: 12px 32px; }
+.reloj { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--texto); }
+.reloj.urgente { color: var(--mal); }
+.barra-tiempo { height: 4px; background: var(--tecla); border-radius: 4px; margin-top: 8px; overflow: hidden; }
+.barra-tiempo span { display: block; height: 100%; background: var(--texto); transition: width .25s linear; }
+.mp-marcador { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+.mp-marcador li { font-size: .9rem; padding: 8px 12px; color: var(--suave); }
+.mp-marcador li.hecho { color: var(--bien); border-color: var(--bien); }
+.mp-marcador li.fuera, .mp-tabla li.fuera { opacity: .5; }
+.mp-tabla li { justify-content: flex-start; }
+.mp-tabla .puesto { font: 700 1.1rem Fraunces, Georgia, serif; width: 1.6em; color: var(--suave); }
+.mp-tabla .nombre { flex: 1; font-weight: 500; }
+.mp-tabla strong { font-variant-numeric: tabular-nums; min-width: 3.5em; text-align: right; }
+.mp-tabla li.yo { border-color: var(--texto); }
+.solucion { font: 700 1.6rem Fraunces, Georgia, serif; letter-spacing: .08em; }
