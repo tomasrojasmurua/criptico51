@@ -273,7 +273,7 @@ const PISTAS = [
     ],
     "tipo": "Charada",
     "indicador": "",
-    "explicacion": "CAN es un perro y a lo lejos es ALLÁ. CAN + ALLA = CANALLA, un sinvergüenza.",
+    "explicacion": "CAN es una forma antigua de decir perro, y a lo lejos es ALLÁ. CAN + ALLA = CANALLA, un sinvergüenza.",
     "dificultad": 4
   },
   {
@@ -295,7 +295,7 @@ const PISTAS = [
     ],
     "tipo": "Charada",
     "indicador": "",
-    "explicacion": "El océano es el MAR y las infusiones, TÉS. MAR + TES = MARTES, el día en que ni te cases ni te embarques.",
+    "explicacion": "El océano es el MAR y las infusiones, TÉS. MAR + TES = MARTES. La definición sale del refrán «martes 13, ni te cases ni te embarques», que lo hace un día de mala suerte.",
     "dificultad": 4
   },
   {
@@ -374,7 +374,7 @@ const PISTAS = [
     ],
     "tipo": "Doble definición",
     "indicador": "",
-    "explicacion": "Quien VELA vigila al muerto, y la VELA del barco aprovecha el viento.",
+    "explicacion": "Quien VELA a un muerto lo acompaña y lo vigila durante el velorio. La VELA del barco aprovecha el viento.",
     "dificultad": 3
   },
   {
@@ -398,7 +398,7 @@ const PISTAS = [
     ],
     "tipo": "Doble definición",
     "indicador": "",
-    "explicacion": "El GALLO canta al amanecer, y al tenor que desafina se le escapa un gallo.",
+    "explicacion": "El GALLO canta al amanecer. Cuando a un cantante se le quiebra la voz y desafina en una nota aguda, se dice que «se le escapó un gallo».",
     "dificultad": 4
   },
   {
@@ -410,7 +410,7 @@ const PISTAS = [
     ],
     "tipo": "Doble definición",
     "indicador": "",
-    "explicacion": "Un CAMELLO es un animal del desierto y, en lenguaje coloquial, quien vende droga en la calle.",
+    "explicacion": "El CAMELLO es un animal del desierto. En España se llama «camello» a quien vende droga en la calle.",
     "dificultad": 2
   },
   {
@@ -511,7 +511,7 @@ const PISTAS = [
     ],
     "tipo": "Doble definición",
     "indicador": "",
-    "explicacion": "Un PUENTE cruza el río, y un «puente» festivo alarga el fin de semana.",
+    "explicacion": "Un PUENTE cruza el río. También se llama «puente» al día hábil que queda entre un feriado y el fin de semana, cuando se da libre y el descanso se alarga.",
     "dificultad": 2
   },
   {
@@ -557,7 +557,7 @@ const PISTAS = [
     ],
     "tipo": "Doble definición",
     "indicador": "",
-    "explicacion": "La MANZANA es la fruta prohibida y también el bloque de casas de una cuadra.",
+    "explicacion": "La MANZANA es la fruta prohibida que comieron Adán y Eva en el Paraíso. También se llama MANZANA al bloque de casas que ocupa una cuadra.",
     "dificultad": 2
   },
   {
@@ -1088,7 +1088,7 @@ const PISTAS = [
     ],
     "tipo": "Doble definición",
     "indicador": "",
-    "explicacion": "El PULSO late en la muñeca, y un pulso es el duelo de brazos que se gana sobre la mesa.",
+    "explicacion": "El PULSO late en la muñeca. Un pulso, o pulseada, es también el duelo en que dos personas apoyan el codo en la mesa y tratan de doblarse el brazo.",
     "dificultad": 4
   },
   {
@@ -1255,7 +1255,7 @@ const PISTAS = [
     ],
     "tipo": "Charada",
     "indicador": "",
-    "explicacion": "La segunda nota es RE y Astérix era GALO. RE + GALO = REGALO, lo que llega envuelto para el cumpleaños.",
+    "explicacion": "La segunda nota de la escala es RE. Astérix, el personaje de historieta, es un GALO, de la antigua Galia, igual que sus vecinos de aldea. RE + GALO = REGALO, lo que llega envuelto para el cumpleaños.",
     "dificultad": 4
   },
   {
@@ -1399,7 +1399,7 @@ const PISTAS = [
     ],
     "tipo": "Charada",
     "indicador": "",
-    "explicacion": "La negativa es NO y el saludo porteño, CHE. NO + CHE = NOCHE, la oscuridad.",
+    "explicacion": "La negativa es NO. CHE es la palabra con que se saludan y se llaman en Buenos Aires, de ahí lo de porteño. NO + CHE = NOCHE, la oscuridad.",
     "dificultad": 2
   },
   {
@@ -1478,7 +1478,7 @@ const PISTAS = [
     ],
     "tipo": "Doble definición",
     "indicador": "",
-    "explicacion": "La SIERRA corta tablas y también se eleva en Córdoba.",
+    "explicacion": "La SIERRA es la herramienta que corta tablas. Córdoba, en Argentina, es famosa por sus sierras, unas cadenas de montañas bajas.",
     "dificultad": 2
   },
   {
@@ -1526,7 +1526,7 @@ const PISTAS = [
     ],
     "tipo": "Doble definición",
     "indicador": "",
-    "explicacion": "Un pecado es CAPITAL, y la CAPITAL es la ciudad más importante.",
+    "explicacion": "La ira, la gula y la envidia son algunos de los siete pecados capitales, así que un pecado es CAPITAL. Y la CAPITAL es la ciudad más importante de un país.",
     "dificultad": 3
   },
   {
@@ -1550,7 +1550,7 @@ const PISTAS = [
     ],
     "tipo": "Doble definición",
     "indicador": "",
-    "explicacion": "El CABO de Hornos es una punta de tierra y el CABO es un rango bajo del cuartel.",
+    "explicacion": "El Cabo de Hornos es la punta de tierra en el extremo sur de Chile. Un CABO es también el rango militar justo encima de soldado.",
     "dificultad": 2
   },
   {
@@ -2232,7 +2232,7 @@ const PISTAS = [
     ],
     "tipo": "Selector + charada",
     "indicador": "los pies de",
-    "explicacion": "Los pies de la NOCHE son HE, el corazón de ERA es R y los que alientan al Barcelona son los CULÉS. HE + R + CULES = HERCULES, un semidiós.",
+    "explicacion": "Los pies de la NOCHE son sus últimas letras, HE. El corazón de ERA es la R. Los hinchas del Barcelona se llaman CULÉS, porque en el estadio antiguo se sentaban en el muro y desde la calle se les veía el trasero. HE + R + CULES = HERCULES, el semidiós.",
     "dificultad": 5
   }
 ];
