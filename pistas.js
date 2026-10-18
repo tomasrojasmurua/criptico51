@@ -8,176 +8,176 @@ const FECHA_INICIO = "2026-10-11";
 
 const PISTAS = [
   {
-    "pista": "Medio papá en la colina se vuelve ave",
+    "pista": "Papá a medias sube la colina y suelta la mensajera de la paz",
     "respuesta": "PALOMA",
     "definicion": [
-      "ave"
+      "la mensajera de la paz"
     ],
     "tipo": "Charada",
-    "indicador": "Medio",
-    "explicacion": "Medio papá es PA; la colina es una LOMA. PA + LOMA = PALOMA, un ave."
+    "indicador": "a medias",
+    "explicacion": "Papá a medias es PA y la colina, una LOMA. PA + LOMA = PALOMA, la mensajera de la paz."
   },
   {
-    "pista": "Lo que viaja sobre el coche suena a rumiante",
+    "pista": "Lo que va sobre el techo del coche, de oído, da leche",
     "respuesta": "VACA",
     "definicion": [
-      "rumiante"
+      "da leche"
     ],
     "tipo": "Onomatopeya",
-    "indicador": "suena a",
-    "explicacion": "El portaequipajes del techo del coche es la BACA, que suena igual que VACA, un rumiante."
+    "indicador": "de oído",
+    "explicacion": "Sobre el techo del coche va la BACA, que de oído suena igual que VACA, la que da leche."
   },
   {
-    "pista": "Él mezcla letras y nace un astro",
+    "pista": "Letras con él, en desorden, brilla de noche",
     "respuesta": "ESTRELLA",
     "definicion": [
-      "un astro"
+      "brilla de noche"
     ],
     "tipo": "Anagrama",
-    "indicador": "mezcla",
-    "explicacion": "Mezclando las letras de LETRAS + ÉL sale ESTRELLA, un astro."
+    "indicador": "en desorden",
+    "explicacion": "LETRAS + ÉL en desorden forman ESTRELLA, que brilla de noche."
   },
   {
-    "pista": "Al caracol le roban el rostro y queda una hortaliza",
+    "pista": "Repollo que un caracol deja al perder la cara",
     "respuesta": "COL",
     "definicion": [
-      "una hortaliza"
+      "Repollo"
     ],
     "tipo": "Sustracción",
-    "indicador": "le roban el rostro",
-    "explicacion": "El rostro es la CARA. CARACOL sin CARA deja COL, una hortaliza."
+    "indicador": "al perder",
+    "explicacion": "CARACOL al perder la CARA deja COL, un repollo."
   },
   {
-    "pista": "Telefonea al camélido andino",
+    "pista": "Arde en la chimenea y escupe en los Andes",
     "respuesta": "LLAMA",
     "definicion": [
-      "Telefonea",
-      "camélido andino"
+      "Arde en la chimenea",
+      "escupe en los Andes"
     ],
     "tipo": "Doble definición",
     "indicador": "",
-    "explicacion": "LLAMA es «telefonea» y también el camélido de los Andes."
+    "explicacion": "La LLAMA arde en la chimenea, y la LLAMA de los Andes escupe."
   },
   {
-    "pista": "Rencor que regresa convertido en sentido",
+    "pista": "Aborrecimiento devuelto, ya escuchado",
     "respuesta": "OIDO",
     "definicion": [
-      "sentido"
+      "escuchado"
     ],
     "tipo": "Reverso",
-    "indicador": "regresa",
-    "explicacion": "El rencor es ODIO; devuelto, al revés, da OÍDO, un sentido."
+    "indicador": "devuelto",
+    "explicacion": "El aborrecimiento es ODIO; devuelto, al revés, da OÍDO, escuchado."
   },
   {
-    "pista": "Un principio de broma y una carcajada traen viento suave",
+    "pista": "La cabeza de un bufón sobre una carcajada, apenas viento",
     "respuesta": "BRISA",
     "definicion": [
-      "viento suave"
+      "apenas viento"
     ],
     "tipo": "Selector + charada",
-    "indicador": "principio de",
-    "explicacion": "El comienzo de «broma» es B, y una carcajada es RISA. B + RISA = BRISA, un viento suave."
+    "indicador": "La cabeza de",
+    "explicacion": "La cabeza de «bufón» es B y una carcajada es RISA. B + RISA = BRISA, apenas viento."
   },
   {
-    "pista": "El casado acoge al norte y queda agotado",
+    "pista": "Rendido, el casado deja entrar al norte",
     "respuesta": "CANSADO",
     "definicion": [
-      "agotado"
+      "Rendido"
     ],
     "tipo": "Contenedor",
-    "indicador": "acoge",
-    "explicacion": "CASADO acoge la N (norte): CA·N·SADO = CANSADO, agotado."
+    "indicador": "deja entrar",
+    "explicacion": "CASADO deja entrar la N del norte y queda CA·N·SADO, rendido."
   },
   {
-    "pista": "La resina se funde en un ser mítico del mar",
+    "pista": "Canta en las rocas la resina derramada",
     "respuesta": "SIRENA",
     "definicion": [
-      "un ser mítico del mar"
+      "Canta en las rocas"
     ],
     "tipo": "Anagrama",
-    "indicador": "se funde",
-    "explicacion": "Las letras de RESINA, «fundidas», forman SIRENA, un ser mítico del mar."
+    "indicador": "derramada",
+    "explicacion": "RESINA derramada, con sus letras reordenadas, da SIRENA, la que canta en las rocas."
   },
   {
-    "pista": "Un canoso se traga una nota en el sendero",
+    "pista": "Ruta del viejo de pelo blanco con mi nota dentro",
     "respuesta": "CAMINO",
     "definicion": [
-      "sendero"
+      "Ruta"
     ],
     "tipo": "Contenedor",
-    "indicador": "se traga",
-    "explicacion": "Canoso es CANO; se traga la nota MI: CA·MI·NO = CAMINO, un sendero."
+    "indicador": "dentro",
+    "explicacion": "El de pelo blanco es CANO; con la nota MI dentro queda CA·MI·NO, una ruta."
   },
   {
-    "pista": "Trofeo en lo alto del árbol",
+    "pista": "Se levanta para brindar en lo alto del árbol",
     "respuesta": "COPA",
     "definicion": [
-      "Trofeo",
+      "Se levanta para brindar",
       "lo alto del árbol"
     ],
     "tipo": "Doble definición",
     "indicador": "",
-    "explicacion": "Una COPA es un trofeo y también la parte alta de un árbol."
+    "explicacion": "La COPA se levanta para brindar y también es lo alto del árbol."
   },
   {
-    "pista": "Hierro junto a oxígeno resulta nada bonito",
+    "pista": "Fe y anillo para un novio poco agraciado",
     "respuesta": "FEO",
     "definicion": [
-      "nada bonito"
-    ],
-    "tipo": "Misceláneas",
-    "indicador": "",
-    "explicacion": "Los símbolos químicos del hierro (Fe) y del oxígeno (O) forman FEO, nada bonito."
-  },
-  {
-    "pista": "El elefante nadador esconde lo que capta señales",
-    "respuesta": "ANTENA",
-    "definicion": [
-      "lo que capta señales"
-    ],
-    "tipo": "Palabra escondida",
-    "indicador": "esconde",
-    "explicacion": "Dentro de «elef-ANTE NA-dador» se esconde ANTENA, que capta señales."
-  },
-  {
-    "pista": "Estrella con años de aislamiento",
-    "respuesta": "SOLEDAD",
-    "definicion": [
-      "aislamiento"
+      "poco agraciado"
     ],
     "tipo": "Charada",
     "indicador": "",
-    "explicacion": "La estrella es el SOL y los años son la EDAD. SOL + EDAD = SOLEDAD, aislamiento."
+    "explicacion": "FE y un anillo, que por su forma es la O. FE + O = FEO, poco agraciado."
   },
   {
-    "pista": "El animal da marcha atrás y se vuelve hoja de metal",
+    "pista": "Lo que capta la señal se sumerge en un gigante nadador",
+    "respuesta": "ANTENA",
+    "definicion": [
+      "Lo que capta la señal"
+    ],
+    "tipo": "Palabra escondida",
+    "indicador": "se sumerge en",
+    "explicacion": "Sumergida en gigANTE NAdador está ANTENA, lo que capta la señal."
+  },
+  {
+    "pista": "Una nota con los años vividos, falta de compañía",
+    "respuesta": "SOLEDAD",
+    "definicion": [
+      "falta de compañía"
+    ],
+    "tipo": "Charada",
+    "indicador": "",
+    "explicacion": "La nota SOL y los años vividos, la EDAD. SOL + EDAD = SOLEDAD, falta de compañía."
+  },
+  {
+    "pista": "Bestia de vuelta, chapa delgada",
     "respuesta": "LAMINA",
     "definicion": [
-      "hoja de metal"
+      "chapa delgada"
     ],
     "tipo": "Reverso",
-    "indicador": "da marcha atrás",
-    "explicacion": "ANIMAL leído al revés da LÁMINA, una hoja de metal."
+    "indicador": "de vuelta",
+    "explicacion": "La bestia es un ANIMAL; de vuelta, al revés, da LÁMINA, una chapa delgada."
   },
   {
-    "pista": "Licor de un crustáceo que perdió la cama",
+    "pista": "Bebida pirata de un crustáceo que se quedó sin cama",
     "respuesta": "RON",
     "definicion": [
-      "Licor"
+      "Bebida pirata"
     ],
     "tipo": "Sustracción",
-    "indicador": "perdió",
-    "explicacion": "El crustáceo es un CAMARÓN; si pierde la CAMA queda RON, un licor."
+    "indicador": "se quedó sin",
+    "explicacion": "El crustáceo es el CAMARÓN; sin CAMA queda RON, la bebida pirata."
   },
   {
-    "pista": "Se oye como la erudita la sangre de los árboles",
+    "pista": "Circula por el tronco y, de oído, todo lo sabe",
     "respuesta": "SAVIA",
     "definicion": [
-      "la sangre de los árboles"
+      "Circula por el tronco"
     ],
     "tipo": "Onomatopeya",
-    "indicador": "Se oye como",
-    "explicacion": "La erudita es SABIA, que se oye igual que SAVIA, el líquido de las plantas."
+    "indicador": "de oído",
+    "explicacion": "La SAVIA circula por el tronco y de oído suena igual que SABIA, la que todo lo sabe."
   },
   {
     "pista": "Aun así quedó libre de incautación",
@@ -190,35 +190,35 @@ const PISTAS = [
     "explicacion": "«Libre de» es SIN y una incautación es un EMBARGO: SIN EMBARGO, es decir, aun así."
   },
   {
-    "pista": "Una jornada con cinco dentro brilla como estrella del espectáculo",
+    "pista": "Un día que guarda cinco, estrella del espectáculo",
     "respuesta": "DIVA",
     "definicion": [
       "estrella del espectáculo"
     ],
     "tipo": "Contenedor",
-    "indicador": "dentro",
-    "explicacion": "La jornada es un DÍA; con el cinco romano (V) dentro: DI·V·A = DIVA."
+    "indicador": "que guarda",
+    "explicacion": "DÍA guarda la V, cinco en romanos, y queda DI·V·A, la estrella del espectáculo."
   },
   {
-    "pista": "Satélite que asoma en las cabezas de las urbes nocturnas antiguas",
+    "pista": "Satélite que asoma al frente de las urbes nocturnas antiguas",
     "respuesta": "LUNA",
     "definicion": [
       "Satélite"
     ],
     "tipo": "Selector",
-    "indicador": "cabezas de",
-    "explicacion": "Las cabezas (iniciales) de «Las Urbes Nocturnas Antiguas» forman LUNA, un satélite."
+    "indicador": "al frente de",
+    "explicacion": "Al frente de Las Urbes Nocturnas Antiguas están sus iniciales, LUNA, el satélite."
   },
   {
-    "pista": "Juguete donde llevas el reloj",
+    "pista": "Tiene el pelo de lana y te toma el pulso",
     "respuesta": "MUÑECA",
     "definicion": [
-      "Juguete",
-      "donde llevas el reloj"
+      "Tiene el pelo de lana",
+      "te toma el pulso"
     ],
     "tipo": "Doble definición",
     "indicador": "",
-    "explicacion": "Una MUÑECA es un juguete y también la parte del brazo donde llevas el reloj."
+    "explicacion": "La MUÑECA de trapo tiene el pelo de lana, y en la MUÑECA te toman el pulso."
   },
   {
     "pista": "Cines con lío alborotado piden mutismo",
@@ -231,54 +231,54 @@ const PISTAS = [
     "explicacion": "Las letras de CINES + LÍO, alborotadas, forman SILENCIO, mutismo."
   },
   {
-    "pista": "Agarra la infusión y madura un fruto rojo",
+    "pista": "Bebe la infusión el rojo de la ensalada",
     "respuesta": "TOMATE",
     "definicion": [
-      "un fruto rojo"
+      "el rojo de la ensalada"
     ],
     "tipo": "Charada",
     "indicador": "",
-    "explicacion": "TOMA (agarra) + TÉ (la infusión) = TOMATE, un fruto rojo."
+    "explicacion": "Bebe es TOMA y la infusión, un TÉ. TOMA + TE = TOMATE, el rojo de la ensalada."
   },
   {
-    "pista": "Un estrecho y una nota forman al bribón",
+    "pista": "La vía de Panamá con una nota, sinvergüenza",
     "respuesta": "CANALLA",
     "definicion": [
-      "bribón"
+      "sinvergüenza"
     ],
     "tipo": "Charada",
     "indicador": "",
-    "explicacion": "Un estrecho de mar es un CANAL; la nota es LA. CANAL + LA = CANALLA, un bribón."
+    "explicacion": "La vía de Panamá es su CANAL, y la nota, LA. CANAL + LA = CANALLA, un sinvergüenza."
   },
   {
-    "pista": "Escopeta junto a la corriente descansa en el mueble",
+    "pista": "Fusil junto a una corriente, donde cuelgan las camisas",
     "respuesta": "ARMARIO",
     "definicion": [
-      "mueble"
+      "donde cuelgan las camisas"
     ],
     "tipo": "Charada",
     "indicador": "",
-    "explicacion": "Una escopeta es un ARMA y una corriente de agua es un RÍO. ARMA + RÍO = ARMARIO."
+    "explicacion": "El fusil es un ARMA y la corriente, un RÍO. ARMA + RIO = ARMARIO, donde cuelgan las camisas."
   },
   {
-    "pista": "El mar sirve infusiones un día de la semana",
+    "pista": "Día de no casarse ni embarcarse, océano con infusiones",
     "respuesta": "MARTES",
     "definicion": [
-      "un día de la semana"
+      "Día de no casarse ni embarcarse"
     ],
     "tipo": "Charada",
     "indicador": "",
-    "explicacion": "MAR + TÉS (infusiones) = MARTES, un día de la semana."
+    "explicacion": "El océano es el MAR y las infusiones, TÉS. MAR + TES = MARTES, el día en que ni te cases ni te embarques."
   },
   {
-    "pista": "Por cada ola se esconde la ballena asesina",
+    "pista": "Asesina del mar, oculta por cada ola",
     "respuesta": "ORCA",
     "definicion": [
-      "la ballena asesina"
+      "Asesina del mar"
     ],
     "tipo": "Palabra escondida",
-    "indicador": "se esconde",
-    "explicacion": "Dentro de «p-OR CA-da» se esconde ORCA, la ballena asesina."
+    "indicador": "oculta",
+    "explicacion": "Oculta en pOR CAda está ORCA, la asesina del mar."
   },
   {
     "pista": "Viene en remolino lo que cae blanco del cielo",
@@ -291,14 +291,14 @@ const PISTAS = [
     "explicacion": "Las letras de VIENE, en remolino, forman NIEVE."
   },
   {
-    "pista": "La primera de amor llega a Roma convertida en perfume",
+    "pista": "La primera de amor en la ciudad eterna deja una fragancia",
     "respuesta": "AROMA",
     "definicion": [
-      "perfume"
+      "una fragancia"
     ],
     "tipo": "Selector + charada",
     "indicador": "La primera de",
-    "explicacion": "La primera letra de «amor» es A; con ROMA forma AROMA, un perfume."
+    "explicacion": "La primera de «amor» es A y la ciudad eterna, ROMA. A + ROMA = AROMA, una fragancia."
   },
   {
     "pista": "La pera guarda cincuenta en la joya del mar",
@@ -322,46 +322,46 @@ const PISTAS = [
     "explicacion": "CORAL es lo propio del coro y también lo que forma los arrecifes."
   },
   {
-    "pista": "Cabeza de pez con lata brilla como metal precioso",
+    "pista": "Segundo puesto, cabeza de pez en la conserva",
     "respuesta": "PLATA",
     "definicion": [
-      "metal precioso"
+      "Segundo puesto"
     ],
     "tipo": "Selector + charada",
-    "indicador": "Cabeza de",
-    "explicacion": "La cabeza de «pez» es P; con LATA forma PLATA, un metal precioso."
+    "indicador": "cabeza de",
+    "explicacion": "La cabeza de «pez» es P y la conserva viene en LATA. P + LATA = PLATA, el segundo puesto."
   },
   {
-    "pista": "Ilumina la noche y empuja el barco",
+    "pista": "Vigila al muerto y aprovecha el viento",
     "respuesta": "VELA",
     "definicion": [
-      "Ilumina la noche",
-      "empuja el barco"
+      "Vigila al muerto",
+      "aprovecha el viento"
     ],
     "tipo": "Doble definición",
     "indicador": "",
-    "explicacion": "Una VELA ilumina la noche y otra VELA empuja el barco."
+    "explicacion": "Quien VELA vigila al muerto, y la VELA del barco aprovecha el viento."
   },
   {
-    "pista": "Destello de tormenta en la rueda de la bicicleta",
+    "pista": "Cae de la tormenta y se cuenta en la rueda",
     "respuesta": "RAYO",
     "definicion": [
-      "Destello de tormenta",
-      "la rueda de la bicicleta"
+      "Cae de la tormenta",
+      "se cuenta en la rueda"
     ],
     "tipo": "Doble definición",
     "indicador": "",
-    "explicacion": "Un RAYO es el destello de la tormenta y también cada varilla de una rueda."
+    "explicacion": "El RAYO cae de la tormenta y los RAYOS se cuentan en la rueda de la bicicleta."
   },
   {
-    "pista": "Un galo guarda cincuenta y canta al amanecer",
+    "pista": "Un francés antiguo guarda cincuenta y despierta al pueblo",
     "respuesta": "GALLO",
     "definicion": [
-      "canta al amanecer"
+      "despierta al pueblo"
     ],
     "tipo": "Contenedor",
     "indicador": "guarda",
-    "explicacion": "GALO guarda la L (cincuenta romano): GAL·L·O = GALLO, que canta al amanecer."
+    "explicacion": "Un francés antiguo es un GALO; guarda la L, cincuenta en romanos, y queda GA·L·LO, el que despierta al pueblo."
   },
   {
     "pista": "Animal del desierto que trafica en la esquina",
@@ -406,24 +406,24 @@ const PISTAS = [
     "explicacion": "La MAREA sube y baja, y algo que «marea» aturde."
   },
   {
-    "pista": "Lodo junto al norte madura en un fruto ácido",
+    "pista": "Barro del río con norte, la fruta más ácida",
     "respuesta": "LIMON",
     "definicion": [
-      "un fruto ácido"
+      "la fruta más ácida"
     ],
     "tipo": "Charada",
     "indicador": "",
-    "explicacion": "LIMO (lodo) + N (norte) = LIMÓN, un fruto ácido."
+    "explicacion": "El barro del río es el LIMO; con la N del norte queda LIMÓN, la fruta más ácida."
   },
   {
-    "pista": "Teja y nota forman la cubierta de la casa",
+    "pista": "Pieza de barro y una nota, techo de la casa",
     "respuesta": "TEJADO",
     "definicion": [
-      "la cubierta de la casa"
+      "techo de la casa"
     ],
     "tipo": "Charada",
     "indicador": "",
-    "explicacion": "TEJA + DO (nota musical) = TEJADO, la cubierta de la casa."
+    "explicacion": "La pieza de barro es una TEJA y la nota, DO. TEJA + DO = TEJADO, el techo de la casa."
   },
   {
     "pista": "Un paso en falso y salta el anfibio",
@@ -446,14 +446,14 @@ const PISTAS = [
     "explicacion": "Las letras de ALGO, agitadas, forman LAGO, agua tranquila."
   },
   {
-    "pista": "Mi nota y él son lo dulce de la colmena",
+    "pista": "Lo mío con él endulza el té",
     "respuesta": "MIEL",
     "definicion": [
-      "lo dulce de la colmena"
+      "endulza el té"
     ],
     "tipo": "Charada",
     "indicador": "",
-    "explicacion": "MI (nota musical) + ÉL = MIEL, lo dulce de la colmena."
+    "explicacion": "Lo mío es MI; con ÉL queda MIEL, que endulza el té."
   },
   {
     "pista": "Cruza el río y alarga el fin de semana",
@@ -477,14 +477,14 @@ const PISTAS = [
     "explicacion": "Dentro de «c-ALMA» se esconde ALMA, el espíritu."
   },
   {
-    "pista": "Una orilla con negativa anuncia la estación del calor",
+    "pista": "La orilla se niega en la estación del calor",
     "respuesta": "VERANO",
     "definicion": [
       "la estación del calor"
     ],
     "tipo": "Charada",
     "indicador": "",
-    "explicacion": "VERA (orilla, como en «a la vera del río») + NO (negativa) = VERANO."
+    "explicacion": "La orilla es la VERA y negarse es decir NO. VERA + NO = VERANO, la estación del calor."
   },
   {
     "pista": "Del final asoma un cetáceo juguetón",
@@ -588,14 +588,14 @@ const PISTAS = [
     "explicacion": "CORAL derretido, con sus letras reordenadas, da CALOR, el bochorno."
   },
   {
-    "pista": "Noel se desordena y aparece el rey de la selva",
+    "pista": "Noel revuelto ruge en la sabana",
     "respuesta": "LEON",
     "definicion": [
-      "el rey de la selva"
+      "ruge en la sabana"
     ],
     "tipo": "Anagrama",
-    "indicador": "se desordena",
-    "explicacion": "NOEL desordenado da LEÓN, el rey de la selva."
+    "indicador": "revuelto",
+    "explicacion": "NOEL revuelto da LEÓN, el que ruge en la sabana."
   },
   {
     "pista": "Mira, desordenado, el eco del verso",
@@ -868,14 +868,14 @@ const PISTAS = [
     "explicacion": "RAMA al revés da AMAR, querer."
   },
   {
-    "pista": "Atar de vuelta al roedor",
+    "pista": "Amarrar, de vuelta, la que corre por la cloaca",
     "respuesta": "RATA",
     "definicion": [
-      "roedor"
+      "la que corre por la cloaca"
     ],
     "tipo": "Reverso",
     "indicador": "de vuelta",
-    "explicacion": "ATAR de vuelta, al revés, da RATA, un roedor."
+    "explicacion": "Amarrar es ATAR; de vuelta, al revés, da RATA, la que corre por la cloaca."
   },
   {
     "pista": "El raso se da la vuelta para atreverse",
@@ -998,14 +998,14 @@ const PISTAS = [
     "explicacion": "CAVO con la L (cincuenta en romanos) dentro da CA·L·VO, sin pelo."
   },
   {
-    "pista": "Estrella y cubo de juego forman al militar",
+    "pista": "Astro y lo que rueda en el cubilete, hombre de uniforme",
     "respuesta": "SOLDADO",
     "definicion": [
-      "al militar"
+      "hombre de uniforme"
     ],
     "tipo": "Charada",
     "indicador": "",
-    "explicacion": "Una estrella es el SOL y el cubo de juego, un DADO. SOL + DADO = SOLDADO, un militar."
+    "explicacion": "El astro es el SOL y en el cubilete rueda el DADO. SOL + DADO = SOLDADO, hombre de uniforme."
   },
   {
     "pista": "Gira la estrella y nace una flor amarilla",
@@ -1098,14 +1098,14 @@ const PISTAS = [
     "explicacion": "SÍ + MÍO = SIMIO, el primate."
   },
   {
-    "pista": "Una nota y el océano para amansar al potro",
+    "pista": "La primera de la escala junto al océano amansa al potro",
     "respuesta": "DOMAR",
     "definicion": [
-      "amansar al potro"
+      "amansa al potro"
     ],
     "tipo": "Charada",
     "indicador": "",
-    "explicacion": "La nota DO y el océano, el MAR. DO + MAR = DOMAR, amansar al potro."
+    "explicacion": "La primera nota de la escala es DO y el océano, el MAR. DO + MAR = DOMAR, amansar al potro."
   },
   {
     "pista": "Nota con papel de teatro, un engaño en el póker",
@@ -1128,14 +1128,14 @@ const PISTAS = [
     "explicacion": "RES + ACÁ = RESACA, el recuerdo amargo de la fiesta."
   },
   {
-    "pista": "Nota musical con un galo, lo que se envuelve en papel de fiesta",
+    "pista": "La segunda nota con un vecino de Astérix, envuelto para el cumpleaños",
     "respuesta": "REGALO",
     "definicion": [
-      "lo que se envuelve en papel de fiesta"
+      "envuelto para el cumpleaños"
     ],
     "tipo": "Charada",
     "indicador": "",
-    "explicacion": "La nota RE y un GALO, un antiguo francés. RE + GALO = REGALO."
+    "explicacion": "La segunda nota es RE y Astérix era GALO. RE + GALO = REGALO, lo que llega envuelto para el cumpleaños."
   },
   {
     "pista": "Brinca sierras el insecto verde del prado",
@@ -1308,114 +1308,111 @@ const PISTAS = [
     "explicacion": "CA es el símbolo del calcio; luego SÍ y NO. CA + SI + NO = CASINO, donde se apuesta en la ruleta."
   },
   {
-    "pista": "Asiento de la plaza que guarda tu dinero",
+    "pista": "Te sienta en la plaza y te presta",
     "respuesta": "BANCO",
     "definicion": [
-      "Asiento de la plaza",
-      "guarda tu dinero"
+      "Te sienta en la plaza",
+      "te presta"
     ],
     "tipo": "Doble definición",
     "indicador": "",
-    "explicacion": "Un BANCO es un asiento de la plaza y también la entidad que guarda tu dinero."
+    "explicacion": "El BANCO de la plaza te sienta y el BANCO te presta dinero."
   },
   {
-    "pista": "Mensaje en sobre que te trae el camarero",
+    "pista": "La degustación recibe al rey y llega por correo",
     "respuesta": "CARTA",
     "definicion": [
-      "Mensaje en sobre",
-      "te trae el camarero"
+      "llega por correo"
     ],
-    "tipo": "Doble definición",
-    "indicador": "",
-    "explicacion": "La CARTA es un mensaje en sobre y también el menú que te trae el camarero."
+    "tipo": "Contenedor",
+    "indicador": "recibe",
+    "explicacion": "La degustación es una CATA; recibe la R del rey, como en el ajedrez, y queda CA·R·TA, la que llega por correo."
   },
   {
-    "pista": "Corta la madera y se eleva en cordillera",
+    "pista": "Corta tablas y se eleva en Córdoba",
     "respuesta": "SIERRA",
     "definicion": [
-      "Corta la madera",
-      "se eleva en cordillera"
+      "Corta tablas",
+      "se eleva en Córdoba"
     ],
     "tipo": "Doble definición",
     "indicador": "",
-    "explicacion": "La SIERRA corta la madera y también es una cordillera."
+    "explicacion": "La SIERRA corta tablas y también se eleva en Córdoba."
   },
   {
-    "pista": "Felino que levanta el coche",
+    "pista": "Ronronea bajo el auto pinchado",
     "respuesta": "GATO",
     "definicion": [
-      "Felino",
-      "levanta el coche"
+      "Ronronea",
+      "bajo el auto pinchado"
     ],
     "tipo": "Doble definición",
     "indicador": "",
-    "explicacion": "El GATO es un felino y también la herramienta que levanta el coche."
+    "explicacion": "El GATO ronronea, y el GATO es lo que pones bajo el auto pinchado para levantarlo."
   },
   {
-    "pista": "Crece en la maceta y es un piso del edificio",
+    "pista": "El segundo puesto acoge al norte y crece en la maceta",
     "respuesta": "PLANTA",
     "definicion": [
-      "Crece en la maceta",
-      "un piso del edificio"
+      "crece en la maceta"
     ],
-    "tipo": "Doble definición",
-    "indicador": "",
-    "explicacion": "La PLANTA crece en la maceta y también es un piso del edificio."
+    "tipo": "Contenedor",
+    "indicador": "acoge",
+    "explicacion": "El segundo puesto es la PLATA; acoge la N del norte y queda PLA·N·TA, lo que crece en la maceta."
   },
   {
-    "pista": "Cae en otoño y corta en el cuchillo",
+    "pista": "Se cae del árbol y se escribe por ambas caras",
     "respuesta": "HOJA",
     "definicion": [
-      "Cae en otoño",
-      "corta en el cuchillo"
+      "Se cae del árbol",
+      "se escribe por ambas caras"
     ],
     "tipo": "Doble definición",
     "indicador": "",
-    "explicacion": "La HOJA cae en otoño y también es la parte del cuchillo que corta."
+    "explicacion": "La HOJA se cae del árbol y la de papel se escribe por ambas caras."
   },
   {
-    "pista": "Ciudad principal o dinero invertido",
+    "pista": "Como el pecado, la ciudad más importante",
     "respuesta": "CAPITAL",
     "definicion": [
-      "Ciudad principal",
-      "dinero invertido"
+      "Como el pecado",
+      "la ciudad más importante"
     ],
     "tipo": "Doble definición",
     "indicador": "",
-    "explicacion": "La CAPITAL es la ciudad principal y el CAPITAL es el dinero invertido."
+    "explicacion": "Un pecado es CAPITAL, y la CAPITAL es la ciudad más importante."
   },
   {
-    "pista": "Suena en la cocina y va del centro al borde",
+    "pista": "Hueso del brazo que transmite el partido",
     "respuesta": "RADIO",
     "definicion": [
-      "Suena en la cocina",
-      "va del centro al borde"
+      "Hueso del brazo",
+      "transmite el partido"
     ],
     "tipo": "Doble definición",
     "indicador": "",
-    "explicacion": "La RADIO suena en la cocina y el RADIO va del centro al borde del círculo."
+    "explicacion": "El RADIO es un hueso del brazo y la RADIO transmite el partido."
   },
   {
-    "pista": "Saliente de la costa y soldado con galones",
+    "pista": "Punta de Hornos y rango bajo del cuartel",
     "respuesta": "CABO",
     "definicion": [
-      "Saliente de la costa",
-      "soldado con galones"
+      "Punta de Hornos",
+      "rango bajo del cuartel"
     ],
     "tipo": "Doble definición",
     "indicador": "",
-    "explicacion": "Un CABO es un saliente de la costa y también un soldado con galones."
+    "explicacion": "El CABO de Hornos es una punta de tierra y el CABO es un rango bajo del cuartel."
   },
   {
-    "pista": "Montón de platos que alimenta la linterna",
+    "pista": "Oro en Perú, plata en Lima, bronce en Bolivia y la última de Colombia alimentan la linterna",
     "respuesta": "PILA",
     "definicion": [
-      "Montón de platos",
-      "alimenta la linterna"
+      "alimentan la linterna"
     ],
-    "tipo": "Doble definición",
-    "indicador": "",
-    "explicacion": "Una PILA es un montón de platos y también la batería que alimenta la linterna."
+    "tipo": "Selector",
+    "indicador": "Oro en",
+    "explicacion": "Oro, plata y bronce son los puestos 1, 2 y 3. La primera de Perú es P, la segunda de Lima es I, la tercera de Bolivia es L y la última de Colombia es A. PILA, lo que alimenta la linterna."
   },
   {
     "pista": "Capital del Perú que pule las uñas",
@@ -1429,15 +1426,14 @@ const PISTAS = [
     "explicacion": "LIMA es la capital del Perú y también la herramienta que pule las uñas."
   },
   {
-    "pista": "El párroco que sana la herida",
+    "pista": "Cobre con radio, el que da misa",
     "respuesta": "CURA",
     "definicion": [
-      "El párroco",
-      "sana la herida"
+      "el que da misa"
     ],
-    "tipo": "Doble definición",
+    "tipo": "Misceláneas",
     "indicador": "",
-    "explicacion": "El CURA es el párroco y CURA es lo que hace quien sana la herida."
+    "explicacion": "CU es el símbolo del cobre y RA, el del radio. CU + RA = CURA, el que da misa."
   },
   {
     "pista": "Traje de trabajo que trepa a los árboles",
@@ -1484,37 +1480,37 @@ const PISTAS = [
     "explicacion": "El MANGO es una fruta tropical y también la parte de la sartén que se agarra."
   },
   {
-    "pista": "Boca del pájaro en la cima nevada",
+    "pista": "Lo usa el tucán y también el minero",
     "respuesta": "PICO",
     "definicion": [
-      "Boca del pájaro",
-      "la cima nevada"
+      "Lo usa el tucán",
+      "el minero"
     ],
     "tipo": "Doble definición",
     "indicador": "",
-    "explicacion": "El PICO es la boca del pájaro y también la cima de una montaña."
+    "explicacion": "El tucán usa su PICO y el minero usa el PICO."
   },
   {
-    "pista": "Saborea en la boca y se habla en cada país",
+    "pista": "Muestra el niño travieso y se aprende en el extranjero",
     "respuesta": "LENGUA",
     "definicion": [
-      "Saborea en la boca",
-      "se habla en cada país"
+      "Muestra el niño travieso",
+      "se aprende en el extranjero"
     ],
     "tipo": "Doble definición",
     "indicador": "",
-    "explicacion": "La LENGUA saborea en la boca y también es el idioma que se habla en cada país."
+    "explicacion": "El niño travieso muestra la LENGUA, y una LENGUA se aprende en el extranjero."
   },
   {
-    "pista": "Fila de espera que el perro mueve",
+    "pista": "La mueve el perro y se forma en el banco",
     "respuesta": "COLA",
     "definicion": [
-      "Fila de espera",
-      "el perro mueve"
+      "La mueve el perro",
+      "se forma en el banco"
     ],
     "tipo": "Doble definición",
     "indicador": "",
-    "explicacion": "La COLA es una fila de espera y también lo que el perro mueve."
+    "explicacion": "El perro mueve la COLA, y en el banco se forma una COLA para esperar."
   },
   {
     "pista": "La del pescador conecta al mundo",
@@ -1550,15 +1546,14 @@ const PISTAS = [
     "explicacion": "La FALDA es una prenda y también la ladera del monte."
   },
   {
-    "pista": "Medida de la ropa esculpida en madera",
+    "pista": "La deforestación acoge cincuenta, medida de la ropa",
     "respuesta": "TALLA",
     "definicion": [
-      "Medida de la ropa",
-      "esculpida en madera"
+      "medida de la ropa"
     ],
-    "tipo": "Doble definición",
-    "indicador": "",
-    "explicacion": "La TALLA es la medida de la ropa y también una figura esculpida en madera."
+    "tipo": "Contenedor",
+    "indicador": "acoge",
+    "explicacion": "La deforestación es la TALA; acoge la L, cincuenta en romanos, y queda TA·L·LA, la medida de la ropa."
   },
   {
     "pista": "Norma que traza líneas rectas",
@@ -1594,26 +1589,25 @@ const PISTAS = [
     "explicacion": "Un MUELLE es un resorte y también el lugar donde atracan los barcos."
   },
   {
-    "pista": "Franja de tela que toca en la fiesta",
+    "pista": "Cruza el pecho del presidente y toca en el baile",
     "respuesta": "BANDA",
     "definicion": [
-      "Franja de tela",
-      "toca en la fiesta"
+      "Cruza el pecho del presidente",
+      "toca en el baile"
     ],
     "tipo": "Doble definición",
     "indicador": "",
-    "explicacion": "La BANDA es una franja de tela y también el grupo que toca en la fiesta."
+    "explicacion": "La BANDA presidencial cruza el pecho del presidente y la BANDA toca en el baile."
   },
   {
-    "pista": "Vía de agua que cambias con el control",
+    "pista": "Pelo blanco con cincuenta, vía de agua",
     "respuesta": "CANAL",
     "definicion": [
-      "Vía de agua",
-      "cambias con el control"
+      "vía de agua"
     ],
-    "tipo": "Doble definición",
+    "tipo": "Charada",
     "indicador": "",
-    "explicacion": "Un CANAL es una vía de agua y también lo que cambias con el control de la tele."
+    "explicacion": "Un pelo blanco es una CANA y cincuenta en romanos es L. CANA + L = CANAL, una vía de agua."
   },
   {
     "pista": "Viste al ave y escribe la carta",
@@ -1638,15 +1632,15 @@ const PISTAS = [
     "explicacion": "La ESTACIÓN del tren y la ESTACIÓN del año, que dura tres meses."
   },
   {
-    "pista": "Capa de pintura con cinco dedos",
+    "pista": "Se estrecha al saludar y se da con la brocha",
     "respuesta": "MANO",
     "definicion": [
-      "Capa de pintura",
-      "cinco dedos"
+      "Se estrecha al saludar",
+      "se da con la brocha"
     ],
     "tipo": "Doble definición",
     "indicador": "",
-    "explicacion": "Una MANO es una capa de pintura y también lo que tiene cinco dedos."
+    "explicacion": "La MANO se estrecha al saludar, y una MANO de pintura se da con la brocha."
   },
   {
     "pista": "Fideos que llenan la cartera",
