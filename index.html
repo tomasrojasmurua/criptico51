@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Críptico 51</title>
+  <meta name="description" content="Una pista críptica nueva cada día, en español. Gratis y sin cuenta.">
+  <meta name="theme-color" content="#fafaf8">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23222'/%3E%3Ctext x='16' y='22' font-family='Georgia' font-size='16' font-weight='bold' fill='%23fafaf8' text-anchor='middle'%3E51%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="cabecera">
+    <a class="logo" href="#hoy" aria-label="Críptico 51, inicio"><span>51</span> Críptico</a>
+    <nav class="menu" aria-label="Secciones">
+      <a href="#hoy" data-vista="hoy">Hoy</a>
+      <a href="#archivo" data-vista="archivo">Archivo</a>
+      <a href="#aprender" data-vista="aprender">Aprender</a>
+      <a href="#estadisticas" data-vista="estadisticas">Estadísticas</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Juego -->
+    <section id="vista-juego" class="vista">
+      <div class="meta">
+        <span id="numero"></span>
+        <span id="racha-mini"></span>
+      </div>
+
+      <p id="pista" class="pista"></p>
+
+      <div id="casillas" class="casillas" role="group" aria-label="Respuesta"></div>
+
+      <p id="mensaje" class="mensaje" role="status" aria-live="polite"></p>
+
+      <div class="acciones">
+        <button id="btn-comprobar" class="btn principal">Comprobar</button>
+        <button id="btn-pista" class="btn">Pista</button>
+        <button id="btn-borrar" class="btn secundario">Borrar</button>
+      </div>
+
+      <ol id="ayudas" class="ayudas"></ol>
+
+      <div id="final" class="final" hidden>
+        <p id="final-texto"></p>
+        <p id="final-explicacion" class="explicacion"></p>
+        <button id="btn-compartir" class="btn">Compartir resultado</button>
+      </div>
+
+      <div id="teclado" class="teclado" aria-label="Teclado"></div>
+
+      <p class="cuenta">Nueva pista en <strong id="cuenta-atras">--:--:--</strong></p>
+      <p class="consejo">Usar pistas siempre está bien. Buscar sinónimos también: los crípticos son para aprender y divertirse.</p>
+    </section>
+
+    <!-- Archivo -->
+    <section id="vista-archivo" class="vista" hidden>
+      <h1>Archivo</h1>
+      <p class="intro">Todas las pistas publicadas hasta hoy. Juega las que te perdiste.</p>
+      <ul id="lista-archivo" class="lista-archivo"></ul>
+    </section>
+
+    <!-- Aprender -->
+    <section id="vista-aprender" class="vista texto" hidden>
+      <h1>Cómo se juega</h1>
+      <p>Una pista críptica tiene dos partes: una <mark class="def">definición</mark>, que está siempre al principio o al final, y un <strong>juego de palabras</strong> que lleva a la misma respuesta por otro camino. El número entre paréntesis indica cuántas letras tiene la respuesta.</p>
+      <p>El truco es no leer la pista como una frase normal: hay que encontrar dónde termina la definición y qué te pide hacer el resto.</p>
+
+      <h2>Tipos de pista</h2>
+      <dl class="tipos">
+        <dt>Anagrama</dt>
+        <dd>Se reordenan las letras de una palabra. Lo anuncian palabras como <em>revuelto, loco, alterado, trastocado</em>.<br>
+          <span class="ejemplo"><mark class="def">Religiosa</mark> con jamón <u>alocado</u> (5) → MONJA</span></dd>
+
+        <dt>Palabra escondida</dt>
+        <dd>La respuesta está escrita, letra a letra, dentro de la propia pista. Indicadores: <em>oculta en, dentro de, escondido en</em>.<br>
+          <span class="ejemplo"><mark class="def">Fruta</mark> <u>oculta en</u> la témpera (4) → PERA</span></dd>
+
+        <dt>Charada</dt>
+        <dd>Se suman piezas, una detrás de otra.<br>
+          <span class="ejemplo"><mark class="def">Flor</mark> que da vueltas al astro (7) → GIRA + SOL</span></dd>
+
+        <dt>Inversión</dt>
+        <dd>Una palabra se lee al revés. Indicadores: <em>vuelve, al revés, de regreso</em>.<br>
+          <span class="ejemplo"><mark class="def">Roedor</mark> que <u>vuelve</u> a amarrar (4) → ATAR al revés = RATA</span></dd>
+
+        <dt>Contenedor</dt>
+        <dd>Una palabra mete a otra dentro. Indicadores: <em>abraza, encierra, guarda, dentro de</em>.<br>
+          <span class="ejemplo"><mark class="def">Calzado</mark>: serpiente que <u>abraza</u> una te (4) → BO·T·A</span></dd>
+
+        <dt>Eliminación</dt>
+        <dd>A una palabra se le quita una letra o un trozo. Indicadores: <em>sin final, descabezado, sin corazón</em>.<br>
+          <span class="ejemplo">Unir en matrimonio <u>sin final</u> da <mark class="def">hogar</mark> (4) → CASAR − R</span></dd>
+
+        <dt>Homófono</dt>
+        <dd>La respuesta suena como otra palabra. Indicadores: <em>suena como, se oye, dicen</em>.<br>
+          <span class="ejemplo"><mark class="def">Saludo</mark> que <u>suena como</u> una onda del mar (4) → OLA / HOLA</span></dd>
+
+        <dt>Acróstico</dt>
+        <dd>Se toman las primeras (o últimas) letras de varias palabras.<br>
+          <span class="ejemplo"><mark class="def">Tranquilidad</mark> <u>al comienzo de</u> Pedro, Ana y Zoé (3) → PAZ</span></dd>
+
+        <dt>Doble definición</dt>
+        <dd>Dos definiciones distintas de la misma palabra, una junto a otra.<br>
+          <span class="ejemplo"><mark class="def">Felino</mark> que <mark class="def">levanta coches</mark> (4) → GATO</span></dd>
+      </dl>
+
+      <h2>Ayudas</h2>
+      <p>El botón <strong>Pista</strong> te da ayudas progresivas: el tipo de pista, la definición resaltada, el indicador, la primera letra y, por último, la solución. Resolver sin ayudas suma estrellas, pero lo importante es aprender.</p>
+    </section>
+
+    <!-- Estadísticas -->
+    <section id="vista-estadisticas" class="vista" hidden>
+      <h1>Estadísticas</h1>
+      <div class="cifras">
+        <div><strong id="est-jugadas">0</strong><span>Jugadas</span></div>
+        <div><strong id="est-resueltas">0</strong><span>Resueltas</span></div>
+        <div><strong id="est-racha">0</strong><span>Racha actual</span></div>
+        <div><strong id="est-mejor">0</strong><span>Mejor racha</span></div>
+      </div>
+      <h2>Ayudas usadas al resolver</h2>
+      <div id="est-barras" class="barras"></div>
+      <p class="nota">Tus datos se guardan solo en este navegador.</p>
+    </section>
+  </main>
+
+  <footer class="pie">Críptico 51 · Inspirado en <a href="https://minicriptico.com/" rel="noopener">Mini Críptico</a></footer>
+
+  <script src="pistas.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
