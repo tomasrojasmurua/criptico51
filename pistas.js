@@ -2,26 +2,30 @@
 // - respuesta: en mayúsculas, sin tildes (Ñ permitida). Varias palabras separadas por espacio.
 // - definicion: fragmentos exactos de la pista que funcionan como definición
 // - tipo: mecanismo críptico (ver sección Aprender)
-// - indicador: fragmento exacto que señala el mecanismo (opcional)
+// - indicador: fragmento exacto que señala el mecanismo, o una lista si hay varios (opcional)
 // - relleno: fragmentos exactos de la pista con las letras o palabras que se manipulan (vacío en dobles definiciones)
+// - notas: opcional, texto propio para la tarjeta de una pieza ({indicador, relleno, definicion})
 // - explicacion: cómo se resuelve
 // - dificultad: de 1 (fácil) a 5 (muy difícil); el multijugador filtra por este valor
 const FECHA_INICIO = "2026-10-11";
 
 const PISTAS = [
   {
-    "pista": "Papá a medias sube la colina y suelta la mensajera de la paz",
+    "pista": "Papá a medias sobre la colina, la mensajera de la paz.",
     "respuesta": "PALOMA",
     "definicion": [
       "la mensajera de la paz"
     ],
     "tipo": "Charada",
-    "indicador": "a medias",
+    "indicador": [
+      "a medias",
+      "sobre"
+    ],
     "relleno": [
       "Papá",
       "la colina"
     ],
-    "explicacion": "Papá a medias es PA y la colina, una LOMA. PA + LOMA = PALOMA, la mensajera de la paz.",
+    "explicacion": "Papá a medias es PA y, sobre él, la colina: LOMA. PA + LOMA = PALOMA, la mensajera de la paz.",
     "dificultad": 3
   },
   {
@@ -31,7 +35,7 @@ const PISTAS = [
       "La que da leche"
     ],
     "tipo": "Charada",
-    "indicador": "",
+    "indicador": "con",
     "relleno": [
       "se marcha",
       "el calcio"
@@ -40,36 +44,40 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Letras y él, tras el baile, son la que brilla en la alfombra roja",
+    "pista": "Letras y él, tras el baile, brilla en la alfombra roja.",
     "respuesta": "ESTRELLA",
     "definicion": [
-      "la que brilla en la alfombra roja"
+      "brilla en la alfombra roja"
     ],
     "tipo": "Anagrama",
-    "indicador": "tras el baile",
+    "indicador": [
+      "y",
+      "tras el baile"
+    ],
     "relleno": [
-      "Letras y él"
+      "Letras",
+      "él"
     ],
     "explicacion": "LETRAS + ÉL, tras el baile de sus letras, forman ESTRELLA, la que brilla en la alfombra roja.",
     "dificultad": 2
   },
   {
-    "pista": "Repollo que un caracol deja al perder la cara",
+    "pista": "Un caracol que perdió la cara es puro repollo.",
     "respuesta": "COL",
     "definicion": [
-      "Repollo"
+      "es puro repollo"
     ],
     "tipo": "Sustracción",
-    "indicador": "al perder",
+    "indicador": "que perdió",
     "relleno": [
-      "un caracol",
+      "Un caracol",
       "la cara"
     ],
-    "explicacion": "CARACOL al perder la CARA deja COL, un repollo.",
+    "explicacion": "CARACOL pierde la CARA y queda COL, un repollo.",
     "dificultad": 3
   },
   {
-    "pista": "Arde en la chimenea y escupe en los Andes",
+    "pista": "Arde en la chimenea; escupe en los Andes",
     "respuesta": "LLAMA",
     "definicion": [
       "Arde en la chimenea",
@@ -82,32 +90,32 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Aborrecimiento en retroceso, ya escuchado",
+    "pista": "El rencor da marcha atrás para escuchar.",
     "respuesta": "OIDO",
     "definicion": [
-      "escuchado"
+      "para escuchar"
     ],
     "tipo": "Reverso",
-    "indicador": "en retroceso",
+    "indicador": "da marcha atrás",
     "relleno": [
-      "Aborrecimiento"
+      "El rencor"
     ],
-    "explicacion": "El aborrecimiento es ODIO; en retroceso, al revés, da OÍDO, escuchado.",
+    "explicacion": "El rencor es el ODIO; dado vuelta queda OÍDO, el sentido para escuchar.",
     "dificultad": 4
   },
   {
-    "pista": "Apenas viento cuando el bufón encabeza la carcajada",
+    "pista": "El bufón encabeza la carcajada, apenas viento.",
     "respuesta": "BRISA",
     "definicion": [
-      "Apenas viento"
+      "apenas viento"
     ],
     "tipo": "Selector + charada",
     "indicador": "encabeza",
     "relleno": [
-      "el bufón",
+      "El bufón",
       "la carcajada"
     ],
-    "explicacion": "El bufón encabeza con su B la carcajada, RISA. B + RISA = BRISA, apenas viento.",
+    "explicacion": "La B del bufón va a la cabeza de la carcajada, RISA: BRISA, apenas viento.",
     "dificultad": 3
   },
   {
@@ -140,7 +148,7 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "Avanzo a pie por la ruta",
+    "pista": "Avanzo a pie; la ruta",
     "respuesta": "CAMINO",
     "definicion": [
       "Avanzo a pie",
@@ -153,7 +161,7 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "Se levanta para brindar en lo alto del árbol",
+    "pista": "Se levanta para brindar; lo alto del árbol",
     "respuesta": "COPA",
     "definicion": [
       "Se levanta para brindar",
@@ -166,16 +174,16 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Fe y anillo para un novio poco agraciado",
+    "pista": "Fe y un anillo, poco agraciado.",
     "respuesta": "FEO",
     "definicion": [
       "poco agraciado"
     ],
     "tipo": "Charada",
-    "indicador": "",
+    "indicador": "y",
     "relleno": [
       "Fe",
-      "anillo"
+      "un anillo"
     ],
     "explicacion": "FE y un anillo, que por su forma es la O. FE + O = FEO, poco agraciado.",
     "dificultad": 2
@@ -195,13 +203,13 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Una nota con los años vividos, falta de compañía",
+    "pista": "Una nota con los años vividos en falta de compañía.",
     "respuesta": "SOLEDAD",
     "definicion": [
-      "falta de compañía"
+      "en falta de compañía"
     ],
     "tipo": "Charada",
-    "indicador": "",
+    "indicador": "con",
     "relleno": [
       "Una nota",
       "los años vividos"
@@ -210,10 +218,10 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "La bestia, en retirada, deja una chapa delgada",
+    "pista": "La bestia, en retirada, en una chapa delgada.",
     "respuesta": "LAMINA",
     "definicion": [
-      "una chapa delgada"
+      "en una chapa delgada"
     ],
     "tipo": "Reverso",
     "indicador": "en retirada",
@@ -224,13 +232,13 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "Bebida pirata de un crustáceo que se quedó sin cama",
+    "pista": "Bebida pirata, un crustáceo que se quedó sin cama.",
     "respuesta": "RON",
     "definicion": [
       "Bebida pirata"
     ],
     "tipo": "Sustracción",
-    "indicador": "se quedó sin",
+    "indicador": "que se quedó sin",
     "relleno": [
       "un crustáceo",
       "cama"
@@ -239,22 +247,21 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "Circula por el tronco la que, según dicen, todo lo sabe",
+    "pista": "Circula por el tronco; según dicen, la que todo lo sabe",
     "respuesta": "SAVIA",
     "definicion": [
       "Circula por el tronco"
     ],
     "tipo": "Onomatopeya",
-    "indicador": "según dicen",
+    "indicador": "según dicen,",
     "relleno": [
-      "la que",
-      "todo lo sabe"
+      "la que todo lo sabe"
     ],
     "explicacion": "La SAVIA circula por el tronco y, dicha en voz alta, suena igual que SABIA, la que todo lo sabe.",
     "dificultad": 3
   },
   {
-    "pista": "Aun así quedó libre de incautación",
+    "pista": "Aun así, libre de incautación",
     "respuesta": "SIN EMBARGO",
     "definicion": [
       "Aun así"
@@ -262,16 +269,17 @@ const PISTAS = [
     "tipo": "Charada",
     "indicador": "",
     "relleno": [
-      "quedó libre de incautación"
+      "libre de",
+      "incautación"
     ],
     "explicacion": "«Libre de» es SIN y una incautación es un EMBARGO: SIN EMBARGO, es decir, aun así.",
     "dificultad": 3
   },
   {
-    "pista": "Un día que guarda cinco, estrella del espectáculo",
+    "pista": "Un día que guarda cinco a la estrella del espectáculo.",
     "respuesta": "DIVA",
     "definicion": [
-      "estrella del espectáculo"
+      "a la estrella del espectáculo"
     ],
     "tipo": "Contenedor",
     "indicador": "que guarda",
@@ -283,10 +291,10 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "Las urbes nocturnas antiguas, en primera fila, ven el satélite",
+    "pista": "Las urbes nocturnas antiguas, en primera fila, bajo el satélite.",
     "respuesta": "LUNA",
     "definicion": [
-      "el satélite"
+      "bajo el satélite"
     ],
     "tipo": "Selector",
     "indicador": "en primera fila",
@@ -297,7 +305,7 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "Tiene el pelo de lana y te toma el pulso",
+    "pista": "Tiene el pelo de lana; te toma el pulso",
     "respuesta": "MUÑECA",
     "definicion": [
       "Tiene el pelo de lana",
@@ -310,15 +318,19 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Cines y lío, en plena trifulca, piden mutismo",
+    "pista": "Cines y lío, en plena trifulca, con mutismo.",
     "respuesta": "SILENCIO",
     "definicion": [
-      "mutismo"
+      "con mutismo"
     ],
     "tipo": "Anagrama",
-    "indicador": "en plena trifulca",
+    "indicador": [
+      "y",
+      "en plena trifulca"
+    ],
     "relleno": [
-      "Cines y lío"
+      "Cines",
+      "lío"
     ],
     "explicacion": "Las letras de CINES + LÍO, en plena trifulca, forman SILENCIO, mutismo.",
     "dificultad": 2
@@ -354,13 +366,13 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "Fusil junto a una corriente, donde cuelgan las camisas",
+    "pista": "Fusil junto a una corriente, donde cuelgan las camisas.",
     "respuesta": "ARMARIO",
     "definicion": [
       "donde cuelgan las camisas"
     ],
     "tipo": "Charada",
-    "indicador": "",
+    "indicador": "junto a",
     "relleno": [
       "Fusil",
       "una corriente"
@@ -369,13 +381,13 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Día de no casarse ni embarcarse, océano con infusiones",
+    "pista": "Día de no casarse ni embarcarse, océano con infusiones.",
     "respuesta": "MARTES",
     "definicion": [
       "Día de no casarse ni embarcarse"
     ],
     "tipo": "Charada",
-    "indicador": "",
+    "indicador": "con",
     "relleno": [
       "océano",
       "infusiones"
@@ -412,10 +424,10 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "Amor encabeza la ciudad eterna y deja una fragancia",
+    "pista": "Amor encabeza la ciudad eterna con una fragancia.",
     "respuesta": "AROMA",
     "definicion": [
-      "una fragancia"
+      "con una fragancia"
     ],
     "tipo": "Selector + charada",
     "indicador": "encabeza",
@@ -427,13 +439,13 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "La pera abraza a cincuenta y nace la joya del mar",
+    "pista": "La pera abraza a cincuenta, la joya del mar.",
     "respuesta": "PERLA",
     "definicion": [
       "la joya del mar"
     ],
     "tipo": "Contenedor",
-    "indicador": "abraza",
+    "indicador": "abraza a",
     "relleno": [
       "La pera",
       "cincuenta"
@@ -442,7 +454,7 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Propio del coro y nacido en el arrecife",
+    "pista": "Propio del coro, nacido en el arrecife",
     "respuesta": "CORAL",
     "definicion": [
       "Propio del coro",
@@ -455,7 +467,7 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "Segundo puesto para el pez que encabeza la conserva",
+    "pista": "Segundo puesto, el pez encabeza la conserva.",
     "respuesta": "PLATA",
     "definicion": [
       "Segundo puesto"
@@ -470,7 +482,7 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "Vigila al muerto y aprovecha el viento",
+    "pista": "Vigila al muerto; aprovecha el viento",
     "respuesta": "VELA",
     "definicion": [
       "Vigila al muerto",
@@ -483,7 +495,7 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Cae de la tormenta y se cuenta en la rueda",
+    "pista": "Cae de la tormenta; se cuenta en la rueda",
     "respuesta": "RAYO",
     "definicion": [
       "Cae de la tormenta",
@@ -496,7 +508,7 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "Canta al amanecer y se le escapa al tenor",
+    "pista": "Canta al amanecer; se le escapa al tenor",
     "respuesta": "GALLO",
     "definicion": [
       "Canta al amanecer",
@@ -509,7 +521,7 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "Animal del desierto que trafica en la esquina",
+    "pista": "Animal del desierto; trafica en la esquina",
     "respuesta": "CAMELLO",
     "definicion": [
       "Animal del desierto",
@@ -522,10 +534,10 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "Un grito destemplado da el cereal dorado",
+    "pista": "Un grito destemplado por el cereal dorado.",
     "respuesta": "TRIGO",
     "definicion": [
-      "el cereal dorado"
+      "por el cereal dorado"
     ],
     "tipo": "Anagrama",
     "indicador": "destemplado",
@@ -550,7 +562,7 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Sube y baja y además aturde",
+    "pista": "Sube y baja; aturde",
     "respuesta": "MAREA",
     "definicion": [
       "Sube y baja",
@@ -563,13 +575,13 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "Barro del río con nitrógeno, la fruta más ácida",
+    "pista": "Barro del río con nitrógeno en la fruta más ácida.",
     "respuesta": "LIMON",
     "definicion": [
-      "la fruta más ácida"
+      "en la fruta más ácida"
     ],
     "tipo": "Charada",
-    "indicador": "",
+    "indicador": "con",
     "relleno": [
       "Barro del río",
       "nitrógeno"
@@ -578,13 +590,13 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Pieza de barro y una nota, techo de la casa",
+    "pista": "Pieza de barro y una nota en el techo de la casa.",
     "respuesta": "TEJADO",
     "definicion": [
-      "techo de la casa"
+      "en el techo de la casa"
     ],
     "tipo": "Charada",
-    "indicador": "",
+    "indicador": "y",
     "relleno": [
       "Pieza de barro",
       "una nota"
@@ -593,24 +605,24 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Un paso en falso y salta el anfibio",
+    "pista": "Un paso en falso del anfibio.",
     "respuesta": "SAPO",
     "definicion": [
-      "el anfibio"
+      "del anfibio"
     ],
     "tipo": "Anagrama",
     "indicador": "en falso",
     "relleno": [
       "Un paso"
     ],
-    "explicacion": "Las letras de PASO, puestas «en falso», forman SAPO, un anfibio.",
+    "explicacion": "Las letras de PASO, en falso, forman SAPO, el anfibio.",
     "dificultad": 2
   },
   {
-    "pista": "Algo, tras la tormenta, es agua tranquila",
+    "pista": "Algo, tras la tormenta, es agua tranquila.",
     "respuesta": "LAGO",
     "definicion": [
-      "agua tranquila"
+      "es agua tranquila"
     ],
     "tipo": "Anagrama",
     "indicador": "tras la tormenta",
@@ -635,7 +647,7 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Cruza el río y alarga el fin de semana",
+    "pista": "Cruza el río; alarga el fin de semana",
     "respuesta": "PUENTE",
     "definicion": [
       "Cruza el río",
@@ -656,16 +668,16 @@ const PISTAS = [
     "tipo": "Palabra escondida",
     "indicador": "se esconde",
     "relleno": [
-      "la calma"
+      "En la calma"
     ],
     "explicacion": "En cALMA se esconde ALMA, el espíritu.",
     "dificultad": 1
   },
   {
-    "pista": "La orilla se niega en la estación del calor",
+    "pista": "La orilla se niega en la estación del calor.",
     "respuesta": "VERANO",
     "definicion": [
-      "la estación del calor"
+      "en la estación del calor"
     ],
     "tipo": "Charada",
     "indicador": "",
@@ -677,7 +689,7 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Heredero del trono que salta entre las olas",
+    "pista": "Heredero del trono; salta entre las olas",
     "respuesta": "DELFIN",
     "definicion": [
       "Heredero del trono",
@@ -690,7 +702,7 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Fruta prohibida que ocupa una cuadra",
+    "pista": "Fruta prohibida; ocupa una cuadra",
     "respuesta": "MANZANA",
     "definicion": [
       "Fruta prohibida",
@@ -703,13 +715,13 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "El telón cae revuelto y pausado",
+    "pista": "El telón cae revuelto, pausado",
     "respuesta": "LENTO",
     "definicion": [
       "pausado"
     ],
     "tipo": "Anagrama",
-    "indicador": "revuelto",
+    "indicador": "cae revuelto",
     "relleno": [
       "El telón"
     ],
@@ -717,15 +729,18 @@ const PISTAS = [
     "dificultad": 1
   },
   {
-    "pista": "Sal y usted, en corto, brindan por el bienestar",
+    "pista": "Bienestar, sal y usted, en corto.",
     "respuesta": "SALUD",
     "definicion": [
-      "el bienestar"
+      "Bienestar"
     ],
     "tipo": "Misceláneas",
-    "indicador": "en corto",
+    "indicador": [
+      "y",
+      "en corto"
+    ],
     "relleno": [
-      "Sal",
+      "sal",
       "usted"
     ],
     "explicacion": "SAL + UD (usted abreviado) = SALUD, el bienestar.",
@@ -738,7 +753,7 @@ const PISTAS = [
       "pinta el cielo tras la lluvia"
     ],
     "tipo": "Charada",
-    "indicador": "",
+    "indicador": "junto a",
     "relleno": [
       "Arma de arquero",
       "parte del ojo"
@@ -747,35 +762,35 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "Lo que perdía, sin rumbo, se volvió roca",
+    "pista": "Perdía, sin rumbo, la roca",
     "respuesta": "PIEDRA",
     "definicion": [
-      "roca"
+      "la roca"
     ],
     "tipo": "Anagrama",
     "indicador": "sin rumbo",
     "relleno": [
-      "Lo que perdía"
+      "Perdía"
     ],
     "explicacion": "Las letras de PERDÍA, sin rumbo, se reordenan en PIEDRA, una roca.",
     "dificultad": 2
   },
   {
-    "pista": "Religiosa salida de un jamón mal cortado",
+    "pista": "Un jamón mal cortado escandaliza a la religiosa.",
     "respuesta": "MONJA",
     "definicion": [
-      "Religiosa"
+      "escandaliza a la religiosa"
     ],
     "tipo": "Anagrama",
     "indicador": "mal cortado",
     "relleno": [
-      "un jamón"
+      "Un jamón"
     ],
     "explicacion": "Las letras de JAMÓN, mal cortadas, forman MONJA, una religiosa.",
     "dificultad": 2
   },
   {
-    "pista": "El que gruñe en la pocilga tiene un credo herético",
+    "pista": "El que gruñe en la pocilga, un credo herético",
     "respuesta": "CERDO",
     "definicion": [
       "El que gruñe en la pocilga"
@@ -789,27 +804,27 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "Tras un careo acalorado queda el metal templado",
+    "pista": "Un careo acalorado con el metal templado.",
     "respuesta": "ACERO",
     "definicion": [
-      "el metal templado"
+      "con el metal templado"
     ],
     "tipo": "Anagrama",
     "indicador": "acalorado",
     "relleno": [
-      "un careo"
+      "Un careo"
     ],
     "explicacion": "Las letras de CAREO, acaloradas, forman ACERO, el metal templado.",
     "dificultad": 2
   },
   {
-    "pista": "Un coral se derrite en el bochorno",
+    "pista": "Un coral derretido por el bochorno.",
     "respuesta": "CALOR",
     "definicion": [
-      "el bochorno"
+      "por el bochorno"
     ],
     "tipo": "Anagrama",
-    "indicador": "se derrite",
+    "indicador": "derretido",
     "relleno": [
       "Un coral"
     ],
@@ -817,7 +832,7 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "Noel, perdido, es el que ruge en la sabana",
+    "pista": "Noel, perdido, el que ruge en la sabana.",
     "respuesta": "LEON",
     "definicion": [
       "el que ruge en la sabana"
@@ -845,10 +860,10 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "Unas bromas torcidas dejan una silueta oscura",
+    "pista": "Unas bromas torcidas en una silueta oscura.",
     "respuesta": "SOMBRA",
     "definicion": [
-      "una silueta oscura"
+      "en una silueta oscura"
     ],
     "tipo": "Anagrama",
     "indicador": "torcidas",
@@ -873,10 +888,10 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "El mero, enredado, es la pala del bote",
+    "pista": "El mero, enredado en la pala del bote.",
     "respuesta": "REMO",
     "definicion": [
-      "la pala del bote"
+      "en la pala del bote"
     ],
     "tipo": "Anagrama",
     "indicador": "enredado",
@@ -887,10 +902,10 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "Nacer, revuelto, da lo que se asa",
+    "pista": "Nacer, revuelto, es lo que se asa.",
     "respuesta": "CARNE",
     "definicion": [
-      "lo que se asa"
+      "es lo que se asa"
     ],
     "tipo": "Anagrama",
     "indicador": "revuelto",
@@ -901,10 +916,10 @@ const PISTAS = [
     "dificultad": 1
   },
   {
-    "pista": "Pardo, despeinado, es un campo verde",
+    "pista": "Pardo, despeinado, en un campo verde.",
     "respuesta": "PRADO",
     "definicion": [
-      "un campo verde"
+      "en un campo verde"
     ],
     "tipo": "Anagrama",
     "indicador": "despeinado",
@@ -929,10 +944,10 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "Una mora aplastada se vuelve ramillete",
+    "pista": "Una mora aplastada en el ramillete.",
     "respuesta": "RAMO",
     "definicion": [
-      "ramillete"
+      "en el ramillete"
     ],
     "tipo": "Anagrama",
     "indicador": "aplastada",
@@ -985,18 +1000,18 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "El astro rey se cuela entre los olivos",
+    "pista": "Del 5 al 7 del girasol, lo que él sigue.",
     "respuesta": "SOL",
     "definicion": [
-      "El astro rey"
+      "lo que él sigue"
     ],
-    "tipo": "Palabra escondida",
-    "indicador": "se cuela entre",
+    "tipo": "Selector",
+    "indicador": "Del 5 al 7",
     "relleno": [
-      "los olivos"
+      "del girasol"
     ],
-    "explicacion": "Entre loS OLivos se cuela SOL, el astro rey.",
-    "dificultad": 2
+    "explicacion": "Las letras 5 a 7 de GIRASOL son S, O, L: SOL, justo lo que el girasol sigue con la cara.",
+    "dificultad": 3
   },
   {
     "pista": "Anís, lavanda y en medio una tierra rodeada de mar",
@@ -1005,7 +1020,7 @@ const PISTAS = [
       "una tierra rodeada de mar"
     ],
     "tipo": "Palabra escondida",
-    "indicador": "en medio",
+    "indicador": "y en medio",
     "relleno": [
       "Anís, lavanda"
     ],
@@ -1063,7 +1078,7 @@ const PISTAS = [
     "tipo": "Palabra escondida",
     "indicador": "duerme",
     "relleno": [
-      "el mar, parece"
+      "En el mar, parece,"
     ],
     "explicacion": "En mAR, PArece duerme ARPA, un instrumento de cuerdas.",
     "dificultad": 3
@@ -1167,10 +1182,10 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "El amor, de espaldas, mira la ciudad eterna",
+    "pista": "El amor, de espaldas, en la ciudad eterna.",
     "respuesta": "ROMA",
     "definicion": [
-      "la ciudad eterna"
+      "en la ciudad eterna"
     ],
     "tipo": "Reverso",
     "indicador": "de espaldas",
@@ -1195,13 +1210,13 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "La rama, puesta del revés, aprende a querer",
+    "pista": "La rama, puesta del revés, para querer.",
     "respuesta": "AMAR",
     "definicion": [
-      "querer"
+      "para querer"
     ],
     "tipo": "Reverso",
-    "indicador": "del revés",
+    "indicador": "puesta del revés",
     "relleno": [
       "La rama"
     ],
@@ -1212,7 +1227,7 @@ const PISTAS = [
     "pista": "Atar de vuelta al roedor",
     "respuesta": "RATA",
     "definicion": [
-      "roedor"
+      "al roedor"
     ],
     "tipo": "Reverso",
     "indicador": "de vuelta",
@@ -1237,10 +1252,10 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "Adán retrocede hasta el vacío",
+    "pista": "Adán retrocede hacia el vacío.",
     "respuesta": "NADA",
     "definicion": [
-      "el vacío"
+      "hacia el vacío"
     ],
     "tipo": "Reverso",
     "indicador": "retrocede",
@@ -1251,10 +1266,10 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "Eva mira hacia atrás y es pájaro",
+    "pista": "Eva mira hacia atrás a un pájaro.",
     "respuesta": "AVE",
     "definicion": [
-      "pájaro"
+      "a un pájaro"
     ],
     "tipo": "Reverso",
     "indicador": "mira hacia atrás",
@@ -1265,20 +1280,20 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "Que cabalgue por la montaña",
+    "pista": "Que se suba al caballo en el cerro.",
     "respuesta": "MONTE",
     "definicion": [
-      "Que cabalgue",
-      "la montaña"
+      "Que se suba al caballo",
+      "en el cerro"
     ],
     "tipo": "Doble definición",
     "indicador": "",
     "relleno": [],
-    "explicacion": "Que cabalgue es que MONTE, y un MONTE es una montaña.",
+    "explicacion": "«Que monte» es que se suba al caballo, y un MONTE es un cerro.",
     "dificultad": 4
   },
   {
-    "pista": "Abriga la cama y vuela bajo el mar",
+    "pista": "Abriga la cama; vuela bajo el mar",
     "respuesta": "MANTA",
     "definicion": [
       "Abriga la cama",
@@ -1291,10 +1306,10 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Nades en zigzag por un camino estrecho",
+    "pista": "Nades en zigzag por un camino estrecho.",
     "respuesta": "SENDA",
     "definicion": [
-      "un camino estrecho"
+      "por un camino estrecho"
     ],
     "tipo": "Anagrama",
     "indicador": "en zigzag",
@@ -1305,10 +1320,10 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "El mudo acoge al norte y gira el planeta",
+    "pista": "El mudo acoge al norte en el planeta.",
     "respuesta": "MUNDO",
     "definicion": [
-      "el planeta"
+      "en el planeta"
     ],
     "tipo": "Contenedor",
     "indicador": "acoge",
@@ -1334,13 +1349,16 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "Pita con el norte en el pecho y llena de color la pared",
+    "pista": "Pita con el norte en el pecho y llena de color la pared.",
     "respuesta": "PINTA",
     "definicion": [
-      "llena de color la pared"
+      "y llena de color la pared"
     ],
     "tipo": "Contenedor",
-    "indicador": "en el pecho",
+    "indicador": [
+      "con",
+      "en el pecho"
+    ],
     "relleno": [
       "Pita",
       "el norte"
@@ -1349,10 +1367,10 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Lo tosco se traga al uno y resuena el estrépito",
+    "pista": "Lo tosco se traga al uno con estrépito.",
     "respuesta": "RUIDO",
     "definicion": [
-      "el estrépito"
+      "con estrépito"
     ],
     "tipo": "Contenedor",
     "indicador": "se traga",
@@ -1364,7 +1382,7 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "Late en la muñeca y se gana sobre la mesa",
+    "pista": "Late en la muñeca; se gana sobre la mesa",
     "respuesta": "PULSO",
     "definicion": [
       "Late en la muñeca",
@@ -1377,7 +1395,7 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "Cavo hasta enterrar cincuenta y me quedo sin pelo",
+    "pista": "Cavo hasta enterrar cincuenta, sin pelo.",
     "respuesta": "CALVO",
     "definicion": [
       "sin pelo"
@@ -1392,13 +1410,13 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "Astro y lo que rueda en el cubilete, hombre de uniforme",
+    "pista": "Astro y lo que rueda en el cubilete, hombre de uniforme.",
     "respuesta": "SOLDADO",
     "definicion": [
       "hombre de uniforme"
     ],
     "tipo": "Charada",
-    "indicador": "",
+    "indicador": "y",
     "relleno": [
       "Astro",
       "lo que rueda en el cubilete"
@@ -1407,13 +1425,13 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Recorrido del músico con moneda peruana, la flor que busca la luz",
+    "pista": "Recorrido del músico con moneda peruana, la flor que busca la luz.",
     "respuesta": "GIRASOL",
     "definicion": [
       "la flor que busca la luz"
     ],
     "tipo": "Charada",
-    "indicador": "",
+    "indicador": "con",
     "relleno": [
       "Recorrido del músico",
       "moneda peruana"
@@ -1422,13 +1440,13 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "Un número irracional y un roedor forman al corsario",
+    "pista": "Un número irracional y un roedor, el corsario.",
     "respuesta": "PIRATA",
     "definicion": [
-      "al corsario"
+      "el corsario"
     ],
     "tipo": "Charada",
-    "indicador": "",
+    "indicador": "y",
     "relleno": [
       "Un número irracional",
       "un roedor"
@@ -1437,7 +1455,7 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Le teme al gato y lo arrastras por el escritorio",
+    "pista": "Le teme al gato; lo arrastras por el escritorio",
     "respuesta": "RATON",
     "definicion": [
       "Le teme al gato",
@@ -1456,7 +1474,7 @@ const PISTAS = [
       "lleva la casa a cuestas"
     ],
     "tipo": "Charada",
-    "indicador": "",
+    "indicador": "con",
     "relleno": [
       "Rostro",
       "repollo"
@@ -1465,13 +1483,13 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Repollo y mineral en bruto, hogar de las abejas",
+    "pista": "Repollo y mineral en bruto en el hogar de las abejas.",
     "respuesta": "COLMENA",
     "definicion": [
-      "hogar de las abejas"
+      "en el hogar de las abejas"
     ],
     "tipo": "Charada",
-    "indicador": "",
+    "indicador": "y",
     "relleno": [
       "Repollo",
       "mineral en bruto"
@@ -1480,10 +1498,10 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "El condimento se va y te rescata",
+    "pista": "El condimento se va y te rescata.",
     "respuesta": "SALVA",
     "definicion": [
-      "te rescata"
+      "y te rescata"
     ],
     "tipo": "Charada",
     "indicador": "",
@@ -1495,13 +1513,13 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "Pala de la barca con tela fina forma un torbellino",
+    "pista": "Pala de la barca con tela fina en un torbellino.",
     "respuesta": "REMOLINO",
     "definicion": [
-      "un torbellino"
+      "en un torbellino"
     ],
     "tipo": "Charada",
-    "indicador": "",
+    "indicador": "con",
     "relleno": [
       "Pala de la barca",
       "tela fina"
@@ -1510,7 +1528,7 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Rodea el cuadro y se pagaba en Berlín",
+    "pista": "Rodea el cuadro; se pagaba en Berlín",
     "respuesta": "MARCO",
     "definicion": [
       "Rodea el cuadro",
@@ -1523,43 +1541,43 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Primate que asiente y se adueña",
+    "pista": "Asiente y se adueña un primate.",
     "respuesta": "SIMIO",
     "definicion": [
-      "Primate"
+      "un primate"
     ],
     "tipo": "Charada",
-    "indicador": "",
+    "indicador": "y",
     "relleno": [
-      "asiente",
+      "Asiente",
       "se adueña"
     ],
     "explicacion": "Quien asiente dice SÍ y quien se adueña dice MÍO. SI + MIO = SIMIO, un primate.",
     "dificultad": 3
   },
   {
-    "pista": "Amansa al potro con quinientos delante de Omar",
+    "pista": "Quinientos delante de Omar para amansar al potro.",
     "respuesta": "DOMAR",
     "definicion": [
-      "Amansa al potro"
+      "para amansar al potro"
     ],
     "tipo": "Charada",
     "indicador": "delante de",
     "relleno": [
-      "quinientos",
+      "Quinientos",
       "Omar"
     ],
-    "explicacion": "Quinientos en números romanos es D, delante de OMAR. D + OMAR = DOMAR, amansar al potro.",
+    "explicacion": "Quinientos en números romanos es D; delante de OMAR forma DOMAR, amansar al potro.",
     "dificultad": 4
   },
   {
-    "pista": "Nota con papel de teatro, un engaño en el póker",
+    "pista": "Nota con papel de teatro, un engaño en el póker.",
     "respuesta": "FAROL",
     "definicion": [
       "un engaño en el póker"
     ],
     "tipo": "Charada",
-    "indicador": "",
+    "indicador": "con",
     "relleno": [
       "Nota",
       "papel de teatro"
@@ -1583,13 +1601,13 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "La segunda nota con un vecino de Astérix, envuelto para el cumpleaños",
+    "pista": "La segunda nota con un vecino de Astérix, envuelto para el cumpleaños.",
     "respuesta": "REGALO",
     "definicion": [
       "envuelto para el cumpleaños"
     ],
     "tipo": "Charada",
-    "indicador": "",
+    "indicador": "con",
     "relleno": [
       "La segunda nota",
       "un vecino de Astérix"
@@ -1628,10 +1646,10 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "Cruza el clima y queda un entretenimiento",
+    "pista": "Cruza el clima por un entretenimiento.",
     "respuesta": "PASATIEMPO",
     "definicion": [
-      "un entretenimiento"
+      "por un entretenimiento"
     ],
     "tipo": "Charada",
     "indicador": "",
@@ -1643,10 +1661,10 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "El océano a la aldea trae un prodigio",
+    "pista": "El océano a la aldea. ¡Qué prodigio!",
     "respuesta": "MARAVILLA",
     "definicion": [
-      "un prodigio"
+      "¡Qué prodigio!"
     ],
     "tipo": "Charada",
     "indicador": "",
@@ -1659,7 +1677,7 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Detiene a la estrella la sombrilla de playa",
+    "pista": "Detiene al astro la sombrilla de playa.",
     "respuesta": "PARASOL",
     "definicion": [
       "la sombrilla de playa"
@@ -1668,16 +1686,16 @@ const PISTAS = [
     "indicador": "",
     "relleno": [
       "Detiene",
-      "la estrella"
+      "al astro"
     ],
-    "explicacion": "Detiene es PARA y la estrella, el SOL. PARA + SOL = PARASOL, la sombrilla de playa.",
+    "explicacion": "Detiene es PARA y el astro, el SOL. PARA + SOL = PARASOL, la sombrilla de playa.",
     "dificultad": 2
   },
   {
-    "pista": "Lo malo se va y deja un color violáceo",
+    "pista": "Lo malo se va en un color violáceo.",
     "respuesta": "MALVA",
     "definicion": [
-      "un color violáceo"
+      "en un color violáceo"
     ],
     "tipo": "Charada",
     "indicador": "",
@@ -1689,18 +1707,18 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "Una taberna y el cobalto zarpan en la nave",
+    "pista": "Una taberna con cobalto sale a navegar.",
     "respuesta": "BARCO",
     "definicion": [
-      "la nave"
+      "sale a navegar"
     ],
     "tipo": "Charada",
-    "indicador": "",
+    "indicador": "con",
     "relleno": [
       "Una taberna",
-      "el cobalto"
+      "cobalto"
     ],
-    "explicacion": "La taberna es un BAR y CO es el símbolo del cobalto. BAR + CO = BARCO, la nave.",
+    "explicacion": "Una taberna es un BAR y el cobalto, CO. BAR + CO = BARCO, el que sale a navegar.",
     "dificultad": 3
   },
   {
@@ -1719,10 +1737,10 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "El pescado pierde la ese y queda la falta del confesionario",
+    "pista": "El pescado pierde la ese en la falta del confesionario.",
     "respuesta": "PECADO",
     "definicion": [
-      "la falta del confesionario"
+      "en la falta del confesionario"
     ],
     "tipo": "Sustracción",
     "indicador": "pierde",
@@ -1734,7 +1752,7 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Guerrero del Olimpo romano que brilla rojizo de noche",
+    "pista": "Guerrero del Olimpo romano; brilla rojizo de noche",
     "respuesta": "MARTE",
     "definicion": [
       "Guerrero del Olimpo romano",
@@ -1747,13 +1765,16 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "La tarde arranca con oro y embiste la bestia de la plaza",
+    "pista": "La tarde arranca con oro en la bestia de la plaza.",
     "respuesta": "TORO",
     "definicion": [
-      "la bestia de la plaza"
+      "en la bestia de la plaza"
     ],
     "tipo": "Selector + charada",
-    "indicador": "arranca",
+    "indicador": [
+      "arranca",
+      "con"
+    ],
     "relleno": [
       "La tarde",
       "oro"
@@ -1777,18 +1798,17 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "Negativa y un saludo porteño traen la oscuridad",
+    "pista": "Uno chequea a escondidas la oscuridad.",
     "respuesta": "NOCHE",
     "definicion": [
       "la oscuridad"
     ],
-    "tipo": "Charada",
-    "indicador": "",
+    "tipo": "Palabra escondida",
+    "indicador": "a escondidas",
     "relleno": [
-      "Negativa",
-      "un saludo porteño"
+      "Uno chequea"
     ],
-    "explicacion": "La negativa es NO y el saludo porteño, CHE. NO + CHE = NOCHE, la oscuridad.",
+    "explicacion": "A escondidas en uNO CHEquea está NOCHE, la oscuridad.",
     "dificultad": 2
   },
   {
@@ -1807,13 +1827,13 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Un millar y el artículo femenino recorren la medida inglesa",
+    "pista": "Un millar y el artículo femenino en la medida inglesa.",
     "respuesta": "MILLA",
     "definicion": [
-      "la medida inglesa"
+      "en la medida inglesa"
     ],
     "tipo": "Charada",
-    "indicador": "",
+    "indicador": "y",
     "relleno": [
       "Un millar",
       "el artículo femenino"
@@ -1828,7 +1848,7 @@ const PISTAS = [
       "celestial"
     ],
     "tipo": "Charada",
-    "indicador": "",
+    "indicador": "apenas",
     "relleno": [
       "Entregué",
       "llegó"
@@ -1837,13 +1857,16 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "Calcio con un sí y un no, donde se apuesta en la ruleta",
+    "pista": "Calcio con un sí y un no donde se apuesta en la ruleta.",
     "respuesta": "CASINO",
     "definicion": [
       "donde se apuesta en la ruleta"
     ],
     "tipo": "Misceláneas",
-    "indicador": "",
+    "indicador": [
+      "con",
+      "y"
+    ],
     "relleno": [
       "Calcio",
       "un sí",
@@ -1853,7 +1876,7 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "Te sienta en la plaza y te presta",
+    "pista": "Te sienta en la plaza; te presta",
     "respuesta": "BANCO",
     "definicion": [
       "Te sienta en la plaza",
@@ -1866,10 +1889,10 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "La degustación recibe al rey y llega por correo",
+    "pista": "La degustación recibe al rey y llega por correo.",
     "respuesta": "CARTA",
     "definicion": [
-      "llega por correo"
+      "y llega por correo"
     ],
     "tipo": "Contenedor",
     "indicador": "recibe",
@@ -1881,7 +1904,7 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "Corta tablas y se eleva en Córdoba",
+    "pista": "Corta tablas; se eleva en Córdoba",
     "respuesta": "SIERRA",
     "definicion": [
       "Corta tablas",
@@ -1907,7 +1930,7 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "Crece en la maceta y la pisas al andar",
+    "pista": "Crece en la maceta; la pisas al andar",
     "respuesta": "PLANTA",
     "definicion": [
       "Crece en la maceta",
@@ -1920,7 +1943,7 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Se cae del árbol y se escribe por ambas caras",
+    "pista": "Se cae del árbol; se escribe por ambas caras",
     "respuesta": "HOJA",
     "definicion": [
       "Se cae del árbol",
@@ -1946,7 +1969,7 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Hueso del brazo que transmite el partido",
+    "pista": "Hueso del brazo; transmite el partido",
     "respuesta": "RADIO",
     "definicion": [
       "Hueso del brazo",
@@ -1959,7 +1982,7 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "Punta de Hornos y rango bajo del cuartel",
+    "pista": "Punta de Hornos, rango bajo del cuartel",
     "respuesta": "CABO",
     "definicion": [
       "Punta de Hornos",
@@ -1978,37 +2001,44 @@ const PISTAS = [
       "alimentan la linterna"
     ],
     "tipo": "Selector",
-    "indicador": "Oro en",
+    "indicador": [
+      "Oro en",
+      "plata en",
+      "bronce en",
+      "y",
+      "la última de"
+    ],
     "relleno": [
       "Perú",
       "Lima",
       "Bolivia",
-      "la última de Colombia"
+      "Colombia"
     ],
     "explicacion": "Oro, plata y bronce son los puestos 1, 2 y 3. La primera de Perú es P, la segunda de Lima es I, la tercera de Bolivia es L y la última de Colombia es A. PILA, lo que alimenta la linterna.",
     "dificultad": 4
   },
   {
-    "pista": "Capital del Perú que pule las uñas",
+    "pista": "Del 2 al 5 del clima, la capital de la garúa.",
     "respuesta": "LIMA",
     "definicion": [
-      "Capital del Perú",
-      "pule las uñas"
+      "la capital de la garúa"
     ],
-    "tipo": "Doble definición",
-    "indicador": "",
-    "relleno": [],
-    "explicacion": "LIMA es la capital del Perú y también la herramienta que pule las uñas.",
-    "dificultad": 2
+    "tipo": "Selector",
+    "indicador": "Del 2 al 5",
+    "relleno": [
+      "del clima"
+    ],
+    "explicacion": "Las letras 2 a 5 de CLIMA son L, I, M, A: LIMA, la capital famosa por su garúa.",
+    "dificultad": 3
   },
   {
-    "pista": "Cobre con radio, el que da misa",
+    "pista": "Cobre con radio para el que da misa.",
     "respuesta": "CURA",
     "definicion": [
-      "el que da misa"
+      "para el que da misa"
     ],
     "tipo": "Misceláneas",
-    "indicador": "",
+    "indicador": "con",
     "relleno": [
       "Cobre",
       "radio"
@@ -2017,7 +2047,7 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "Trepa a los árboles y se oye por un solo canal",
+    "pista": "Trepa a los árboles; se oye por un solo canal",
     "respuesta": "MONO",
     "definicion": [
       "Trepa a los árboles",
@@ -2030,7 +2060,7 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Herida de cuchillo en la residencia del rey",
+    "pista": "Herida de cuchillo; la residencia del rey",
     "respuesta": "CORTE",
     "definicion": [
       "Herida de cuchillo",
@@ -2043,7 +2073,7 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "Lo que guarda la carta está por encima",
+    "pista": "Lo que guarda la carta; por encima",
     "respuesta": "SOBRE",
     "definicion": [
       "Lo que guarda la carta",
@@ -2056,7 +2086,7 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "Fruta tropical que se agarra en la sartén",
+    "pista": "Fruta tropical; se agarra en la sartén",
     "respuesta": "MANGO",
     "definicion": [
       "Fruta tropical",
@@ -2069,11 +2099,11 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "Lo usa el tucán y también el minero",
+    "pista": "Lo usa el tucán, lo usa el minero",
     "respuesta": "PICO",
     "definicion": [
       "Lo usa el tucán",
-      "el minero"
+      "lo usa el minero"
     ],
     "tipo": "Doble definición",
     "indicador": "",
@@ -2082,7 +2112,7 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "Muestra el niño travieso y se aprende en el extranjero",
+    "pista": "Muestra el niño travieso; se aprende en el extranjero",
     "respuesta": "LENGUA",
     "definicion": [
       "Muestra el niño travieso",
@@ -2095,7 +2125,7 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "La mueve el perro y se forma en el banco",
+    "pista": "La mueve el perro; se forma en el banco",
     "respuesta": "COLA",
     "definicion": [
       "La mueve el perro",
@@ -2108,20 +2138,20 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "La del pescador conecta al mundo",
+    "pista": "Atrapa peces; conecta al mundo.",
     "respuesta": "RED",
     "definicion": [
-      "La del pescador",
+      "Atrapa peces",
       "conecta al mundo"
     ],
     "tipo": "Doble definición",
     "indicador": "",
     "relleno": [],
-    "explicacion": "La RED del pescador y la RED que conecta al mundo.",
+    "explicacion": "La RED del pescador atrapa peces, y la red, internet, conecta al mundo.",
     "dificultad": 2
   },
   {
-    "pista": "Calzado alto que guarda vino",
+    "pista": "Calzado alto; guarda vino",
     "respuesta": "BOTA",
     "definicion": [
       "Calzado alto",
@@ -2134,11 +2164,11 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "Prenda que viste la ladera del monte",
+    "pista": "Prenda de la ladera del monte.",
     "respuesta": "FALDA",
     "definicion": [
       "Prenda",
-      "la ladera del monte"
+      "de la ladera del monte"
     ],
     "tipo": "Doble definición",
     "indicador": "",
@@ -2147,7 +2177,7 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "Mide la camisa y se esculpe en madera",
+    "pista": "Mide la camisa; se esculpe en madera",
     "respuesta": "TALLA",
     "definicion": [
       "Mide la camisa",
@@ -2160,7 +2190,7 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Norma que traza líneas rectas",
+    "pista": "Norma; traza líneas rectas",
     "respuesta": "REGLA",
     "definicion": [
       "Norma",
@@ -2199,7 +2229,7 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "Cruza el pecho del presidente y toca en el baile",
+    "pista": "Cruza el pecho del presidente; toca en el baile",
     "respuesta": "BANDA",
     "definicion": [
       "Cruza el pecho del presidente",
@@ -2212,7 +2242,7 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "Lo cambias con el control y lo cruzan barcos entre esclusas",
+    "pista": "Lo cambias con el control; lo cruzan barcos entre esclusas",
     "respuesta": "CANAL",
     "definicion": [
       "Lo cambias con el control",
@@ -2225,7 +2255,7 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Viste al ave y escribe la carta",
+    "pista": "Viste al ave; escribe la carta",
     "respuesta": "PLUMA",
     "definicion": [
       "Viste al ave",
@@ -2238,7 +2268,7 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "Lugar del tren que dura tres meses",
+    "pista": "Lugar del tren; dura tres meses",
     "respuesta": "ESTACION",
     "definicion": [
       "Lugar del tren",
@@ -2251,7 +2281,7 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "Se estrecha al saludar y se da con la brocha",
+    "pista": "Se estrecha al saludar; se da con la brocha",
     "respuesta": "MANO",
     "definicion": [
       "Se estrecha al saludar",
@@ -2264,7 +2294,7 @@ const PISTAS = [
     "dificultad": 2
   },
   {
-    "pista": "Se sirve con salsa y se pone en el cepillo",
+    "pista": "Se sirve con salsa; se pone en el cepillo",
     "respuesta": "PASTA",
     "definicion": [
       "Se sirve con salsa",
@@ -2277,7 +2307,7 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Valla que no queda lejos",
+    "pista": "Valla; no queda lejos",
     "respuesta": "CERCA",
     "definicion": [
       "Valla",
@@ -2296,7 +2326,7 @@ const PISTAS = [
       "un metal precioso"
     ],
     "tipo": "Selector",
-    "indicador": "en el pecho de",
+    "indicador": "Late en el pecho de",
     "relleno": [
       "los toros"
     ],
@@ -2304,10 +2334,10 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Las casas, sin fronteras, dejan la oreja de la taza",
+    "pista": "Las casas, sin fronteras, en la oreja de la taza.",
     "respuesta": "ASA",
     "definicion": [
-      "la oreja de la taza"
+      "en la oreja de la taza"
     ],
     "tipo": "Selector",
     "indicador": "sin fronteras",
@@ -2318,7 +2348,7 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Los barcos sin proa ni popa son el arma del arquero",
+    "pista": "Los barcos sin proa ni popa, el arma del arquero.",
     "respuesta": "ARCO",
     "definicion": [
       "el arma del arquero"
@@ -2332,13 +2362,13 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "En el corazón de las peras late una época",
+    "pista": "Época en el corazón de las peras",
     "respuesta": "ERA",
     "definicion": [
-      "una época"
+      "Época"
     ],
     "tipo": "Selector",
-    "indicador": "el corazón de",
+    "indicador": "en el corazón de",
     "relleno": [
       "las peras"
     ],
@@ -2360,7 +2390,7 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Al camaleón se le escapa el león y queda donde duermes",
+    "pista": "Al camaleón se le escapa el león donde duermes.",
     "respuesta": "CAMA",
     "definicion": [
       "donde duermes"
@@ -2375,24 +2405,24 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Lo que camina sale de la piel sin cola",
+    "pista": "La piel sin cola es lo que camina.",
     "respuesta": "PIE",
     "definicion": [
-      "Lo que camina"
+      "es lo que camina"
     ],
     "tipo": "Sustracción",
     "indicador": "sin cola",
     "relleno": [
-      "la piel"
+      "La piel"
     ],
     "explicacion": "La PIEL sin cola (sin su última letra) queda en PIE, lo que camina.",
     "dificultad": 3
   },
   {
-    "pista": "La camisa se desprende del calcio y queda la ceremonia del domingo",
+    "pista": "La camisa se desprende del calcio en la ceremonia del domingo.",
     "respuesta": "MISA",
     "definicion": [
-      "la ceremonia del domingo"
+      "en la ceremonia del domingo"
     ],
     "tipo": "Sustracción",
     "indicador": "se desprende",
@@ -2404,10 +2434,10 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "La prisa, decapitada, estalla en carcajada",
+    "pista": "La prisa, decapitada, en una carcajada.",
     "respuesta": "RISA",
     "definicion": [
-      "carcajada"
+      "en una carcajada"
     ],
     "tipo": "Sustracción",
     "indicador": "decapitada",
@@ -2418,10 +2448,10 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "La demora, sin preámbulo, madura en la fruta del zarzal",
+    "pista": "La demora, sin preámbulo, en la fruta del zarzal.",
     "respuesta": "MORA",
     "definicion": [
-      "la fruta del zarzal"
+      "en la fruta del zarzal"
     ],
     "tipo": "Sustracción",
     "indicador": "sin preámbulo",
@@ -2446,7 +2476,7 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "La cacería, de palabra, es el hogar",
+    "pista": "La cacería, de palabra, el hogar",
     "respuesta": "CAZA",
     "definicion": [
       "La cacería"
@@ -2454,13 +2484,13 @@ const PISTAS = [
     "tipo": "Onomatopeya",
     "indicador": "de palabra",
     "relleno": [
-      "es el hogar"
+      "el hogar"
     ],
     "explicacion": "CAZA, la cacería, dicha de palabra suena igual que CASA, el hogar, cuando se sesea.",
     "dificultad": 3
   },
   {
-    "pista": "Caño que, según el locutor, poseyó",
+    "pista": "Caño, según el locutor, poseyó",
     "respuesta": "TUBO",
     "definicion": [
       "Caño"
@@ -2488,7 +2518,7 @@ const PISTAS = [
     "dificultad": 1
   },
   {
-    "pista": "Recipiente del agua que, a viva voz, es un órgano del costado",
+    "pista": "Recipiente del agua, a viva voz, un órgano del costado",
     "respuesta": "VASO",
     "definicion": [
       "Recipiente del agua"
@@ -2496,7 +2526,7 @@ const PISTAS = [
     "tipo": "Onomatopeya",
     "indicador": "a viva voz",
     "relleno": [
-      "es un órgano del costado"
+      "un órgano del costado"
     ],
     "explicacion": "VASO, el recipiente del agua, a viva voz suena igual que BAZO, un órgano del costado, cuando se sesea.",
     "dificultad": 3
@@ -2516,7 +2546,7 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Animal con cuernos que al oído es un esclavo",
+    "pista": "Animal con cuernos, al oído, un esclavo",
     "respuesta": "CIERVO",
     "definicion": [
       "Animal con cuernos"
@@ -2524,7 +2554,7 @@ const PISTAS = [
     "tipo": "Onomatopeya",
     "indicador": "al oído",
     "relleno": [
-      "es un esclavo"
+      "un esclavo"
     ],
     "explicacion": "CIERVO, animal con cuernos, suena igual que SIERVO, un esclavo, cuando se sesea.",
     "dificultad": 3
@@ -2536,7 +2566,7 @@ const PISTAS = [
       "Isla pequeña"
     ],
     "tipo": "Onomatopeya",
-    "indicador": "suena a",
+    "indicador": "que suena a",
     "relleno": [
       "dureza del pie"
     ],
@@ -2544,7 +2574,7 @@ const PISTAS = [
     "dificultad": 1
   },
   {
-    "pista": "La curva que recorre el agua, de oídas, es profunda",
+    "pista": "La curva que recorre el agua, de oídas, profunda",
     "respuesta": "ONDA",
     "definicion": [
       "La curva que recorre el agua"
@@ -2552,7 +2582,7 @@ const PISTAS = [
     "tipo": "Onomatopeya",
     "indicador": "de oídas",
     "relleno": [
-      "es profunda"
+      "profunda"
     ],
     "explicacion": "ONDA, la curva que recorre el agua, de oídas suena igual que HONDA, profunda.",
     "dificultad": 3
@@ -2589,43 +2619,46 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "Cien junto al oso, no soporta rivales en el amor",
+    "pista": "Cien junto a el oso no soporta rivales en el amor.",
     "respuesta": "CELOSO",
     "definicion": [
       "no soporta rivales en el amor"
     ],
     "tipo": "Charada",
-    "indicador": "",
+    "indicador": "junto a",
     "relleno": [
       "Cien",
-      "al oso"
+      "el oso"
     ],
-    "explicacion": "Cien en números romanos es C, y junto al oso queda EL OSO. C + EL + OSO = CELOSO, el que no soporta rivales en el amor.",
+    "explicacion": "Cien en números romanos es C; junto a EL OSO da CELOSO, el que no soporta rivales en el amor.",
     "dificultad": 4
   },
   {
-    "pista": "Un millar en el campo obra el prodigio",
+    "pista": "Un millar de campo. ¡Qué prodigio!",
     "respuesta": "MILAGRO",
     "definicion": [
-      "el prodigio"
+      "¡Qué prodigio!"
     ],
     "tipo": "Charada",
     "indicador": "",
     "relleno": [
       "Un millar",
-      "el campo"
+      "de campo"
     ],
     "explicacion": "Un millar es MIL y el campo, AGRO (como en agricultura). MIL + AGRO = MILAGRO, un prodigio.",
     "dificultad": 4
   },
   {
-    "pista": "La sirena pierde el sur y, alborotada, gobierna",
+    "pista": "La sirena pierde el sur y alborotada gobierna",
     "respuesta": "REINA",
     "definicion": [
       "gobierna"
     ],
     "tipo": "Misceláneas",
-    "indicador": "alborotada",
+    "indicador": [
+      "pierde",
+      "y alborotada"
+    ],
     "relleno": [
       "La sirena",
       "el sur"
@@ -2634,13 +2667,16 @@ const PISTAS = [
     "dificultad": 5
   },
   {
-    "pista": "Objeción sin cola y que fume, una fragancia de frasco",
+    "pista": "Objeción sin cola y que fume una fragancia de frasco.",
     "respuesta": "PERFUME",
     "definicion": [
       "una fragancia de frasco"
     ],
     "tipo": "Misceláneas",
-    "indicador": "sin cola",
+    "indicador": [
+      "sin cola",
+      "y"
+    ],
     "relleno": [
       "Objeción",
       "que fume"
@@ -2649,13 +2685,16 @@ const PISTAS = [
     "dificultad": 5
   },
   {
-    "pista": "Campo sin cola ante una eternidad geológica, levanta la copa",
+    "pista": "Campo sin cola ante una eternidad geológica levanta la copa.",
     "respuesta": "CAMPEON",
     "definicion": [
       "levanta la copa"
     ],
     "tipo": "Misceláneas",
-    "indicador": "sin cola",
+    "indicador": [
+      "sin cola",
+      "ante"
+    ],
     "relleno": [
       "Campo",
       "una eternidad geológica"
@@ -2664,13 +2703,16 @@ const PISTAS = [
     "dificultad": 5
   },
   {
-    "pista": "Toro sin rabo masca la hierba del mojito y se viene el temporal",
+    "pista": "Toro sin rabo masca la hierba del mojito en pleno temporal.",
     "respuesta": "TORMENTA",
     "definicion": [
-      "el temporal"
+      "en pleno temporal"
     ],
     "tipo": "Misceláneas",
-    "indicador": "sin rabo",
+    "indicador": [
+      "sin rabo",
+      "masca"
+    ],
     "relleno": [
       "Toro",
       "la hierba del mojito"
@@ -2679,10 +2721,10 @@ const PISTAS = [
     "dificultad": 5
   },
   {
-    "pista": "La espalda pierde cincuenta y se desenvaina en el duelo",
+    "pista": "La espalda pierde cincuenta y se desenvaina en el duelo.",
     "respuesta": "ESPADA",
     "definicion": [
-      "se desenvaina en el duelo"
+      "y se desenvaina en el duelo"
     ],
     "tipo": "Sustracción",
     "indicador": "pierde",
@@ -2694,13 +2736,13 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "Liquidación con sodio, por ella entra la luz",
+    "pista": "Liquidación con sodio, por ella entra la luz.",
     "respuesta": "VENTANA",
     "definicion": [
       "por ella entra la luz"
     ],
     "tipo": "Charada",
-    "indicador": "",
+    "indicador": "con",
     "relleno": [
       "Liquidación",
       "sodio"
@@ -2709,13 +2751,13 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "Hierro junto a un brazo de mar, fiesta con puestos",
+    "pista": "Hierro junto a un brazo de mar, fiesta con puestos.",
     "respuesta": "FERIA",
     "definicion": [
       "fiesta con puestos"
     ],
     "tipo": "Charada",
-    "indicador": "",
+    "indicador": "junto a",
     "relleno": [
       "Hierro",
       "un brazo de mar"
@@ -2745,7 +2787,7 @@ const PISTAS = [
       "sobre la cabeza del rey"
     ],
     "tipo": "Charada",
-    "indicador": "",
+    "indicador": "con",
     "relleno": [
       "Coro",
       "sodio"
@@ -2754,17 +2796,18 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "Lo sana y aun así es un disparate",
+    "pista": "Lo sana. ¡Qué disparate!",
     "respuesta": "LOCURA",
     "definicion": [
-      "un disparate"
+      "¡Qué disparate!"
     ],
     "tipo": "Charada",
     "indicador": "",
     "relleno": [
-      "Lo sana"
+      "Lo",
+      "sana"
     ],
-    "explicacion": "Lo sana se dice LO CURA. LO + CURA = LOCURA, un disparate.",
+    "explicacion": "«Lo sana» se dice LO CURA. LO + CURA = LOCURA, un disparate.",
     "dificultad": 4
   },
   {
@@ -2774,7 +2817,7 @@ const PISTAS = [
       "se festejan en diciembre"
     ],
     "tipo": "Charada",
-    "indicador": "",
+    "indicador": "y",
     "relleno": [
       "Sodio",
       "la existencia",
@@ -2784,13 +2827,16 @@ const PISTAS = [
     "dificultad": 5
   },
   {
-    "pista": "Pan sin cola y cabello liso, donde vive el rey",
+    "pista": "Pan sin cola y cabello liso donde vive el rey.",
     "respuesta": "PALACIO",
     "definicion": [
       "donde vive el rey"
     ],
     "tipo": "Misceláneas",
-    "indicador": "sin cola",
+    "indicador": [
+      "sin cola",
+      "y"
+    ],
     "relleno": [
       "Pan",
       "cabello liso"
@@ -2805,7 +2851,11 @@ const PISTAS = [
       "Un semidiós"
     ],
     "tipo": "Selector + charada",
-    "indicador": "los pies de",
+    "indicador": [
+      "se queda los pies de",
+      "y, con",
+      "corazón de"
+    ],
     "relleno": [
       "la noche",
       "era",
@@ -2821,7 +2871,7 @@ const PISTAS = [
       "Lecho"
     ],
     "tipo": "Sustracción",
-    "indicador": "suelta",
+    "indicador": "cuando suelta",
     "relleno": [
       "del que se duerme y se lo lleva la corriente",
       "el trago pirata"
@@ -2830,10 +2880,10 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Lo que se pierde por ir a Melipilla, desarmado, da flores moradas",
+    "pista": "Lo que se pierde por ir a Melipilla, desarmado, en flores moradas.",
     "respuesta": "LILAS",
     "definicion": [
-      "flores moradas"
+      "en flores moradas"
     ],
     "tipo": "Anagrama",
     "indicador": "desarmado",
@@ -2850,7 +2900,10 @@ const PISTAS = [
       "Ser"
     ],
     "tipo": "Sustracción",
-    "indicador": "al restar",
+    "indicador": [
+      "que sobra al restar",
+      "de"
+    ],
     "relleno": [
       "mi entrega",
       "lo que no se mira en un obsequio con crines"
@@ -2859,16 +2912,19 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "Más vale uno en mano que cien volando; queda heno si suelta el oro descabezado",
+    "pista": "Más vale uno en mano que cien volando si suelta el oro descabezado en el heno.",
     "respuesta": "PAJA",
     "definicion": [
-      "heno"
+      "en el heno"
     ],
     "tipo": "Sustracción",
-    "indicador": "suelta",
+    "indicador": [
+      "si suelta",
+      "descabezado"
+    ],
     "relleno": [
       "Más vale uno en mano que cien volando",
-      "el oro descabezado"
+      "el oro"
     ],
     "explicacion": "El que vale más en mano que cien volando es el PÁJARO. Si suelta el oro descabezado, RO, queda PAJA, heno.",
     "dificultad": 3
@@ -2880,7 +2936,7 @@ const PISTAS = [
       "Sin embargo"
     ],
     "tipo": "Sustracción",
-    "indicador": "pierde",
+    "indicador": "pierde a",
     "relleno": [
       "el que ladra y no muerde",
       "su rey"
@@ -2889,10 +2945,10 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Lo crías y te saca los ojos; con cinco menos, es puro pellejo",
+    "pista": "Lo crías y te saca los ojos; con cinco menos, puro pellejo",
     "respuesta": "CUERO",
     "definicion": [
-      "pellejo"
+      "puro pellejo"
     ],
     "tipo": "Sustracción",
     "indicador": "con cinco menos",
@@ -2903,13 +2959,16 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "Los que no ven, con una rosa en la frente, terminan colorados",
+    "pista": "Los que no ven, con una rosa en la frente, colorados.",
     "respuesta": "ROJOS",
     "definicion": [
       "colorados"
     ],
     "tipo": "Charada",
-    "indicador": "en la frente",
+    "indicador": [
+      "con",
+      "en la frente"
+    ],
     "relleno": [
       "Los que no ven",
       "una rosa"
@@ -2924,7 +2983,7 @@ const PISTAS = [
       "se quema"
     ],
     "tipo": "Sustracción",
-    "indicador": "sin",
+    "indicador": "aunque sin",
     "relleno": [
       "Vale más que nunca",
       "el té"
@@ -2947,10 +3006,10 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "El que se juntó con las ganas de comer, ya con anillo, es todo un varón",
+    "pista": "El que se juntó con las ganas de comer, ya con anillo, es todo un varón.",
     "respuesta": "HOMBRE",
     "definicion": [
-      "todo un varón"
+      "es todo un varón"
     ],
     "tipo": "Misceláneas",
     "indicador": "ya con anillo",
@@ -3021,13 +3080,16 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Torso del rey, desfigurado, es la cara",
+    "pista": "Torso con rey, desfigurado, en la cara.",
     "respuesta": "ROSTRO",
     "definicion": [
-      "la cara"
+      "en la cara"
     ],
     "tipo": "Anagrama",
-    "indicador": "desfigurado",
+    "indicador": [
+      "con",
+      "desfigurado"
+    ],
     "relleno": [
       "Torso",
       "rey"
@@ -3036,7 +3098,7 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "Las dalias marchitas indican por dónde irse",
+    "pista": "Las dalias marchitas, por dónde irse.",
     "respuesta": "SALIDA",
     "definicion": [
       "por dónde irse"
@@ -3050,13 +3112,16 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "La prima y la osa bailan y vuela de flor en flor",
+    "pista": "La prima y la osa bailan y vuelan de flor en flor.",
     "respuesta": "MARIPOSA",
     "definicion": [
-      "vuela de flor en flor"
+      "y vuelan de flor en flor"
     ],
     "tipo": "Anagrama",
-    "indicador": "bailan",
+    "indicador": [
+      "y",
+      "bailan"
+    ],
     "relleno": [
       "La prima",
       "la osa"
@@ -3065,10 +3130,10 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Una bestia en Manila agitada",
+    "pista": "Manila agitada por una bestia.",
     "respuesta": "ANIMAL",
     "definicion": [
-      "Una bestia"
+      "por una bestia"
     ],
     "tipo": "Anagrama",
     "indicador": "agitada",
@@ -3093,10 +3158,10 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "La mata acoge al este y gira alrededor del sol",
+    "pista": "La mata acoge al este y gira alrededor del sol.",
     "respuesta": "PLANETA",
     "definicion": [
-      "gira alrededor del sol"
+      "y gira alrededor del sol"
     ],
     "tipo": "Contenedor",
     "indicador": "acoge",
@@ -3108,7 +3173,7 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "Una cita deja pasar al norte: es lo que ata el regalo",
+    "pista": "Una cita deja pasar al norte, lo que ata el regalo.",
     "respuesta": "CINTA",
     "definicion": [
       "lo que ata el regalo"
@@ -3123,10 +3188,10 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "El pellejo encierra al norte y adorna la frente del toro",
+    "pista": "El pellejo encierra al norte y adorna la frente del toro.",
     "respuesta": "CUERNO",
     "definicion": [
-      "adorna la frente del toro"
+      "y adorna la frente del toro"
     ],
     "tipo": "Contenedor",
     "indicador": "encierra",
@@ -3144,7 +3209,7 @@ const PISTAS = [
       "Gansos"
     ],
     "tipo": "Reverso",
-    "indicador": "dan vuelta",
+    "indicador": "que dan vuelta",
     "relleno": [
       "la chaqueta"
     ],
@@ -3166,7 +3231,7 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "Advertir que el roedor da marcha atrás",
+    "pista": "Advertir, el roedor da marcha atrás.",
     "respuesta": "NOTAR",
     "definicion": [
       "Advertir"
@@ -3180,10 +3245,10 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "Al revés, curar da con las que croan",
+    "pista": "Al revés, curar a las que croan.",
     "respuesta": "RANAS",
     "definicion": [
-      "las que croan"
+      "a las que croan"
     ],
     "tipo": "Reverso",
     "indicador": "Al revés",
@@ -3250,7 +3315,7 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Océano precede a lo que se fue: el esposo",
+    "pista": "Océano precede a lo que se fue, el esposo.",
     "respuesta": "MARIDO",
     "definicion": [
       "el esposo"
@@ -3265,24 +3330,24 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "Bajo el firmamento, al comienzo, cada isla espera la ola",
+    "pista": "Cada isla espera la ola, al comienzo, bajo el firmamento.",
     "respuesta": "CIELO",
     "definicion": [
-      "el firmamento"
+      "bajo el firmamento"
     ],
     "tipo": "Selector",
     "indicador": "al comienzo",
     "relleno": [
-      "cada isla espera la ola"
+      "Cada isla espera la ola"
     ],
     "explicacion": "Al comienzo de Cada Isla Espera La Ola están sus iniciales: CIELO, el firmamento.",
     "dificultad": 3
   },
   {
-    "pista": "La fibra blanca pierde algo y queda el talento",
+    "pista": "La fibra blanca pierde algo de talento.",
     "respuesta": "DON",
     "definicion": [
-      "el talento"
+      "de talento"
     ],
     "tipo": "Sustracción",
     "indicador": "pierde",
@@ -3294,13 +3359,13 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "Hermoso es el pelo que soltó el calcio",
+    "pista": "Hermoso, el pelo que soltó el calcio.",
     "respuesta": "BELLO",
     "definicion": [
       "Hermoso"
     ],
     "tipo": "Sustracción",
-    "indicador": "soltó",
+    "indicador": "que soltó",
     "relleno": [
       "el pelo",
       "el calcio"
@@ -3309,7 +3374,7 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "El astro rey, seguido de un ave de la pampa, sigue sin pareja",
+    "pista": "El astro rey, seguido de un ave de la pampa, sin pareja.",
     "respuesta": "SOLTERO",
     "definicion": [
       "sin pareja"
@@ -3339,13 +3404,16 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Un perro mira al este antes que la nota: especia del arroz con leche",
+    "pista": "Un perro mira al este antes que la nota en la especia del arroz con leche.",
     "respuesta": "CANELA",
     "definicion": [
-      "especia del arroz con leche"
+      "en la especia del arroz con leche"
     ],
     "tipo": "Charada",
-    "indicador": "antes que",
+    "indicador": [
+      "mira",
+      "antes que"
+    ],
     "relleno": [
       "Un perro",
       "al este",
@@ -3355,7 +3423,7 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "La segunda nota, seguida de la infusión rioplatense, es el broche final",
+    "pista": "La segunda nota, seguida de la infusión rioplatense, el broche final.",
     "respuesta": "REMATE",
     "definicion": [
       "el broche final"
@@ -3385,13 +3453,16 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "La cabeza de un ave más una extremidad dan un apretón cariñoso",
+    "pista": "La cabeza de un ave más una extremidad, un apretón cariñoso.",
     "respuesta": "ABRAZO",
     "definicion": [
       "un apretón cariñoso"
     ],
     "tipo": "Selector + charada",
-    "indicador": "La cabeza de",
+    "indicador": [
+      "La cabeza de",
+      "más"
+    ],
     "relleno": [
       "un ave",
       "una extremidad"
@@ -3400,7 +3471,7 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "Lo que bate el pájaro, devuelto, es donde se reciben visitas",
+    "pista": "Lo que bate el pájaro, devuelto, donde se reciben visitas.",
     "respuesta": "SALA",
     "definicion": [
       "donde se reciben visitas"
@@ -3428,10 +3499,10 @@ const PISTAS = [
     "dificultad": 5
   },
   {
-    "pista": "El ritmo del músico guarda cincuenta en el lugar sagrado",
+    "pista": "El ritmo del músico guarda cincuenta en el lugar sagrado.",
     "respuesta": "TEMPLO",
     "definicion": [
-      "el lugar sagrado"
+      "en el lugar sagrado"
     ],
     "tipo": "Contenedor",
     "indicador": "guarda",
@@ -3443,10 +3514,10 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "El extremo helado de la Tierra acoge medio centenar y sale del huevo",
+    "pista": "El extremo helado de la Tierra acoge medio centenar y sale del huevo.",
     "respuesta": "POLLO",
     "definicion": [
-      "sale del huevo"
+      "y sale del huevo"
     ],
     "tipo": "Contenedor",
     "indicador": "acoge",
@@ -3464,7 +3535,10 @@ const PISTAS = [
       "tira el anzuelo"
     ],
     "tipo": "Contenedor",
-    "indicador": "adentro",
+    "indicador": [
+      "Con",
+      "adentro"
+    ],
     "relleno": [
       "el sur",
       "una mancha de la cara"
@@ -3473,10 +3547,10 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "El asiento del rey acoge cien y sostiene la copa del árbol",
+    "pista": "El asiento del rey acoge cien y sostiene la copa del árbol.",
     "respuesta": "TRONCO",
     "definicion": [
-      "sostiene la copa del árbol"
+      "y sostiene la copa del árbol"
     ],
     "tipo": "Contenedor",
     "indicador": "acoge",
@@ -3488,13 +3562,16 @@ const PISTAS = [
     "dificultad": 4
   },
   {
-    "pista": "La planta y el oxígeno, en la licuadora, dan la fruta amarilla",
+    "pista": "La planta y el oxígeno, en la licuadora, la fruta amarilla.",
     "respuesta": "PLATANO",
     "definicion": [
       "la fruta amarilla"
     ],
     "tipo": "Anagrama",
-    "indicador": "en la licuadora",
+    "indicador": [
+      "y",
+      "en la licuadora"
+    ],
     "relleno": [
       "La planta",
       "el oxígeno"
@@ -3503,10 +3580,10 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Sergio, alocado, corre un peligro",
+    "pista": "Sergio, alocado, es un peligro.",
     "respuesta": "RIESGO",
     "definicion": [
-      "un peligro"
+      "es un peligro"
     ],
     "tipo": "Anagrama",
     "indicador": "alocado",
@@ -3517,41 +3594,41 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Marta, enredada, teje el argumento",
+    "pista": "Marta enreda el argumento",
     "respuesta": "TRAMA",
     "definicion": [
       "el argumento"
     ],
     "tipo": "Anagrama",
-    "indicador": "enredada",
+    "indicador": "enreda",
     "relleno": [
       "Marta"
     ],
-    "explicacion": "Las letras de MARTA, enredadas, forman TRAMA, el argumento.",
+    "explicacion": "Marta enreda sus letras y forma TRAMA, el argumento.",
     "dificultad": 3
   },
   {
-    "pista": "Ramón, fuera de sí, rompe la regla",
+    "pista": "Ramón rompe la regla",
     "respuesta": "NORMA",
     "definicion": [
       "la regla"
     ],
     "tipo": "Anagrama",
-    "indicador": "fuera de sí",
+    "indicador": "rompe",
     "relleno": [
       "Ramón"
     ],
-    "explicacion": "Las letras de RAMÓN, fuera de sí, forman NORMA, la regla.",
+    "explicacion": "Ramón rompe sus letras y forma NORMA, la regla.",
     "dificultad": 4
   },
   {
-    "pista": "Pedro, trastornado, quiere el mando",
+    "pista": "Pedro, trastornado por el mando",
     "respuesta": "PODER",
     "definicion": [
       "el mando"
     ],
     "tipo": "Anagrama",
-    "indicador": "trastornado",
+    "indicador": "trastornado por",
     "relleno": [
       "Pedro"
     ],
@@ -3559,10 +3636,10 @@ const PISTAS = [
     "dificultad": 3
   },
   {
-    "pista": "Teresa, revolcada, termina en la alfombra de junco",
+    "pista": "Teresa, revolcada en la alfombra de junco.",
     "respuesta": "ESTERA",
     "definicion": [
-      "la alfombra de junco"
+      "en la alfombra de junco"
     ],
     "tipo": "Anagrama",
     "indicador": "revolcada",
@@ -3571,5 +3648,1271 @@ const PISTAS = [
     ],
     "explicacion": "Las letras de TERESA, revolcadas, forman ESTERA, la alfombra de junco.",
     "dificultad": 4
+  },
+  {
+    "pista": "Masa blanda con relleno de ají que hace volar la cabeza.",
+    "respuesta": "COJIN",
+    "definicion": [
+      "Masa blanda"
+    ],
+    "tipo": "Misceláneas",
+    "indicador": [
+      "relleno de",
+      "que hace volar la cabeza"
+    ],
+    "relleno": [
+      "con",
+      "ají"
+    ],
+    "explicacion": "El ají pierde la cabeza, su inicial, y queda JI. Si con eso rellenamos «con», obtenemos CO·JI·N, COJÍN, una masa blanda. (Pista propuesta por Tomás.)",
+    "dificultad": 4
+  },
+  {
+    "pista": "Los capitanes pusieron algo tarde ostras saladas en el lago.",
+    "respuesta": "PATOS",
+    "definicion": [
+      "en el lago"
+    ],
+    "tipo": "Selector",
+    "indicador": "Los capitanes",
+    "relleno": [
+      "pusieron algo tarde ostras saladas"
+    ],
+    "explicacion": "Los capitanes van a la cabeza: las iniciales de Pusieron Algo Tarde Ostras Saladas forman PATOS, que están en el lago. (Pista propuesta por Tomás.)",
+    "dificultad": 4
+  },
+  {
+    "pista": "Se escucha como ríe y explota, en Asia.",
+    "respuesta": "JAPON",
+    "definicion": [
+      "en Asia"
+    ],
+    "tipo": "Onomatopeya",
+    "indicador": [
+      "Se escucha como",
+      "y"
+    ],
+    "relleno": [
+      "ríe",
+      "explota"
+    ],
+    "explicacion": "Se escucha como la risa, JA, y como una explosión, PON. JA + PON = JAPÓN, que está en Asia. (Pista propuesta por Tomás.)",
+    "dificultad": 4
+  },
+  {
+    "pista": "Los vestidos religiosos son costumbres.",
+    "respuesta": "HABITOS",
+    "definicion": [
+      "Los vestidos religiosos",
+      "son costumbres"
+    ],
+    "tipo": "Doble definición",
+    "indicador": "",
+    "relleno": [],
+    "explicacion": "Los HÁBITOS son los vestidos de monjas y frailes, y los hábitos también son costumbres. (Pista propuesta por Tomás.)",
+    "dificultad": 3
+  },
+  {
+    "pista": "Verde del mar se oxida en metal gastado",
+    "respuesta": "ALGA",
+    "definicion": [
+      "Verde del mar"
+    ],
+    "tipo": "Palabra escondida",
+    "indicador": "se oxida en",
+    "relleno": [
+      "metal gastado"
+    ],
+    "explicacion": "Oxidada en metAL GAstado está ALGA, lo verde del mar.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Sofía pierde a uno donde se sienta la visita.",
+    "respuesta": "SOFA",
+    "definicion": [
+      "donde se sienta la visita"
+    ],
+    "tipo": "Sustracción",
+    "indicador": "pierde a",
+    "relleno": [
+      "Sofía",
+      "uno"
+    ],
+    "explicacion": "SOFÍA pierde la I, el uno romano, y queda SOFÁ, donde se sienta la visita.",
+    "dificultad": 3
+  },
+  {
+    "pista": "Es, con cobalto y bario, lo que barre",
+    "respuesta": "ESCOBA",
+    "definicion": [
+      "lo que barre"
+    ],
+    "tipo": "Charada",
+    "indicador": [
+      "con",
+      "y"
+    ],
+    "relleno": [
+      "Es",
+      "cobalto",
+      "bario"
+    ],
+    "explicacion": "ES, con CO (el cobalto) y BA (el bario): ESCOBA, lo que barre.",
+    "dificultad": 4
+  },
+  {
+    "pista": "La cama del perro frente al dios del sol para la sopa.",
+    "respuesta": "CUCHARA",
+    "definicion": [
+      "para la sopa"
+    ],
+    "tipo": "Charada",
+    "indicador": "frente al",
+    "relleno": [
+      "La cama del perro",
+      "dios del sol"
+    ],
+    "explicacion": "La cama del perro es la CUCHA y el dios egipcio del sol, RA. CUCHA + RA = CUCHARA, para la sopa.",
+    "dificultad": 4
+  },
+  {
+    "pista": "La fruta del verano se traga el aluminio en el calzado de playa.",
+    "respuesta": "SANDALIA",
+    "definicion": [
+      "en el calzado de playa"
+    ],
+    "tipo": "Contenedor",
+    "indicador": "se traga",
+    "relleno": [
+      "La fruta del verano",
+      "el aluminio"
+    ],
+    "explicacion": "La fruta del verano es la SANDÍA; se traga AL, el aluminio, y queda SAND·AL·IA, SANDALIA, calzado de playa.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Un pez de río abraza a la muda donde cuelga la camisa.",
+    "respuesta": "PERCHA",
+    "definicion": [
+      "donde cuelga la camisa"
+    ],
+    "tipo": "Contenedor",
+    "indicador": "abraza a",
+    "relleno": [
+      "Un pez de río",
+      "la muda"
+    ],
+    "explicacion": "La PERCA es un pez de río; abraza a la H, la letra muda, y queda PERC·H·A, PERCHA, donde cuelga la camisa.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Marraqueta pegada al punto débil de Aquiles se usa con cinturón.",
+    "respuesta": "PANTALON",
+    "definicion": [
+      "se usa con cinturón"
+    ],
+    "tipo": "Charada",
+    "indicador": "pegada al",
+    "relleno": [
+      "Marraqueta",
+      "punto débil de Aquiles"
+    ],
+    "explicacion": "La marraqueta es PAN y el punto débil de Aquiles, su TALÓN. PAN + TALÓN = PANTALÓN, que se usa con cinturón.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Camino accidentado lleva la carga.",
+    "respuesta": "CAMION",
+    "definicion": [
+      "lleva la carga"
+    ],
+    "tipo": "Anagrama",
+    "indicador": "accidentado",
+    "relleno": [
+      "Camino"
+    ],
+    "explicacion": "Las letras de CAMINO, accidentadas, forman CAMIÓN, el que lleva la carga.",
+    "dificultad": 3
+  },
+  {
+    "pista": "Romeo recibe al rey en la hierba del cordero.",
+    "respuesta": "ROMERO",
+    "definicion": [
+      "en la hierba del cordero"
+    ],
+    "tipo": "Contenedor",
+    "indicador": "recibe al",
+    "relleno": [
+      "Romeo",
+      "rey"
+    ],
+    "explicacion": "ROMEO recibe la R del rey y queda ROME·R·O, ROMERO, la hierba que acompaña al cordero.",
+    "dificultad": 4
+  },
+  {
+    "pista": "La herramienta del jardinero con tiempo dentro va en el completo italiano.",
+    "respuesta": "PALTA",
+    "definicion": [
+      "va en el completo italiano"
+    ],
+    "tipo": "Contenedor",
+    "indicador": [
+      "con",
+      "dentro"
+    ],
+    "relleno": [
+      "La herramienta del jardinero",
+      "tiempo"
+    ],
+    "explicacion": "La herramienta del jardinero es la PALA; con la T del tiempo dentro queda PAL·T·A, PALTA, el verde del completo italiano.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Va en la humita, enterrado en mucho cloro",
+    "respuesta": "CHOCLO",
+    "definicion": [
+      "Va en la humita"
+    ],
+    "tipo": "Palabra escondida",
+    "indicador": "enterrado en",
+    "relleno": [
+      "mucho cloro"
+    ],
+    "explicacion": "Enterrado en muCHO CLOro está CHOCLO, lo que va en la humita.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Cordillera entre los grandes",
+    "respuesta": "ANDES",
+    "definicion": [
+      "Cordillera"
+    ],
+    "tipo": "Palabra escondida",
+    "indicador": "entre",
+    "relleno": [
+      "los grandes"
+    ],
+    "explicacion": "Entre los grANDES está ANDES, la cordillera.",
+    "dificultad": 3
+  },
+  {
+    "pista": "Departamento con cien dentro, el de la piscola.",
+    "respuesta": "PISCO",
+    "definicion": [
+      "el de la piscola"
+    ],
+    "tipo": "Contenedor",
+    "indicador": [
+      "con",
+      "dentro"
+    ],
+    "relleno": [
+      "Departamento",
+      "cien"
+    ],
+    "explicacion": "El departamento es un PISO; con la C de cien dentro queda PIS·C·O, PISCO, el de la piscola.",
+    "dificultad": 3
+  },
+  {
+    "pista": "Se reza; tiene sujeto y predicado",
+    "respuesta": "ORACION",
+    "definicion": [
+      "Se reza",
+      "tiene sujeto y predicado"
+    ],
+    "tipo": "Doble definición",
+    "indicador": "",
+    "relleno": [],
+    "explicacion": "La ORACIÓN se reza, y una oración también tiene sujeto y predicado.",
+    "dificultad": 3
+  },
+  {
+    "pista": "Teje en el rincón; cuelga del techo del salón",
+    "respuesta": "ARAÑA",
+    "definicion": [
+      "Teje en el rincón",
+      "cuelga del techo del salón"
+    ],
+    "tipo": "Doble definición",
+    "indicador": "",
+    "relleno": [],
+    "explicacion": "La ARAÑA teje en el rincón, y una araña es también la lámpara de varios brazos que cuelga del techo del salón.",
+    "dificultad": 3
+  },
+  {
+    "pista": "Abre la puerta; inmoviliza en la lucha",
+    "respuesta": "LLAVE",
+    "definicion": [
+      "Abre la puerta",
+      "inmoviliza en la lucha"
+    ],
+    "tipo": "Doble definición",
+    "indicador": "",
+    "relleno": [],
+    "explicacion": "La LLAVE abre la puerta, y en la lucha una llave inmoviliza al rival.",
+    "dificultad": 3
+  },
+  {
+    "pista": "Hija de la tía a la orilla en la estación florida.",
+    "respuesta": "PRIMAVERA",
+    "definicion": [
+      "en la estación florida"
+    ],
+    "tipo": "Charada",
+    "indicador": "a la",
+    "relleno": [
+      "Hija de la tía",
+      "orilla"
+    ],
+    "explicacion": "La hija de la tía es la PRIMA y la orilla, la VERA. PRIMA + VERA = PRIMAVERA, la estación florida.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Volumen abreviado y perro escupen lava.",
+    "respuesta": "VOLCAN",
+    "definicion": [
+      "escupen lava"
+    ],
+    "tipo": "Charada",
+    "indicador": [
+      "abreviado",
+      "y"
+    ],
+    "relleno": [
+      "Volumen",
+      "perro"
+    ],
+    "explicacion": "Volumen abreviado es VOL y el perro, CAN. VOL + CAN = VOLCÁN, que escupe lava.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Un calcetín para la oscuridad a las doce en punto.",
+    "respuesta": "MEDIANOCHE",
+    "definicion": [
+      "a las doce en punto"
+    ],
+    "tipo": "Charada",
+    "indicador": "para",
+    "relleno": [
+      "Un calcetín",
+      "la oscuridad"
+    ],
+    "explicacion": "Un calcetín es una MEDIA y la oscuridad, la NOCHE. MEDIA + NOCHE = MEDIANOCHE, las doce en punto.",
+    "dificultad": 2
+  },
+  {
+    "pista": "Lo que hace aquel a quien Dios ayuda y luego regala las horas antes del alba.",
+    "respuesta": "MADRUGADA",
+    "definicion": [
+      "las horas antes del alba"
+    ],
+    "tipo": "Charada",
+    "indicador": "y luego",
+    "relleno": [
+      "Lo que hace aquel a quien Dios ayuda",
+      "regala"
+    ],
+    "explicacion": "Al que MADRUGA, Dios lo ayuda; luego, regala es DA. MADRUGA + DA = MADRUGADA, las horas antes del alba.",
+    "dificultad": 5
+  },
+  {
+    "pista": "Bajo el sol latino se cuece la cazuela",
+    "respuesta": "OLLA",
+    "definicion": [
+      "la cazuela"
+    ],
+    "tipo": "Palabra escondida",
+    "indicador": "se cuece",
+    "relleno": [
+      "Bajo el sol latino"
+    ],
+    "explicacion": "Cociéndose en bajo el sOL LAtino está OLLA, la cazuela.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Que rece, luego triunfo, en la hierba de la pizza.",
+    "respuesta": "OREGANO",
+    "definicion": [
+      "en la hierba de la pizza"
+    ],
+    "tipo": "Charada",
+    "indicador": "luego",
+    "relleno": [
+      "Que rece",
+      "triunfo"
+    ],
+    "explicacion": "Que rece es que ORE, y triunfo es GANO. ORE + GANO = ORÉGANO, la hierba de la pizza.",
+    "dificultad": 4
+  },
+  {
+    "pista": "¡_ocur_, _isparat_, _onterí_!",
+    "respuesta": "SIN PIES NI CABEZA",
+    "definicion": [
+      "¡_ocur_, _isparat_, _onterí_!"
+    ],
+    "tipo": "Letras omitidas",
+    "indicador": "",
+    "relleno": [],
+    "explicacion": "A cada palabra le faltan la cabeza y los pies, su primera y su última letra: (L)ocur(a), (D)isparat(e), (T)onterí(a). Y una locura, un disparate o una tontería son cosas SIN PIES NI CABEZA.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Habla neutro: cafe, te, papa, mama",
+    "respuesta": "SIN ACENTO",
+    "definicion": [
+      "Habla neutro: cafe, te, papa, mama"
+    ],
+    "tipo": "Letras omitidas",
+    "indicador": "",
+    "relleno": [],
+    "explicacion": "A café, té, papá y mamá les falta la tilde: están sin acento. Y quien habla neutro habla SIN ACENTO.",
+    "dificultad": 4
+  },
+  {
+    "pista": "_ocuelo, _onto, _espistado",
+    "respuesta": "SIN CABEZA",
+    "definicion": [
+      "_ocuelo, _onto, _espistado"
+    ],
+    "tipo": "Letras omitidas",
+    "indicador": "",
+    "relleno": [],
+    "explicacion": "A cada palabra le falta la cabeza, su primera letra: (L)ocuelo, (T)onto, (D)espistado. Y alguien así de atolondrado es alguien SIN CABEZA.",
+    "dificultad": 3
+  },
+  {
+    "pista": "El cerro, según los cabecillas de mil ovejas nunca trepan a ñandúes asustados",
+    "respuesta": "MONTAÑA",
+    "definicion": [
+      "El cerro"
+    ],
+    "tipo": "Selector",
+    "indicador": "según los cabecillas de",
+    "relleno": [
+      "mil ovejas nunca trepan a ñandúes asustados"
+    ],
+    "explicacion": "Los cabecillas de Mil Ovejas Nunca Trepan A Ñandúes Asustados son sus iniciales: MONTAÑA, el cerro.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Lo que arrastran robot, mono, stop, gato excava bajo el pasto.",
+    "respuesta": "TOPO",
+    "definicion": [
+      "excava bajo el pasto"
+    ],
+    "tipo": "Selector",
+    "indicador": "Lo que arrastran",
+    "relleno": [
+      "robot, mono, stop, gato"
+    ],
+    "explicacion": "Lo que arrastran es su cola, la última letra: robo(T), mon(O), sto(P), gat(O). TOPO, el que excava bajo el pasto.",
+    "dificultad": 5
+  },
+  {
+    "pista": "Prenda con botones abduce al extraterrestre, la del equipo.",
+    "respuesta": "CAMISETA",
+    "definicion": [
+      "la del equipo"
+    ],
+    "tipo": "Contenedor",
+    "indicador": "abduce al",
+    "relleno": [
+      "Prenda con botones",
+      "extraterrestre"
+    ],
+    "explicacion": "La prenda con botones es la CAMISA; abduce a ET, el extraterrestre, y queda CAMIS·ET·A, CAMISETA, la del equipo.",
+    "dificultad": 4
+  },
+  {
+    "pista": "La astuta del cuento, de vuelta, en la paella",
+    "respuesta": "ARROZ",
+    "definicion": [
+      "en la paella"
+    ],
+    "tipo": "Reverso",
+    "indicador": "de vuelta",
+    "relleno": [
+      "La astuta del cuento"
+    ],
+    "explicacion": "La astuta del cuento es la ZORRA; de vuelta, al revés, da ARROZ, que está en la paella.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Anita, de regreso, acierta",
+    "respuesta": "ATINA",
+    "definicion": [
+      "acierta"
+    ],
+    "tipo": "Reverso",
+    "indicador": "de regreso",
+    "relleno": [
+      "Anita"
+    ],
+    "explicacion": "ANITA, de regreso, se lee ATINA, acierta.",
+    "dificultad": 3
+  },
+  {
+    "pista": "Doce brazos camuflan a la rayada de la sabana",
+    "respuesta": "CEBRA",
+    "definicion": [
+      "a la rayada de la sabana"
+    ],
+    "tipo": "Palabra escondida",
+    "indicador": "camuflan",
+    "relleno": [
+      "Doce brazos"
+    ],
+    "explicacion": "Camuflada en doCE BRAzos está CEBRA, la rayada de la sabana.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Trece dromedarios dan sombra a un árbol del Líbano",
+    "respuesta": "CEDRO",
+    "definicion": [
+      "un árbol del Líbano"
+    ],
+    "tipo": "Palabra escondida",
+    "indicador": "dan sombra a",
+    "relleno": [
+      "Trece dromedarios"
+    ],
+    "explicacion": "A la sombra de treCE DROmedarios está CEDRO, el árbol del Líbano.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Cines de otra cartelera, el del lago de Tchaikovsky.",
+    "respuesta": "CISNE",
+    "definicion": [
+      "el del lago de Tchaikovsky"
+    ],
+    "tipo": "Anagrama",
+    "indicador": "de otra cartelera",
+    "relleno": [
+      "Cines"
+    ],
+    "explicacion": "Las letras de CINES, con otra cartelera, forman CISNE, el de «El lago de los cisnes».",
+    "dificultad": 4
+  },
+  {
+    "pista": "Neón y tosca, el de Isla Negra.",
+    "respuesta": "NERUDA",
+    "definicion": [
+      "el de Isla Negra"
+    ],
+    "tipo": "Charada",
+    "indicador": "y",
+    "relleno": [
+      "Neón",
+      "tosca"
+    ],
+    "explicacion": "NE es el símbolo del neón y tosca es RUDA. NE + RUDA = NERUDA, el poeta de Isla Negra.",
+    "dificultad": 5
+  },
+  {
+    "pista": "Una pareja y el dios del sol dan uvas en el patio.",
+    "respuesta": "PARRA",
+    "definicion": [
+      "dan uvas en el patio"
+    ],
+    "tipo": "Charada",
+    "indicador": "y",
+    "relleno": [
+      "Una pareja",
+      "el dios del sol"
+    ],
+    "explicacion": "Una pareja es un PAR y el dios egipcio del sol, RA. PAR + RA = PARRA, la que da uvas en el patio (y la Violeta de «Gracias a la vida»).",
+    "dificultad": 4
+  },
+  {
+    "pista": "Amarra el lecho en el desierto más seco.",
+    "respuesta": "ATACAMA",
+    "definicion": [
+      "en el desierto más seco"
+    ],
+    "tipo": "Charada",
+    "indicador": "",
+    "relleno": [
+      "Amarra",
+      "el lecho"
+    ],
+    "explicacion": "Amarra es ATA y el lecho, la CAMA. ATA + CAMA = ATACAMA, el desierto más seco.",
+    "dificultad": 4
+  },
+  {
+    "pista": "La primera millonaria en la ciudad de la eterna primavera.",
+    "respuesta": "ARICA",
+    "definicion": [
+      "en la ciudad de la eterna primavera"
+    ],
+    "tipo": "Charada",
+    "indicador": "",
+    "relleno": [
+      "La primera",
+      "millonaria"
+    ],
+    "explicacion": "La primera letra es la A y millonaria es RICA. A + RICA = ARICA, la ciudad de la eterna primavera.",
+    "dificultad": 5
+  },
+  {
+    "pista": "Semejante con calcio va antes de París y Londres",
+    "respuesta": "TALCA",
+    "definicion": [
+      "va antes de París y Londres"
+    ],
+    "tipo": "Charada",
+    "indicador": "con",
+    "relleno": [
+      "Semejante",
+      "calcio"
+    ],
+    "explicacion": "Semejante es TAL y el calcio, CA. TAL + CA = TALCA, la que va antes de París y Londres en el dicho.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Palo de la bandera, de oídas, precede a la vista",
+    "respuesta": "ASTA",
+    "definicion": [
+      "Palo de la bandera"
+    ],
+    "tipo": "Onomatopeya",
+    "indicador": "de oídas",
+    "relleno": [
+      "precede a la vista"
+    ],
+    "explicacion": "El ASTA es el palo de la bandera y, de oídas, suena igual que HASTA, lo que precede a «la vista».",
+    "dificultad": 4
+  },
+  {
+    "pista": "Metal de la fragua; dicho en voz alta, me equivoco",
+    "respuesta": "HIERRO",
+    "definicion": [
+      "Metal de la fragua"
+    ],
+    "tipo": "Onomatopeya",
+    "indicador": "dicho en voz alta,",
+    "relleno": [
+      "me equivoco"
+    ],
+    "explicacion": "El HIERRO es el metal de la fragua y, dicho en voz alta, suena igual que YERRO, me equivoco.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Unir con aguja, según se oye, hervir la papa",
+    "respuesta": "COSER",
+    "definicion": [
+      "Unir con aguja"
+    ],
+    "tipo": "Onomatopeya",
+    "indicador": "según se oye",
+    "relleno": [
+      "hervir la papa"
+    ],
+    "explicacion": "COSER es unir con aguja y, según se oye, suena igual que COCER, hervir la papa, cuando se sesea.",
+    "dificultad": 3
+  },
+  {
+    "pista": "Apretar con cariño, al oído, quemar",
+    "respuesta": "ABRAZAR",
+    "definicion": [
+      "Apretar con cariño"
+    ],
+    "tipo": "Onomatopeya",
+    "indicador": "al oído",
+    "relleno": [
+      "quemar"
+    ],
+    "explicacion": "ABRAZAR es apretar con cariño y, al oído, suena igual que ABRASAR, quemar, cuando se sesea.",
+    "dificultad": 3
+  },
+  {
+    "pista": "Microbio con forma de bastón, por lo que se oye, dudo",
+    "respuesta": "BACILO",
+    "definicion": [
+      "Microbio con forma de bastón"
+    ],
+    "tipo": "Onomatopeya",
+    "indicador": "por lo que se oye",
+    "relleno": [
+      "dudo"
+    ],
+    "explicacion": "El BACILO es un microbio con forma de bastón y, por lo que se oye, suena igual que VACILO, dudo.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Bolso de la dama; ministerio",
+    "respuesta": "CARTERA",
+    "definicion": [
+      "Bolso de la dama",
+      "ministerio"
+    ],
+    "tipo": "Doble definición",
+    "indicador": "",
+    "relleno": [],
+    "explicacion": "La CARTERA es el bolso de la dama, y una cartera es también un ministerio.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Lodo; grano de la cara",
+    "respuesta": "BARRO",
+    "definicion": [
+      "Lodo",
+      "grano de la cara"
+    ],
+    "tipo": "Doble definición",
+    "indicador": "",
+    "relleno": [],
+    "explicacion": "El BARRO es lodo, y un barro es también un grano de la cara.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Cráneo; juerguista",
+    "respuesta": "CALAVERA",
+    "definicion": [
+      "Cráneo",
+      "juerguista"
+    ],
+    "tipo": "Doble definición",
+    "indicador": "",
+    "relleno": [],
+    "explicacion": "La CALAVERA es el cráneo, y un calavera es un juerguista.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Paro; está de más",
+    "respuesta": "HUELGA",
+    "definicion": [
+      "Paro",
+      "está de más"
+    ],
+    "tipo": "Doble definición",
+    "indicador": "",
+    "relleno": [],
+    "explicacion": "La HUELGA es un paro, y «huelga» también quiere decir que algo está de más, como en «huelga decir».",
+    "dificultad": 5
+  },
+  {
+    "pista": "Del rey, de verdad",
+    "respuesta": "REAL",
+    "definicion": [
+      "Del rey",
+      "de verdad"
+    ],
+    "tipo": "Doble definición",
+    "indicador": "",
+    "relleno": [],
+    "explicacion": "REAL es lo del rey y también lo que es de verdad.",
+    "dificultad": 3
+  },
+  {
+    "pista": "Con mucha sal; carísimo en Chile",
+    "respuesta": "SALADO",
+    "definicion": [
+      "Con mucha sal",
+      "carísimo en Chile"
+    ],
+    "tipo": "Doble definición",
+    "indicador": "",
+    "relleno": [],
+    "explicacion": "SALADO es lo que tiene mucha sal y, en Chile, lo que está carísimo.",
+    "dificultad": 3
+  },
+  {
+    "pista": "El argumento esconde un estacionamiento. ¡Qué engaño!",
+    "respuesta": "TRAMPA",
+    "definicion": [
+      "¡Qué engaño!"
+    ],
+    "tipo": "Contenedor",
+    "indicador": "esconde",
+    "relleno": [
+      "El argumento",
+      "un estacionamiento"
+    ],
+    "explicacion": "El argumento es la TRAMA; esconde la P de estacionamiento y queda TRAM·P·A, TRAMPA, un engaño.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Se lleva lo ajeno, la nave sin piloto.",
+    "respuesta": "LADRON",
+    "definicion": [
+      "Se lleva lo ajeno"
+    ],
+    "tipo": "Charada",
+    "indicador": "",
+    "relleno": [
+      "la",
+      "nave sin piloto"
+    ],
+    "explicacion": "LA y la nave sin piloto, un DRON. LA + DRON = LADRÓN, el que se lleva lo ajeno.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Añoranza de un revuelto Santiago a los cincuenta",
+    "respuesta": "NOSTALGIA",
+    "definicion": [
+      "Añoranza"
+    ],
+    "tipo": "Anagrama",
+    "indicador": [
+      "de un revuelto",
+      "a los"
+    ],
+    "relleno": [
+      "Santiago",
+      "cincuenta"
+    ],
+    "explicacion": "SANTIAGO más la L, cincuenta en romanos, revueltos, forman NOSTALGIA, la añoranza.",
+    "dificultad": 5
+  },
+  {
+    "pista": "Damitas de juerga en el lazo entre amigos.",
+    "respuesta": "AMISTAD",
+    "definicion": [
+      "en el lazo entre amigos"
+    ],
+    "tipo": "Anagrama",
+    "indicador": "de juerga",
+    "relleno": [
+      "Damitas"
+    ],
+    "explicacion": "Las letras de DAMITAS, de juerga, forman AMISTAD, el lazo entre amigos.",
+    "dificultad": 3
+  },
+  {
+    "pista": "Ritmo de La Habana con carcajada, el gesto de la Gioconda.",
+    "respuesta": "SONRISA",
+    "definicion": [
+      "el gesto de la Gioconda"
+    ],
+    "tipo": "Charada",
+    "indicador": "con",
+    "relleno": [
+      "Ritmo de La Habana",
+      "carcajada"
+    ],
+    "explicacion": "El ritmo de La Habana es el SON y la carcajada, la RISA. SON + RISA = SONRISA, el gesto de la Gioconda.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Al frente de varios ejércitos nunca usan sables por la diosa del amor.",
+    "respuesta": "VENUS",
+    "definicion": [
+      "por la diosa del amor"
+    ],
+    "tipo": "Selector",
+    "indicador": "Al frente de",
+    "relleno": [
+      "varios ejércitos nunca usan sables"
+    ],
+    "explicacion": "Al frente de Varios Ejércitos Nunca Usan Sables van sus iniciales: VENUS, la diosa del amor.",
+    "dificultad": 3
+  },
+  {
+    "pista": "Pocos lo usan, tan olvidado, ninguneado, desde el comienzo, el planeta degradado.",
+    "respuesta": "PLUTON",
+    "definicion": [
+      "el planeta degradado"
+    ],
+    "tipo": "Selector",
+    "indicador": "desde el comienzo",
+    "relleno": [
+      "Pocos lo usan, tan olvidado, ninguneado"
+    ],
+    "explicacion": "Las iniciales de «pocos lo usan, tan olvidado, ninguneado» forman PLUTÓN, el planeta degradado.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Estatuilla de Hollywood entre dos caras",
+    "respuesta": "OSCAR",
+    "definicion": [
+      "Estatuilla de Hollywood"
+    ],
+    "tipo": "Palabra escondida",
+    "indicador": "entre",
+    "relleno": [
+      "dos caras"
+    ],
+    "explicacion": "Entre dOS CARas está ÓSCAR, la estatuilla de Hollywood.",
+    "dificultad": 4
+  },
+  {
+    "pista": "La que no has de beber, junto a nada, en pleno chaparrón.",
+    "respuesta": "AGUACERO",
+    "definicion": [
+      "en pleno chaparrón"
+    ],
+    "tipo": "Charada",
+    "indicador": "junto a",
+    "relleno": [
+      "La que no has de beber",
+      "nada"
+    ],
+    "explicacion": "Agua que no has de beber, déjala correr: AGUA. Junto a nada, CERO, forma AGUACERO, un chaparrón.",
+    "dificultad": 5
+  },
+  {
+    "pista": "El que muere por la boca con garra en el pie del chancho.",
+    "respuesta": "PEZUÑA",
+    "definicion": [
+      "en el pie del chancho"
+    ],
+    "tipo": "Charada",
+    "indicador": "con",
+    "relleno": [
+      "El que muere por la boca",
+      "garra"
+    ],
+    "explicacion": "Por la boca muere el PEZ; con la garra, la UÑA, forma PEZUÑA, el pie del chancho.",
+    "dificultad": 5
+  },
+  {
+    "pista": "Como aire guarda un coloso de Rapa Nui",
+    "respuesta": "MOAI",
+    "definicion": [
+      "un coloso de Rapa Nui"
+    ],
+    "tipo": "Palabra escondida",
+    "indicador": "guarda",
+    "relleno": [
+      "Como aire"
+    ],
+    "explicacion": "En coMO AIre se guarda MOAI, el coloso de Rapa Nui.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Capa del rey sin anillo ante él cubre la mesa.",
+    "respuesta": "MANTEL",
+    "definicion": [
+      "cubre la mesa"
+    ],
+    "tipo": "Misceláneas",
+    "indicador": [
+      "sin anillo",
+      "ante"
+    ],
+    "relleno": [
+      "Capa del rey",
+      "él"
+    ],
+    "explicacion": "La capa del rey es el MANTO; sin el anillo, la O, queda MANT, y ante ÉL forma MANTEL, lo que cubre la mesa.",
+    "dificultad": 5
+  },
+  {
+    "pista": "Un varón cambia el final por un anillo donde se apoya el amigo.",
+    "respuesta": "HOMBRO",
+    "definicion": [
+      "donde se apoya el amigo"
+    ],
+    "tipo": "Misceláneas",
+    "indicador": "cambia el final por un anillo",
+    "relleno": [
+      "Un varón"
+    ],
+    "explicacion": "Un varón es un HOMBRE; si cambia su final, la E, por un anillo, la O, queda HOMBRO, donde se apoya el amigo.",
+    "dificultad": 4
+  },
+  {
+    "pista": "El hombre americano con un litro extra en tequila. ¡Cuántas calorías doradas!",
+    "respuesta": "MANTEQUILLA",
+    "definicion": [
+      "¡Cuántas calorías doradas!"
+    ],
+    "tipo": "Misceláneas",
+    "indicador": [
+      "americano",
+      "con",
+      "extra en"
+    ],
+    "relleno": [
+      "hombre",
+      "un litro",
+      "tequila"
+    ],
+    "notas": {
+      "indicador": "«Americano» pide pasar al inglés, «extra en» mete algo dentro y «con» es un simple conector."
+    },
+    "explicacion": "«El hombre americano» nos indica que la primera parte es MAN, la palabra hombre en inglés. Luego seguimos con un litro, L, extra en, es decir dentro de, TEQUILA. Si lo juntamos todo nos queda la respuesta final, MANTEQUILLA: algo que tiene muchas calorías y es dorado.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Al laboratorio de 9 a 5... Cambiar de turno...",
+    "respuesta": "ROTAR",
+    "definicion": [
+      "Cambiar de turno..."
+    ],
+    "tipo": "Selector",
+    "indicador": "de 9 a 5",
+    "relleno": [
+      "laboratorio"
+    ],
+    "notas": {
+      "indicador": "Es un selector especial que nos dice en qué caracteres fijarnos en algún relleno."
+    },
+    "explicacion": "Se toman las letras de LABORATORIO desde la novena hasta la quinta, contando hacia atrás: R, O, T, A, R. Queda ROTAR, que es cambiar de turno.",
+    "dificultad": 4
+  },
+  {
+    "pista": "El gato inglés con una nota se tiende en una cama sencilla.",
+    "respuesta": "CATRE",
+    "definicion": [
+      "se tiende en una cama sencilla"
+    ],
+    "tipo": "Misceláneas",
+    "indicador": [
+      "inglés",
+      "con"
+    ],
+    "relleno": [
+      "El gato",
+      "una nota"
+    ],
+    "notas": {
+      "indicador": "«Inglés» pide pasar al inglés y «con» une las piezas."
+    },
+    "explicacion": "El gato en inglés es CAT; con una nota, RE, forma CATRE, una cama sencilla donde tenderse.",
+    "dificultad": 4
+  },
+  {
+    "pista": "El auto gringo, una nota y una infusión arman la fiesta del viernes.",
+    "respuesta": "CARRETE",
+    "definicion": [
+      "arman la fiesta del viernes"
+    ],
+    "tipo": "Misceláneas",
+    "indicador": [
+      "gringo",
+      "y"
+    ],
+    "relleno": [
+      "El auto",
+      "una nota",
+      "una infusión"
+    ],
+    "notas": {
+      "indicador": "«Gringo» pide pasar al inglés y «y» une las piezas."
+    },
+    "explicacion": "El auto gringo es CAR; una nota es RE y una infusión, TÉ. CAR + RE + TE = CARRETE, la fiesta del viernes en Chile.",
+    "dificultad": 4
+  },
+  {
+    "pista": "El chico inglés con la primera del abecedario flota en el mar.",
+    "respuesta": "BOYA",
+    "definicion": [
+      "flota en el mar"
+    ],
+    "tipo": "Misceláneas",
+    "indicador": [
+      "inglés",
+      "con"
+    ],
+    "relleno": [
+      "El chico",
+      "la primera del abecedario"
+    ],
+    "explicacion": "El chico en inglés es BOY; con la primera letra del abecedario, la A, forma BOYA, lo que flota en el mar.",
+    "dificultad": 3
+  },
+  {
+    "pista": "El hombre gringo con uno se come en el estadio.",
+    "respuesta": "MANI",
+    "definicion": [
+      "se come en el estadio"
+    ],
+    "tipo": "Misceláneas",
+    "indicador": [
+      "gringo",
+      "con"
+    ],
+    "relleno": [
+      "El hombre",
+      "uno"
+    ],
+    "notas": {
+      "relleno": "«Uno» se escribe I en números romanos."
+    },
+    "explicacion": "El hombre gringo es MAN y uno, en números romanos, es I. MAN + I = MANÍ, lo que se come en el estadio.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Ríe sin final dentro del caño. ¡Amor de abuela!",
+    "respuesta": "CARIÑO",
+    "definicion": [
+      "¡Amor de abuela!"
+    ],
+    "tipo": "Misceláneas",
+    "indicador": [
+      "sin final",
+      "dentro del"
+    ],
+    "relleno": [
+      "Ríe",
+      "caño"
+    ],
+    "explicacion": "RÍE sin su final queda RI; metido dentro de CAÑO da CA·RI·ÑO, CARIÑO, el amor de abuela.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Bebé en Santiago; bus en La Habana.",
+    "respuesta": "GUAGUA",
+    "definicion": [
+      "Bebé en Santiago",
+      "bus en La Habana"
+    ],
+    "tipo": "Doble definición",
+    "indicador": "",
+    "relleno": [],
+    "explicacion": "En Chile la GUAGUA es el bebé, y en Cuba la guagua es el bus.",
+    "dificultad": 3
+  },
+  {
+    "pista": "Novio en Santiago; escarabajo que zumba en verano.",
+    "respuesta": "POLOLO",
+    "definicion": [
+      "Novio en Santiago",
+      "escarabajo que zumba en verano"
+    ],
+    "tipo": "Doble definición",
+    "indicador": "",
+    "relleno": [],
+    "explicacion": "En Chile el POLOLO es el novio, y también un escarabajo verde que zumba en verano.",
+    "dificultad": 3
+  },
+  {
+    "pista": "Restan, revueltos, donde se fríen los huevos.",
+    "respuesta": "SARTEN",
+    "definicion": [
+      "donde se fríen los huevos"
+    ],
+    "tipo": "Anagrama",
+    "indicador": "revueltos",
+    "relleno": [
+      "Restan"
+    ],
+    "explicacion": "Las letras de RESTAN, revueltas como los huevos, forman SARTÉN, donde se fríen.",
+    "dificultad": 3
+  },
+  {
+    "pista": "La galería, alborotada de felicidad.",
+    "respuesta": "ALEGRIA",
+    "definicion": [
+      "de felicidad"
+    ],
+    "tipo": "Anagrama",
+    "indicador": "alborotada",
+    "relleno": [
+      "La galería"
+    ],
+    "explicacion": "Las letras de GALERÍA, alborotadas, forman ALEGRÍA, la felicidad.",
+    "dificultad": 3
+  },
+  {
+    "pista": "Un adiós escondido en mucha ola.",
+    "respuesta": "CHAO",
+    "definicion": [
+      "Un adiós"
+    ],
+    "tipo": "Palabra escondida",
+    "indicador": "escondido en",
+    "relleno": [
+      "mucha ola"
+    ],
+    "explicacion": "En muCHA Ola se esconde CHAO, un adiós.",
+    "dificultad": 2
+  },
+  {
+    "pista": "Lucas pierde la cola y vale mil pesos.",
+    "respuesta": "LUCA",
+    "definicion": [
+      "y vale mil pesos"
+    ],
+    "tipo": "Sustracción",
+    "indicador": "pierde la cola",
+    "relleno": [
+      "Lucas"
+    ],
+    "explicacion": "LUCAS sin la cola, su última letra, queda LUCA, que en Chile son mil pesos.",
+    "dificultad": 2
+  },
+  {
+    "pista": "El grifo metálico esconde algo aburrido.",
+    "respuesta": "FOME",
+    "definicion": [
+      "algo aburrido"
+    ],
+    "tipo": "Palabra escondida",
+    "indicador": "esconde",
+    "relleno": [
+      "El grifo metálico"
+    ],
+    "explicacion": "En el griFO MEtálico se esconde FOME, que en Chile es aburrido.",
+    "dificultad": 3
+  },
+  {
+    "pista": "El portaequipajes mira al norte. ¡Buenísimo!",
+    "respuesta": "BACAN",
+    "definicion": [
+      "¡Buenísimo!"
+    ],
+    "tipo": "Charada",
+    "indicador": "mira al",
+    "relleno": [
+      "El portaequipajes",
+      "norte"
+    ],
+    "explicacion": "El portaequipajes del techo es la BACA; mirando al norte suma la N: BACÁN, que en Chile es buenísimo.",
+    "dificultad": 3
+  },
+  {
+    "pista": "Lo caliente de Londres, con él, te recibe en vacaciones.",
+    "respuesta": "HOTEL",
+    "definicion": [
+      "te recibe en vacaciones"
+    ],
+    "tipo": "Misceláneas",
+    "indicador": [
+      "de Londres",
+      "con"
+    ],
+    "relleno": [
+      "Lo caliente",
+      "él"
+    ],
+    "notas": {
+      "indicador": "«De Londres» pide pasar al inglés y «con» une las piezas."
+    },
+    "explicacion": "Caliente en inglés, el idioma de Londres, es HOT; con ÉL forma HOTEL, que te recibe en vacaciones.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Diez y es, para un gringo, se juega con raqueta.",
+    "respuesta": "TENIS",
+    "definicion": [
+      "se juega con raqueta"
+    ],
+    "tipo": "Misceláneas",
+    "indicador": [
+      "y",
+      "para un gringo"
+    ],
+    "relleno": [
+      "Diez",
+      "es"
+    ],
+    "explicacion": "Para un gringo, diez es TEN y es es IS. TEN + IS = TENIS, que se juega con raqueta.",
+    "dificultad": 4
+  },
+  {
+    "pista": "Los capitanes cruzan el río rápido, osados, hasta el San Cristóbal.",
+    "respuesta": "CERRO",
+    "definicion": [
+      "hasta el San Cristóbal"
+    ],
+    "tipo": "Selector",
+    "indicador": "Los capitanes",
+    "relleno": [
+      "cruzan el río rápido, osados"
+    ],
+    "explicacion": "Los capitanes van a la cabeza: Cruzan, El, Río, Rápido, Osados forman CERRO, como el San Cristóbal de Santiago.",
+    "dificultad": 3
   }
 ];
