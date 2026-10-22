@@ -49,6 +49,9 @@
   const escapar = (s) =>
     s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 
+  // El indicador puede ser un texto o una lista de textos (si la pista tiene varios).
+  const indicadoresDe = (p) => (Array.isArray(p.indicador) ? p.indicador : p.indicador ? [p.indicador] : []);
+
   // ---------- Guardado ----------
   let datos;
   try { datos = JSON.parse(localStorage.getItem(CLAVE)) || {}; } catch { datos = {}; }
@@ -93,7 +96,8 @@
       { titulo: "Tipo", texto: p.tipo },
       { titulo: "Definición", texto: "resaltada en amarillo en la pista", marca: "def" }
     ];
-    if (p.indicador) lista.push({ titulo: "Indicador", texto: `«${p.indicador}», resaltado en azul`, marca: "ind" });
+    const inds = indicadoresDe(p);
+    if (inds.length) lista.push({ titulo: inds.length > 1 ? "Indicadores" : "Indicador", texto: `${inds.map((x) => `«${x}»`).join(", ")}, ${inds.length > 1 ? "resaltados" : "resaltado"} en azul`, marca: "ind" });
     if (p.relleno && p.relleno.length) lista.push({ titulo: "Relleno", texto: "lo que hay que manipular, resaltado en verde", marca: "rel" });
     lista.push({ titulo: "Primera letra", texto: letrasDe(p)[0], primera: true });
     lista.push({ titulo: "Solución", texto: p.respuesta, revelar: true });
@@ -121,7 +125,7 @@
       for (let k = i; k < i + frag.length; k++) tipo[k] = clase;
     };
     p.definicion.forEach((d) => marcar(d, "def"));
-    marcar(p.indicador, "ind");
+    indicadoresDe(p).forEach((x) => marcar(x, "ind"));
     (p.relleno || []).forEach((r) => marcar(r, "rel"));
     for (let k = 0; k < texto.length; k++) if (tipo[k] && !marcas.has(tipo[k])) tipo[k] = null;
 
