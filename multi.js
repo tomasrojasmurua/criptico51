@@ -384,7 +384,7 @@ const Multi = (() => {
   function ayudasDe(p) {
     return [
       { titulo: "Tipo", texto: p.tipo },
-      { titulo: "Definición", texto: "resaltada en amarillo en la pista", marca: "def" },
+      { titulo: "Definición", texto: "resaltada en azul en la pista", marca: "def" },
       { titulo: "Primera letra", texto: C().letrasDe(p)[0], primera: true }
     ];
   }
@@ -521,9 +521,9 @@ const Multi = (() => {
     mostrarPanel("mp-pausa");
     const p = pistaActual();
     $("#mp-pausa-ronda").textContent = `Ronda ${sala.ronda} de ${sala.total}`;
+    $("#mp-leyenda").innerHTML = C().LEYENDA;
     $("#mp-sol-pista").innerHTML = C().pistaHTML(p, new Set(["def", "ind", "rel"]));
-    $("#mp-sol").textContent = p.respuesta;
-    $("#mp-sol-expl").textContent = p.explicacion;
+    $("#mp-desglose").innerHTML = C().desgloseHTML(p);
     $("#mp-tabla").innerHTML = tablaHTML(true);
   }
 

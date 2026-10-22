@@ -5,9 +5,10 @@
   --suave: #6b6862;
   --borde: #dcd9d2;
   --acento: #b4472f;
-  --def: #fde7a7;
-  --ind: #cfe3f7;
-  --rel: #cdeccf;
+  /* Piezas de la pista: fondo, texto y borde */
+  --def: #dbeafe; --def-texto: #1d4ed8; --def-borde: #60a5fa;
+  --rel: #dcfce7; --rel-texto: #15803d; --rel-borde: #4ade80;
+  --ind: #ffedd5; --ind-texto: #c2410c; --ind-borde: #fb923c;
   --bien: #2f7d4f;
   --mal: #b4472f;
   --tecla: #e9e6df;
@@ -22,9 +23,9 @@
     --suave: #a39f97;
     --borde: #3a3733;
     --acento: #e2765d;
-    --def: #6b5416;
-    --ind: #23466b;
-    --rel: #1f5631;
+    --def: rgba(96, 165, 250, .14); --def-texto: #93c5fd; --def-borde: #3b82f6;
+    --rel: rgba(74, 222, 128, .12); --rel-texto: #86efac; --rel-borde: #22c55e;
+    --ind: rgba(251, 146, 60, .14); --ind-texto: #fdba74; --ind-borde: #f97316;
     --bien: #5fbf86;
     --mal: #e2765d;
     --tecla: #2e2b28;
@@ -78,10 +79,13 @@ main { flex: 1; width: 100%; max-width: 640px; margin: 0 auto; padding: 24px 16p
   line-height: 1.3; font-weight: 500; text-align: center; margin: 28px 0 24px;
   text-wrap: balance;
 }
-.pista mark { border-radius: 4px; padding: 0 3px; color: inherit; }
-.pista mark.def { background: var(--def); }
-.pista mark.ind { background: var(--ind); }
-.pista mark.rel { background: var(--rel); }
+.pista mark, .texto mark {
+  border-radius: 4px 4px 0 0; padding: 0 3px; border-bottom: 2px solid;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+mark.def { background: var(--def); color: var(--def-texto); border-color: var(--def-borde); }
+mark.ind { background: var(--ind); color: var(--ind-texto); border-color: var(--ind-borde); }
+mark.rel { background: var(--rel); color: var(--rel-texto); border-color: var(--rel-borde); }
 .pista .largo { color: var(--suave); white-space: nowrap; }
 
 .casillas { display: flex; justify-content: center; gap: 6px; margin-bottom: 8px; }
@@ -130,7 +134,33 @@ main { flex: 1; width: 100%; max-width: 640px; margin: 0 auto; padding: 24px 16p
 }
 .final p { margin: 0 0 10px; }
 #final-texto { font-family: Fraunces, Georgia, serif; font-size: 1.25rem; }
-.explicacion { color: var(--suave); }
+
+/* Explicación de la solución */
+.leyenda { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px; margin: 16px 0 -12px; }
+.leyenda:empty { display: none; }
+.etiqueta {
+  display: inline-block; border: 1px solid; border-radius: 999px; padding: 2px 10px;
+  font: 600 .72rem/1.5 Inter, sans-serif; text-transform: uppercase; letter-spacing: .04em;
+}
+.etiqueta.def { background: var(--def); color: var(--def-texto); border-color: var(--def-borde); }
+.etiqueta.rel { background: var(--rel); color: var(--rel-texto); border-color: var(--rel-borde); }
+.etiqueta.ind { background: var(--ind); color: var(--ind-texto); border-color: var(--ind-borde); }
+.desglose:empty { display: none; }
+.piezas, .juego-palabras {
+  background: var(--superficie); border: 1px solid var(--borde); border-radius: 12px; margin-bottom: 16px;
+}
+.piezas { padding: 4px 16px; }
+.pieza { text-align: center; padding: 14px 0; }
+.pieza + .pieza { border-top: 1px solid var(--borde); }
+.pieza p { margin: 8px 0 0; font-size: .92rem; }
+.juego-palabras { padding: 16px; text-align: center; }
+.juego-palabras h3 { margin: 0 0 8px; font: 400 .92rem Inter, sans-serif; color: var(--suave); }
+.juego-palabras p { margin: 0; font-size: 1.05rem; line-height: 1.6; }
+.respuesta {
+  border: 1px dashed var(--borde); border-radius: 12px; padding: 16px; margin: 0 0 16px; text-align: center;
+  font: 700 1.05rem ui-monospace, "SF Mono", Menlo, Consolas, monospace; letter-spacing: .15em;
+}
+.respuesta span { color: var(--def-texto); }
 
 .teclado { display: grid; gap: 6px; margin: 8px 0 20px; }
 .fila { display: flex; justify-content: center; gap: 4px; }
@@ -163,15 +193,12 @@ h2 { font-size: 1.3rem; margin: 28px 0 10px; }
 
 /* Aprender */
 .texto p { margin: 0 0 12px; }
-.texto mark.def, .texto mark.rel { background: var(--def); color: inherit; padding: 0 3px; border-radius: 3px; }
-.texto mark.rel { background: var(--rel); }
 .tipos dt { font-weight: 600; margin-top: 16px; }
 .tipos dd { margin: 4px 0 0; color: var(--suave); }
 .ejemplo {
   display: inline-block; margin-top: 6px; color: var(--texto);
   font-family: Fraunces, Georgia, serif; font-size: 1.05rem;
 }
-.ejemplo u { text-decoration-color: var(--acento); text-decoration-thickness: 2px; }
 
 /* Estadísticas */
 .cifras { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 16px; }
@@ -235,4 +262,3 @@ h2 { font-size: 1.3rem; margin: 28px 0 10px; }
 .mp-tabla .nombre { flex: 1; font-weight: 500; }
 .mp-tabla strong { font-variant-numeric: tabular-nums; min-width: 3.5em; text-align: right; }
 .mp-tabla li.yo { border-color: var(--texto); }
-.solucion { font: 700 1.6rem Fraunces, Georgia, serif; letter-spacing: .08em; }

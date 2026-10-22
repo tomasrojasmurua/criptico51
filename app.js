@@ -49,6 +49,14 @@
   const escapar = (s) =>
     s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 
+  // El indicador puede ser un texto o una lista de textos (si la pista tiene varios).
+  const indicadoresDe = (p) => (Array.isArray(p.indicador) ? p.indicador : p.indicador ? [p.indicador] : []);
+  // «a», «b» y «c»
+  const enumerar = (xs) => {
+    const q = xs.map((x) => `«${escapar(x)}»`);
+    return q.length > 1 ? `${q.slice(0, -1).join(", ")} y ${q[q.length - 1]}` : q[0] || "";
+  };
+
   // ---------- Guardado ----------
   let datos;
   try { datos = JSON.parse(localStorage.getItem(CLAVE)) || {}; } catch { datos = {}; }
@@ -91,9 +99,10 @@
   function ayudasDe(p) {
     const lista = [
       { titulo: "Tipo", texto: p.tipo },
-      { titulo: "Definición", texto: "resaltada en amarillo en la pista", marca: "def" }
+      { titulo: "Definición", texto: "resaltada en azul en la pista", marca: "def" }
     ];
-    if (p.indicador) lista.push({ titulo: "Indicador", texto: `«${p.indicador}», resaltado en azul`, marca: "ind" });
+    const inds = indicadoresDe(p);
+    if (inds.length) lista.push({ titulo: inds.length > 1 ? "Indicadores" : "Indicador", texto: `${inds.map((x) => `«${x}»`).join(", ")}, ${inds.length > 1 ? "resaltados" : "resaltado"} en naranja`, marca: "ind" });
     if (p.relleno && p.relleno.length) lista.push({ titulo: "Relleno", texto: "lo que hay que manipular, resaltado en verde", marca: "rel" });
     lista.push({ titulo: "Primera letra", texto: letrasDe(p)[0], primera: true });
     lista.push({ titulo: "Solución", texto: p.respuesta, revelar: true });
@@ -121,7 +130,7 @@
       for (let k = i; k < i + frag.length; k++) tipo[k] = clase;
     };
     p.definicion.forEach((d) => marcar(d, "def"));
-    marcar(p.indicador, "ind");
+    indicadoresDe(p).forEach((x) => marcar(x, "ind"));
     (p.relleno || []).forEach((r) => marcar(r, "rel"));
     for (let k = 0; k < texto.length; k++) if (tipo[k] && !marcas.has(tipo[k])) tipo[k] = null;
 
@@ -138,8 +147,38 @@
     return `${html} <span class="largo">(${enumeracion(p)})</span>`;
   }
 
+  // ---------- Explicación de la solución ----------
+  const etiqueta = (clase, texto) => `<span class="etiqueta ${clase}">${texto}</span>`;
+  const LEYENDA = etiqueta("def", "Definición") + etiqueta("rel", "Relleno") + etiqueta("ind", "Indicador");
+
+  // Una tarjeta por pieza de la pista (indicador, relleno y definición), el juego de palabras
+  // y la respuesta. Las pistas pueden añadir una nota propia a cada pieza en p.notas.
+  function desgloseHTML(p) {
+    const notas = p.notas || {};
+    const nota = (k) => (notas[k] ? " " + escapar(notas[k]) : "");
+    const inds = indicadoresDe(p), rels = p.relleno || [], defs = p.definicion;
+    const partes = [];
+    if (inds.length) {
+      partes.push([etiqueta("ind", "Indicador"), inds.length > 1
+        ? `${enumerar(inds)} son nuestros indicadores. Nos dicen qué hacer con el relleno.`
+        : `${enumerar(inds)} es nuestro indicador. Nos dice qué hacer con el relleno.`, "indicador"]);
+    }
+    if (rels.length) {
+      const como = inds.length ? "como nos lo muestre el indicador" : "y uniéndolas";
+      partes.push([etiqueta("rel", "Relleno"), rels.length > 1
+        ? `${enumerar(rels)} son nuestros rellenos. Encontraremos la respuesta modificando estas palabras (o unos sustitutos) ${como}.`
+        : `${enumerar(rels)} es nuestro relleno. Encontraremos la respuesta modificándolo (o un sustituto) ${como}.`, "relleno"]);
+    }
+    partes.push([etiqueta("def", "Definición"), defs.length > 1
+      ? `${enumerar(defs)} son nuestras definiciones: la respuesta tiene que significar las dos cosas.`
+      : `Estas palabras forman nuestra definición, y la respuesta será algo que signifique ${enumerar(defs)}.`, "definicion"]);
+    return `<div class="piezas">${partes.map(([e, t, k]) => `<div class="pieza">${e}<p>${t}${nota(k)}</p></div>`).join("")}</div>
+      <div class="juego-palabras"><h3>Juego de palabras</h3><p>${escapar(p.explicacion)}</p></div>
+      <p class="respuesta">Respuesta: <span>${escapar(p.respuesta)}</span></p>`;
+  }
+
   // Lo que comparte el modo multijugador (multi.js).
-  window.Criptico = { letrasDe, enumeracion, normalizar, escapar, pistaHTML };
+  window.Criptico = { letrasDe, enumeracion, normalizar, escapar, pistaHTML, desgloseHTML, LEYENDA };
 
   // ---------- Juego ----------
   let n, p, partida, cursor = 0;
@@ -188,6 +227,7 @@
     const marcas = new Set(usadas.filter((a) => a.marca).map((a) => a.marca));
     if (terminado()) ["def", "ind", "rel"].forEach((m) => marcas.add(m));
     $("#pista").innerHTML = pistaHTML(p, marcas);
+    $("#leyenda").innerHTML = terminado() ? LEYENDA : "";
 
     const f = fijas();
     const casillas = [...$("#casillas").children];
@@ -217,7 +257,7 @@
       $("#final-texto").textContent = partida.estado === "resuelto"
         ? (total === 0 ? `¡Resuelto sin ayudas${tiempo}! 🎉` : `¡Resuelto con ${total} ${total === 1 ? "ayuda" : "ayudas"}${tiempo}!`)
         : `La respuesta era ${p.respuesta}.`;
-      $("#final-explicacion").textContent = p.explicacion;
+      $("#desglose").innerHTML = desgloseHTML(p);
     }
   }
 

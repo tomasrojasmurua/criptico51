@@ -2,7 +2,8 @@
 // - respuesta: en mayúsculas, sin tildes (Ñ permitida). Varias palabras separadas por espacio.
 // - definicion: fragmentos exactos de la pista que funcionan como definición
 // - tipo: mecanismo críptico (ver sección Aprender)
-// - indicador: fragmento exacto que señala el mecanismo (opcional)
+// - indicador: fragmento exacto que señala el mecanismo (opcional), o una lista si hay varios
+// - notas: texto opcional que se añade a la explicación de cada pieza ({ indicador, relleno, definicion })
 // - relleno: fragmentos exactos de la pista con las letras o palabras que se manipulan (vacío en dobles definiciones)
 // - explicacion: cómo se resuelve
 // - dificultad: de 1 (fácil) a 5 (muy difícil); el multijugador filtra por este valor
@@ -3570,6 +3571,29 @@ const PISTAS = [
       "Teresa"
     ],
     "explicacion": "Las letras de TERESA, revolcadas, forman ESTERA, la alfombra de junco.",
+    "dificultad": 4
+  },
+  {
+    "pista": "El hombre americano con un litro extra en tequila. ¡Cuántas calorías doradas!",
+    "respuesta": "MANTEQUILLA",
+    "definicion": [
+      "¡Cuántas calorías doradas!"
+    ],
+    "tipo": "Charada con contenedor",
+    "indicador": [
+      "americano",
+      "con",
+      "extra en"
+    ],
+    "relleno": [
+      "hombre",
+      "un litro",
+      "tequila"
+    ],
+    "notas": {
+      "indicador": "«Americano» pide pasar al inglés, «extra en» mete algo dentro y «con» es un simple conector."
+    },
+    "explicacion": "«El hombre americano» nos indica que la primera parte es MAN, la palabra hombre en inglés. Luego seguimos con un litro, L, extra en, es decir dentro de, TEQUILA. Si lo juntamos todo nos queda la respuesta final, MANTEQUILLA: algo que tiene muchas calorías y es dorado.",
     "dificultad": 4
   }
 ];

@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=9">
+  <link rel="stylesheet" href="style.css?v=10">
 </head>
 <body>
   <header class="cabecera">
@@ -40,6 +40,7 @@
         <span id="racha-mini"></span>
       </div>
 
+      <p id="leyenda" class="leyenda"></p>
       <p id="pista" class="pista"></p>
 
       <div id="casillas" class="casillas" role="group" aria-label="Respuesta"></div>
@@ -60,9 +61,9 @@
 
       <div id="final" class="final" hidden>
         <p id="final-texto"></p>
-        <p id="final-explicacion" class="explicacion"></p>
         <button id="btn-compartir" class="btn">Compartir resultado</button>
       </div>
+      <div id="desglose" class="desglose"></div>
 
       <div id="teclado" class="teclado" aria-label="Teclado"></div>
 
@@ -85,38 +86,38 @@
     <section id="vista-aprender" class="vista texto" hidden>
       <h1>Cómo se juega</h1>
       <p>Una pista críptica lleva a la misma respuesta por dos caminos: una <mark class="def">definición</mark>, que está siempre al principio o al final, y un <strong>juego de palabras</strong>. El número entre paréntesis indica cuántas letras tiene la respuesta.</p>
-      <p>El juego de palabras tiene dos piezas. El <mark class="rel">relleno</mark> son las letras o palabras que vas a manipular, tal cual o cambiadas por un sinónimo o una abreviatura. El <u>indicador</u> te dice qué hacer con ellas: esconder, reordenar, quitar, dar vuelta…</p>
+      <p>El juego de palabras tiene dos piezas. El <mark class="rel">relleno</mark> son las letras o palabras que vas a manipular, tal cual o cambiadas por un sinónimo o una abreviatura. El <mark class="ind">indicador</mark> te dice qué hacer con ellas: esconder, reordenar, quitar, dar vuelta…</p>
       <p>La pista se lee como una frase con sentido, a veces poética, pero esa lectura es un disfraz: hay que encontrar dónde termina la definición y qué te pide hacer el resto.</p>
 
       <h2>Tipos de pista</h2>
       <dl class="tipos">
         <dt>Selector</dt>
         <dd>Se toman letras concretas: iniciales, finales o centrales. Indicadores: <em>cabeza de, comienzo de, final de, corazón de</em>.<br>
-          <span class="ejemplo"><mark class="def">Satélite</mark> que asoma en las <u>cabezas de</u> <mark class="rel">las urbes nocturnas antiguas</mark> (4) → LUNA</span></dd>
+          <span class="ejemplo"><mark class="def">Satélite</mark> que asoma en las <mark class="ind">cabezas de</mark> <mark class="rel">las urbes nocturnas antiguas</mark> (4) → LUNA</span></dd>
 
         <dt>Anagrama</dt>
         <dd>Se reordenan letras, a veces de varias palabras juntas. Indicadores: <em>revuelto, loco, mezcla, fundida, alborotado</em>.<br>
-          <span class="ejemplo"><mark class="rel">Él</mark> <u>mezcla</u> <mark class="rel">letras</mark> y nace <mark class="def">un astro</mark> (8) → LETRAS + ÉL = ESTRELLA</span></dd>
+          <span class="ejemplo"><mark class="rel">Él</mark> <mark class="ind">mezcla</mark> <mark class="rel">letras</mark> y nace <mark class="def">un astro</mark> (8) → LETRAS + ÉL = ESTRELLA</span></dd>
 
         <dt>Palabra escondida</dt>
         <dd>La respuesta está escrita dentro de la pista, a menudo saltando de una palabra a otra. Indicadores: <em>oculta en, dentro de, esconde</em>.<br>
-          <span class="ejemplo"><mark class="rel">El elefante nadador</mark> <u>esconde</u> <mark class="def">lo que capta señales</mark> (6) → elef·ANTE NA·dador</span></dd>
+          <span class="ejemplo"><mark class="rel">El elefante nadador</mark> <mark class="ind">esconde</mark> <mark class="def">lo que capta señales</mark> (6) → elef·ANTE NA·dador</span></dd>
 
         <dt>Reverso</dt>
         <dd>Una palabra se lee al revés. Indicadores: <em>devuelve, retorna, da marcha atrás, de vuelta</em>.<br>
-          <span class="ejemplo"><mark class="rel">Rencor</mark> que <u>regresa</u> convertido en <mark class="def">sentido</mark> (4) → ODIO al revés = OÍDO</span></dd>
+          <span class="ejemplo"><mark class="rel">Rencor</mark> que <mark class="ind">regresa</mark> convertido en <mark class="def">sentido</mark> (4) → ODIO al revés = OÍDO</span></dd>
 
         <dt>Contenedor</dt>
         <dd>Una palabra mete a otra dentro. Indicadores: <em>acoge, se traga, abraza, con … dentro</em>.<br>
-          <span class="ejemplo"><mark class="rel">El casado</mark> <u>acoge</u> <mark class="rel">al norte</mark> y queda <mark class="def">agotado</mark> (7) → CA·N·SADO</span></dd>
+          <span class="ejemplo"><mark class="rel">El casado</mark> <mark class="ind">acoge</mark> <mark class="rel">al norte</mark> y queda <mark class="def">agotado</mark> (7) → CA·N·SADO</span></dd>
 
         <dt>Sustracción</dt>
         <dd>A una palabra se le quita un trozo. Indicadores: <em>sin, perdió, le falta</em>.<br>
-          <span class="ejemplo"><mark class="rel">Al caracol</mark> <u>le roban el rostro</u> y queda <mark class="def">una hortaliza</mark> (3) → CARACOL − CARA = COL</span></dd>
+          <span class="ejemplo"><mark class="rel">Al caracol</mark> <mark class="ind">le roban el rostro</mark> y queda <mark class="def">una hortaliza</mark> (3) → CARACOL − CARA = COL</span></dd>
 
         <dt>Onomatopeya</dt>
         <dd>La respuesta suena como otra palabra. Indicadores: <em>suena como, se oye, dicen</em>.<br>
-          <span class="ejemplo"><mark class="rel">Lo que viaja sobre el coche</mark> <u>suena a</u> <mark class="def">rumiante</mark> (4) → BACA / VACA</span></dd>
+          <span class="ejemplo"><mark class="rel">Lo que viaja sobre el coche</mark> <mark class="ind">suena a</mark> <mark class="def">rumiante</mark> (4) → BACA / VACA</span></dd>
 
         <dt>Doble definición</dt>
         <dd>Dos definiciones distintas de la misma palabra, una junto a otra.<br>
@@ -128,10 +129,10 @@
 
         <dt>Charada y misceláneas</dt>
         <dd>Se suman piezas una detrás de otra, a menudo usando abreviaturas.<br>
-          <span class="ejemplo"><u>Medio</u> <mark class="rel">papá</mark> en <mark class="rel">la colina</mark> se vuelve <mark class="def">ave</mark> (6) → PA + LOMA</span></dd>
+          <span class="ejemplo"><mark class="ind">Medio</mark> <mark class="rel">papá</mark> en <mark class="rel">la colina</mark> se vuelve <mark class="def">ave</mark> (6) → PA + LOMA</span></dd>
       </dl>
 
-      <p>Muchas pistas combinan varios tipos: por ejemplo, se toma la inicial de una palabra y se le suma otra, o se quita una letra y luego se reordena lo que queda. En los ejemplos, la <mark class="def">definición</mark> va en amarillo, el <mark class="rel">relleno</mark> en verde y el <u>indicador</u> subrayado.</p>
+      <p>Muchas pistas combinan varios tipos: por ejemplo, se toma la inicial de una palabra y se le suma otra, o se quita una letra y luego se reordena lo que queda. En los ejemplos, la <mark class="def">definición</mark> va en azul, el <mark class="rel">relleno</mark> en verde y el <mark class="ind">indicador</mark> en naranja. Al terminar cada pista verás su explicación pieza por pieza.</p>
 
       <h2>Abreviaturas habituales</h2>
       <p>Muchas piezas se esconden tras convenciones: <strong>puntos cardinales</strong> (norte = N, sur = S), <strong>números romanos</strong> (cinco = V, cien = C, mil = M), <strong>símbolos químicos</strong> (hierro = FE, oxígeno = O, oro = AU), <strong>notas musicales</strong> (DO, RE, MI, FA, SOL, LA, SI), y <strong>medio</strong> o <strong>mitad</strong> para quedarse con la mitad de una palabra.</p>
@@ -208,11 +209,9 @@
 
       <div id="mp-pausa" hidden>
         <div class="meta"><span id="mp-pausa-ronda"></span><span>Solución</span></div>
+        <p id="mp-leyenda" class="leyenda"></p>
         <p id="mp-sol-pista" class="pista"></p>
-        <div class="final">
-          <p id="mp-sol" class="solucion"></p>
-          <p id="mp-sol-expl" class="explicacion"></p>
-        </div>
+        <div id="mp-desglose" class="desglose"></div>
         <ol id="mp-tabla" class="mp-tabla"></ol>
         <p id="mp-siguiente" class="cuenta"></p>
       </div>
@@ -245,9 +244,9 @@
 
   <footer class="pie">Críptico 51</footer>
 
-  <script src="pistas.js?v=12"></script>
+  <script src="pistas.js?v=13"></script>
   <script src="diarias.js?v=1"></script>
-  <script src="multi.js?v=8"></script>
-  <script src="app.js?v=9"></script>
+  <script src="multi.js?v=9"></script>
+  <script src="app.js?v=10"></script>
 </body>
 </html>
