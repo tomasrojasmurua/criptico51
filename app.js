@@ -159,9 +159,11 @@
     const inds = indicadoresDe(p), rels = p.relleno || [], defs = p.definicion;
     const partes = [];
     if (inds.length) {
+      // Si la pista trae su propia nota del indicador, reemplaza la frase genérica.
+      const que = notas.indicador ? "" : inds.length > 1 ? " Nos dicen qué hacer con el relleno." : " Nos dice qué hacer con el relleno.";
       partes.push([etiqueta("ind", "Indicador"), inds.length > 1
-        ? `${enumerar(inds)} son nuestros indicadores. Nos dicen qué hacer con el relleno.`
-        : `${enumerar(inds)} es nuestro indicador. Nos dice qué hacer con el relleno.`, "indicador"]);
+        ? `${enumerar(inds)} son nuestros indicadores.${que}`
+        : `${enumerar(inds)} es nuestro indicador.${que}`, "indicador"]);
     }
     if (rels.length) {
       const como = inds.length ? "como nos lo muestre el indicador" : "y uniéndolas";

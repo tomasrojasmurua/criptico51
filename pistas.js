@@ -3595,5 +3595,22 @@ const PISTAS = [
     },
     "explicacion": "«El hombre americano» nos indica que la primera parte es MAN, la palabra hombre en inglés. Luego seguimos con un litro, L, extra en, es decir dentro de, TEQUILA. Si lo juntamos todo nos queda la respuesta final, MANTEQUILLA: algo que tiene muchas calorías y es dorado.",
     "dificultad": 4
+  },
+  {
+    "pista": "Al laboratorio de 9 a 5... Cambiar de turno...",
+    "respuesta": "ROTAR",
+    "definicion": [
+      "Cambiar de turno..."
+    ],
+    "tipo": "Selector",
+    "indicador": "de 9 a 5",
+    "relleno": [
+      "laboratorio"
+    ],
+    "notas": {
+      "indicador": "Es un selector especial que nos dice en qué caracteres fijarnos en algún relleno."
+    },
+    "explicacion": "Se toman las letras de LABORATORIO desde la novena hasta la quinta, contando hacia atrás: R, O, T, A, R. Queda ROTAR, que es cambiar de turno.",
+    "dificultad": 4
   }
 ];
